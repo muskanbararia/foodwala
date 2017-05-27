@@ -1,4 +1,4 @@
-<section id="section-2">
+ <section id="section-2">
 <form action="index.php" method="post"  enctype="multipart/form-data">
                     <div class="indent_title_in">
                     <div class="indent_title_in">
@@ -56,7 +56,24 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Restaurant</label>
-                                        <input type="text" name="m_rest" class="form-control">
+                                        <select name="m_rest" class="form-control">
+                                      
+                                      <?php  
+                                        include("../database/db_conection.php");  
+                                        $view_users_query="select * from restaurant";//select query for viewing users.  
+                                        $run=mysqli_query($dbcon,$view_users_query);//here run the sql query. 
+                                        
+                                        while($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
+                                        {  
+                                            $id = $row[1];
+                                            
+                                            
+                                            
+                                      ?> 
+                                      <option value="<?php echo $id; ?>"><?php echo $id; ?></option>
+                                      <?php } ?>
+                                      
+                                    </select>
                                     </div>
 
 

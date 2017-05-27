@@ -47,16 +47,21 @@
                     </li>
                     <li><a href="#section-2" class="icon-menut-items"><span>View Coupans</span></a>
                     </li>
-                    <li><a href="#section-3" class="icon-settings"><span>Coupans</span></a>
+                    <li><a href="#section-3" class="icon-settings"><span>View Restaurants</span></a>
+                    </li>
+                    <li><a href="#section-4" class="icon-settings"><span>View Menu Items</span></a>
+                    </li>
+                    <li><a href="#section-5" class="icon-settings"><span>View Orders</span></a>
                     </li>
                 </ul>
             </nav>
             <div class="content">
 
-                <?php include "add-rest.php" ?>
+                <?php include "view-user.php" ?>
                 <?php include "view-coupan.php" ?>
                 <!-- End section 2 -->
-                <?php include "add-coupan.php" ?>
+                <?php include "view-rest.php" ?>
+                <?php include "view-menu.php" ?>
                 <!-- End section 3 -->
 
             </div><!-- End content -->
@@ -207,6 +212,36 @@
     {
             $id = $_POST['id'];
             $sql = "DELETE FROM coupon WHERE id='$id'" ;
+            if(mysqli_query($dbcon,$sql))  
+        {  
+            echo"<script>alert('DELETED')</script>";
+            echo"<script>window.open('view.php','_self')</script>";  
+        }
+    }
+    if(isset($_POST['u_del']))  
+    {
+            $id = $_POST['id'];
+            $sql = "DELETE FROM user WHERE id='$id'" ;
+            if(mysqli_query($dbcon,$sql))  
+        {  
+            echo"<script>alert('DELETED')</script>";
+            echo"<script>window.open('view.php','_self')</script>";  
+        }
+    }
+    if(isset($_POST['r_del']))  
+    {
+            $id = $_POST['id'];
+            $sql = "DELETE FROM restaurant WHERE id='$id'" ;
+            if(mysqli_query($dbcon,$sql))  
+        {  
+            echo"<script>alert('DELETED')</script>";
+            echo"<script>window.open('view.php','_self')</script>";  
+        }
+    }
+    if(isset($_POST['m_del']))  
+    {
+            $id = $_POST['id'];
+            $sql = "DELETE FROM item WHERE id='$id'" ;
             if(mysqli_query($dbcon,$sql))  
         {  
             echo"<script>alert('DELETED')</script>";
