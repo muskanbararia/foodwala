@@ -53,6 +53,8 @@
                     </li>
                     <li><a href="#section-5" class="icon-settings"><span>View Orders</span></a>
                     </li>
+                    <li><a href="#section-6" class="icon-settings"><span>View Dine In Request</span></a>
+                    </li>
                 </ul>
             </nav>
             <div class="content">
@@ -62,6 +64,8 @@
                 <!-- End section 2 -->
                 <?php include "view-rest.php" ?>
                 <?php include "view-menu.php" ?>
+                <?php include "view-order.php" ?>
+                <?php include "view-dine.php" ?>
                 <!-- End section 3 -->
 
             </div><!-- End content -->
@@ -242,6 +246,16 @@
     {
             $id = $_POST['id'];
             $sql = "DELETE FROM item WHERE id='$id'" ;
+            if(mysqli_query($dbcon,$sql))  
+        {  
+            echo"<script>alert('DELETED')</script>";
+            echo"<script>window.open('view.php','_self')</script>";  
+        }
+    }
+    if(isset($_POST['d_del']))  
+    {
+            $id = $_POST['id'];
+            $sql = "DELETE FROM dineIn WHERE id='$id'" ;
             if(mysqli_query($dbcon,$sql))  
         {  
             echo"<script>alert('DELETED')</script>";
