@@ -26,6 +26,8 @@
     <link href="css/admin.css" rel="stylesheet">
     <link href="css/bootstrap3-wysihtml5.min.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
 
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>

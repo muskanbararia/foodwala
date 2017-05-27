@@ -19,7 +19,8 @@
                     
                     
                      <li><a href="#"/>Hello, <?php echo $email; ?></a></li>
-                
+                <li><a href="view.php">View Information</a></li>
+                <li><a href="index.php">Add Information</a></li>
                     
                     
                     
