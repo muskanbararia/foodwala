@@ -867,7 +867,7 @@ if (isset($_POST['r_submit']))
     $img = "f".$code.$img_name;
     
     if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
-        $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img',$phone','$category','$desc')";
+        $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img','$phone','$category','$desc')";
         $query = mysqli_query($dbcon,$inq);
         if($query){
             echo "<script>alert('Added')</script>";
