@@ -12,9 +12,9 @@
 <?php include "preloader.php"; ?>
 <!-- End Preload -->
 
-    <!-- Header ================================================== -->
-   <?php include "header.php"; ?>
-    <!-- End Header =============================================== -->
+<!-- Header ================================================== -->
+<?php include "header.php"; ?>
+<!-- End Header =============================================== -->
     
     <!-- SubHeader =============================================== -->
     <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="img/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">

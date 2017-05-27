@@ -19,11 +19,33 @@
     <!-- End Header =============================================== -->
     
 <!-- SubHeader =============================================== -->
+<?php
+  if(isset($_GET['name'])){
+    $rid = $_GET['name'];
+    include "../database/db_conection.php";
+    $limit = 10;
+    $query = "SELECT * FROM restaurant WHERE id = $rid" ;
+    $run   = mysqli_query($dbcon, $query);
+    while ($row = mysqli_fetch_array($run)) {
+      # code...
+      $id = $row[0]; 
+      $name = $row[1];
+      $cat = $row[5];
+      $desk = $row[6];
+      $loc = $row[2];
+      $logo = $row[4];
+    }
+  }
+  else{
+    $name = 'EXCE';
+  }
+  
+  ?>
 <section class="parallax-window" data-parallax="scroll" data-image-src="img/sub_header_2.jpg" data-natural-width="1400" data-natural-height="470">
     <div id="subheader">
   <div id="sub_content">
       <div id="thumb">
-        <img src="img/thumb_restaurant.jpg" alt="">
+        <img src="img/<?=$logo?>" alt="<?=$name?>">
       </div>
         <div class="rating">
             <i class="icon_star voted"></i>
@@ -33,13 +55,13 @@
             <i class="icon_star"></i> 
             (<small><a href="detail_page_2.html">Read 98 reviews</a></small>)
         </div>
-        <h1>Mexican TacoMex</h1>
+        <h1><?=$name?></h1>
         <div>
-            <em>Mexican / American</em>
+            <em><?=$cat?></em>
         </div>
         <div>
             <i class="icon_pin"></i>
-                135 Newtownards Road, Belfast, BT4 1AB - <strong>Delivery charge:</strong> $10, free over $15.
+                <?=$loc?> - <strong>Delivery charge:</strong> $10, free over $15.
         </div>
     </div><!-- End sub_content -->
 </div><!-- End subheader -->
