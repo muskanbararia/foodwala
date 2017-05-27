@@ -135,7 +135,7 @@
           $cat = $row[5];
           $desk = $row[6];
           $loc = $row[2];
-          $logo = $row[4];
+          $logo = $row[3];
       ?> 
       <div class="strip_list wow fadeIn" data-wow-delay="0.1s">
         <div class="ribbon_1">
@@ -145,7 +145,7 @@
           <div class="col-md-9 col-sm-9">
             <div class="desc">
               <div class="thumb_strip">
-                <a href="detail_page.html"><img src="img/<?=$img?>" alt="<?=$name?>"></a>
+                <a href="detail_page.html"><img src="img/<?=$logo?>" alt="<?=$name?>"></a>
               </div>
               <div class="rating">
                 <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
