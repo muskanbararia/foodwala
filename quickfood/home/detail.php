@@ -47,59 +47,26 @@
       <div id="thumb">
         <img src="img/<?=$logo?>" alt="<?=$name?>">
       </div>
-        <div class="rating">
-            <i class="icon_star voted"></i>
-            <i class="icon_star voted"></i>
-            <i class="icon_star voted"></i>
-            <i class="icon_star voted"></i>
-            <i class="icon_star"></i> 
-            (<small><a href="detail_page_2.html">Read 98 reviews</a></small>)
-        </div>
+        
         <h1><?=$name?></h1>
         <div>
             <em><?=$cat?></em>
         </div>
-        <div>
-            <i class="icon_pin"></i>
-                <?=$loc?> - <strong>Delivery charge:</strong> $10, free over $15.
-        </div>
+        
     </div><!-- End sub_content -->
 </div><!-- End subheader -->
 </section><!-- End section -->
 <!-- End SubHeader ============================================ -->
 
-    <div id="position">
-        <div class="container">
-            <ul>
-                <li><a href="#0">Home</a></li>
-                <li><a href="#0">Category</a></li>
-                <li>Page active</li>
-            </ul>
-            <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
-        </div>
-    </div><!-- Position -->
+    <!-- Position -->
 
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
     <div class="row">
         
-      <div class="col-md-3">
-              <p><a href="list_page.php" class="btn_side">Back</a></p>
-        <div class="box_style_1">
-          <ul id="cat_nav">
+      <!-- End col-md-3 -->
             
-          </ul>
-        </div><!-- End box_style_1 -->
-                
-        <div class="box_style_2 hidden-xs" id="help">
-          <i class="icon_lifesaver"></i>
-          <h4>Need <span>Help?</span></h4>
-          <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-          <small>Monday to Friday 9.00am - 7.30pm</small>
-        </div>
-      </div><!-- End col-md-3 -->
-            
-      <div class="col-md-6">
+      <div class="col-md-9">
         <div class="box_style_2" id="main_menu">
           <h2 class="inner">Menu</h2>
           <!--Sub Menu Starts-->
@@ -315,54 +282,7 @@
 <!-- Footer ================================================== -->
   <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-3">
-                    <h3>Secure payments with</h3>
-                    <p><img src="img/cards.png" alt="" class="img-responsive"></p>
-                    
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                         <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                        <li><a href="#0">Terms and conditions</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3"  id="newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Join our newsletter to keep be informed about offers and news.</p>
-          <div id="message-newsletter_2"></div>
-            <form method="post" action="http://www.ansonika.com/quickfood/assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                        <div class="form-group">
-                            <input name="email_newsletter_2" id="email_newsletter_2"  type="email" value=""  placeholder="Your mail" class="form-control">
-                          </div>
-                            <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-                      </form>
-                </div>
-                <div class="col-md-2 col-sm-3">
-                    <h3>Settings</h3>
-                    <div class="styled-select">
-                        <select class="form-control" name="lang" id="lang">
-                            <option value="English" selected>English</option>
-                            <option value="French">French</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="Russian">Russian</option>
-                        </select>
-                    </div>
-                    <div class="styled-select">
-                        <select class="form-control" name="currency" id="currency">
-                            <option value="USD" selected>INR</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="RUB">RUB</option>
-                        </select>
-                    </div>
-                </div>
-            </div><!-- End row -->
+            <!-- End row -->
             <div class="row">
                 <div class="col-md-12">
                     <div id="social_footer">
@@ -375,7 +295,7 @@
                             <li><a href="#0"><i class="icon-vimeo"></i></a></li>
                             <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
                         </ul>
-                        <p>© Quick Food 2015</p>
+                        <p>© daily dukaan 2015</p>
                     </div>
                 </div>
             </div><!-- End row -->

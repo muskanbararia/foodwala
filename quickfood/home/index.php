@@ -98,13 +98,13 @@
         </div>
         </div><!-- End container -->
             
-   <?php include "rest.php";?><!-- End white_bg -->
+   <!-- End white_bg -->
         
        <div class="high_light">
       	<div class="container">
       		<h3>Choose from over 2,000 Restaurants</h3>
             
-            <a href="list_page.html">View all Restaurants</a>
+            <a href="list_page.php">View all Restaurants</a>
         </div><!-- End container -->
       </div><!-- End hight_light -->
             
@@ -153,35 +153,7 @@
     <!-- Footer ================================================== -->
     <footer>
     <div class="container">
-        <div class="row">
-            
-            <div class="col-md-3 col-sm-3">
-                <h3>About</h3>
-                <ul>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="faq.html">Faq</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
-                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                    <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                    <li><a href="#0">Terms and conditions</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-3" id="newsletter">
-                <h3>Newsletter</h3>
-                <p>
-                    Join our newsletter to keep be informed about offers and news.
-                </p>
-                <div id="message-newsletter_2">
-                </div>
-                <form method="post" action="http://www.ansonika.com/quickfood/assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                    <div class="form-group">
-                        <input name="email_newsletter_2" id="email_newsletter_2" type="email" value="" placeholder="Your mail" class="form-control">
-                    </div>
-                    <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-                </form>
-            </div>
-            
-        </div><!-- End row -->
+        <!-- End row -->
         <div class="row">
             <div class="col-md-12">
                 <div id="social_footer">
@@ -195,7 +167,7 @@
                         <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
                     </ul>
                     <p>
-                        © Quick Food 2015
+                        © Daily Dukaan 2015
                     </p>
                 </div>
             </div>

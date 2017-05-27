@@ -16,10 +16,10 @@
                 <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                  <ul>
                     <li >
-                    <a href="view.php" class="show-submenu">Restaurants</a>
+                    <a href="list_page.php" class="show-submenu">Restaurants</a>
                     
                     </li>
-                    <li><a href="submit.php">Submit a restaurant</a></li>
+                    
                     <?php  
     
                      session_start(); 
