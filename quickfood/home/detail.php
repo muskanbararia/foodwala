@@ -11,7 +11,7 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
 
-<?php include "preloader.php"; ?>
+<?php //include "preloader.php"; ?>
 <!-- End Preload -->
 
     <!-- Header ================================================== -->
@@ -33,7 +33,7 @@
       $cat = $row[5];
       $desk = $row[6];
       $loc = $row[2];
-      $logo = $row[4];
+      $logo = $row[3];
     }
   }
   else{
@@ -160,24 +160,11 @@
                         <div class="dropdown dropdown-options">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
                             <div class="dropdown-menu">
-                                <h5>Select an option</h5>
-                                <label>
-                                <input type="radio" value="Half" name="options_1" checked>Half <span>+ $3.30</span>
-                                </label>
-                                <label>
-                                <input type="radio" value="Full" name="options_1" >Full <span>+ $5.30</span>
-                                </label>
-                                <label>
-                                <input type="radio" value="option3" name="options_1" >Extra Large <span>+ $8.30</span>
-                                </label>
-                                <h5>Add ingredients</h5>
-                                <label>
-                                <input type="checkbox" value="">Extra Tomato <span>+ $4.30</span>
-                                </label>
-                                <label>
-                                <input type="checkbox" value="">Extra Peppers <span>+ $2.50</span>
-                                </label>
-                                <a href="#0" class="add_to_basket">Add to cart</a>
+                                <h5>Select an Qty</h5>
+                                <form method="post" action="detail.php?action=add&name=<?=$rid?>&code=<?=$id?>">
+                                <input type="text" name="quantity" value="1" size="2" />
+                                <input type="submit" value="Add to cart" class="btnAddAction" />
+                                </form>
                             </div>
                         </div>
                     </td>
@@ -191,7 +178,8 @@
           
         </div><!-- End box_style_1 -->
       </div><!-- End col-md-6 -->
-            
+      
+      <!--Cart View -->
       <div class="col-md-3" id="sidebar">
             <div class="theiaStickySidebar">
         <div id="cart_box" >
@@ -199,13 +187,57 @@
           <table class="table table_summary">
           <tbody>
           <tr>
+          <?php
+            if(isset($_GET['action'])){
+              $opt = $_GET['action'];
+            }
+            switch ($opt) {
+            case "add":
+              if(!empty($_POST["quantity"])) {
+                $id = $_GET['code'];
+                $productByCode = $db_handle->runQuery("SELECT * FROM item WHERE id=$id");
+                $itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+                
+                if(!empty($_SESSION["cart_item"])) {
+                  if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+                    foreach($_SESSION["cart_item"] as $k => $v) {
+                        if($productByCode[0]["code"] == $k) {
+                          if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+                            $_SESSION["cart_item"][$k]["quantity"] = 0;
+                          }
+                          $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+                        }
+                    }
+                  } else {
+                    $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+                  }
+                } else {
+                  $_SESSION["cart_item"] = $itemArray;
+                }
+              }
+            break;
+            case "remove":
+              if(!empty($_SESSION["cart_item"])) {
+                foreach($_SESSION["cart_item"] as $k => $v) {
+                  if($_GET["code"] == $k) unset($_SESSION["cart_item"][$k]);        
+                  if(empty($_SESSION["cart_item"])) unset($_SESSION["cart_item"]);
+                }
+              }
+            break;
+            case "empty":
+              unset($_SESSION["cart_item"]);
+            break;
+          ?>
             <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Enchiladas
+              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>x</strong> <?=$row[2]?>
             </td>
             <td>
               <strong class="pull-right">$11</strong>
             </td>
           </tr>
+          <?
+            }
+          ?>
           <tr>
             <td>
               <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Burrito
@@ -323,7 +355,7 @@
                     </div>
                     <div class="styled-select">
                         <select class="form-control" name="currency" id="currency">
-                            <option value="USD" selected>USD</option>
+                            <option value="USD" selected>INR</option>
                             <option value="EUR">EUR</option>
                             <option value="GBP">GBP</option>
                             <option value="RUB">RUB</option>

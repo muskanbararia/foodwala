@@ -166,7 +166,10 @@
           <div class="col-md-3 col-sm-3">
             <div class="go_to">
               <div>
+              <ul>
                 <a href="detail.php?name=<?=$id?>" class="btn_1">View Menu</a>
+                <a href="#0" class="btn_1" data-toggle="modal" data-target="#dineIn<?=$id?>" style="margin-top: 5px">Dine IN</a>
+                </ul>
               </div>
             </div>
           </div>
@@ -174,6 +177,24 @@
         <!-- End row-->
       </div>
       <!-- End strip_list-->
+        <!-- Dine In modal -->   
+      <div class="modal" id="dineIn<?=$id?>" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content modal-popup">
+              <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+              <form action="list-page.php" class="popup-form" id="dineIn<?$id?>">
+                <input type="text" class="form-control form-white" placeholder="Name">
+                <input type="text" class="form-control form-white" placeholder="Last Name">
+                <input type="email" class="form-control form-white" placeholder="Email">
+                <input type="text" class="form-control form-white" placeholder="Mobile">
+                <input type="text" class="form-control form-white" placeholder="No. Of Persons">
+                <div id="pass-info" class="clearfix"></div>
+                <button type="submit" class="btn btn-submit" name="book">Book Table</button>
+              </form>
+            </div>
+          </div>
+        </div>
+          <!-- End Register modal -->
       <? } ?>
             <a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="0.2s">Load more...</a>  
     </div><!-- End col-md-9-->
@@ -307,6 +328,7 @@
     </form>
   </div>
   <!-- End Search Menu -->
+ 
     
 <!-- COMMON SCRIPTS -->
 <script src="js/jquery-2.2.4.min.js"></script>
