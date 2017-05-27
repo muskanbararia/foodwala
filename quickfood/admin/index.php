@@ -30,25 +30,13 @@
         <div id="subheader">
             <div id="sub_content">
                 <h1>Admin section</h1>
-                <p>Qui debitis meliore ex, tollit debitis conclusionemque te eos.</p>
+                <p>manage your website</p>
                 <p></p>
             </div><!-- End sub_content -->
         </div><!-- End subheader -->
     </section><!-- End section -->
     <!-- End SubHeader ============================================ -->
-
-    <div id="position">
-        <div class="container">
-            <ul>
-                <li><a href="#0">Home</a>
-                </li>
-                <li><a href="#0">Category</a>
-                </li>
-                <li>Page active</li>
-            </ul>
-            <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
-        </div>
-    </div><!-- Position -->
+<!-- Position -->
 
     <!-- Content ================================================== -->
     <div class="container margin_60">
@@ -59,601 +47,17 @@
                     </li>
                     <li><a href="#section-2" class="icon-menut-items"><span>Menu</span></a>
                     </li>
-                    <li><a href="#section-3" class="icon-settings"><span>Settings</span></a>
+                    <li><a href="#section-3" class="icon-settings"><span>Coupans</span></a>
                     </li>
                 </ul>
             </nav>
             <div class="content">
 
-                <section id="section-1">
-                <form action="index.php" method="post"  enctype="multipart/form-data">
-                    <div class="indent_title_in">
-                        <i class="icon_house_alt"></i>
-                        <h3>General restaurant description</h3>
-                        <p>Partem diceret praesent mel et, vis facilis alienum antiopam ea, vim in sumo diam sonet. Illud ignota cum te, decore elaboraret nec ea. Quo ei graeci repudiare definitionem. Vim et malorum ornatus assentior, exerci elaboraret eum ut, diam meliore no mel.</p>
-                    </div>
-
-                    <div class="wrapper_indent">
-                        <div class="form-group">
-                            <label>Restaurant name</label>
-                            <input class="form-control" name="r_name" id="restaurant_name" type="text">
-                        </div>
-                        <div class="form-group">
-                            <label>Restaurant description</label>
-                            <textarea class="wysihtml5 form-control" name="r_desc" placeholder="Enter text ..." style="height: 200px;"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Telephone</label>
-                                    <input type="text" id="Telephone" name="r_telephone" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <input type="text" id="Email" name="r_cat" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End wrapper_indent -->
-
-                    <hr class="styled_2">
-
-                    <div class="indent_title_in">
-                        <i class="icon_pin_alt"></i>
-                        <h3>Address</h3>
-                        <p>
-                            Mussum ipsum cacilds, vidis litro abertis.
-                        </p>
-                    </div>
-                    <div class="wrapper_indent">
-                        <div class="form-group">
-                            <label>Restaurant Address</label>
-                            <textarea class="wysihtml5 form-control" name="r_addr" placeholder="Enter text ..." style="height: 200px;"></textarea>
-                        </div><!--End row -->
-                    </div><!-- End wrapper_indent -->
-
-                    <hr class="styled_2">
-                    <div class="indent_title_in">
-                        <i class="icon_images"></i>
-                        <h3>Logo and restaurant photos</h3>
-                        <p>
-                            Mussum ipsum cacilds, vidis litro abertis.
-                        </p>
-                    </div>
-
-                    <div class="wrapper_indent add_bottom_45">
-                        <div class="form-group">
-                            <label>Upload your restaurant logo</label>
-                            <div id="logo_picture" >
-                                <input type="file" name="r_logo">
-                                <div class="dz-default dz-message"><span>Click or Drop Images Here</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                    </div><!-- End wrapper_indent -->
-                    
-                    <hr class="styled_2">
-                    <div class="wrapper_indent">
-                        <input class="btn_1" type="submit" name = "r_submit" value="Add">
-                    </div><!-- End wrapper_indent -->
-                </form>   
-                </section><!-- End section 1 -->
-
-                <section id="section-2">
-                    <div class="indent_title_in">
-                        <i class="icon_document_alt"></i>
-                        <h3>Edit menu list</h3>
-                        <p>Partem diceret praesent mel et, vis facilis alienum antiopam ea, vim in sumo diam sonet. Illud ignota cum te, decore elaboraret nec ea. Quo ei graeci repudiare definitionem. Vim et malorum ornatus assentior, exerci elaboraret eum ut, diam meliore no mel.</p>
-                    </div>
-                    
-                    <div class="wrapper_indent">
-                        <div class="form-group">
-                            <label>Menu Category</label>
-                            <input type="text" name="menu_category" class="form-control" placeholder="EX. Starters">
-                        </div>
-
-                        <div class="menu-item-section clearfix">
-                            <h4>Menu item #1</h4>
-                            <div><a href="#0"><i class="icon_plus_alt"></i></a><a href="#0"><i class="icon_minus_alt"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="strip_menu_items">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="menu-item-pic dropzone">
-                                        <input name="file" type="file">
-                                        <div class="dz-default dz-message"><span>Click or Drop<br>Images Here</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text"  name="menu_item_title" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Price</label>
-                                                <input type="text" name="menu_item_title_price" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Short description</label>
-                                        <input type="text" name="menu_item_description" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Item options</label>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped edit-options">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width:20%">
-                                                            <input type="text" class="form-control" placeholder="+ $3.50">
-                                                        </td>
-                                                        <td style="width:50%">
-                                                            <input type="text" class="form-control" placeholder="Ex. Medium">
-                                                        </td>
-                                                        <td style="width:30%">
-                                                            <label>
-                                                                <input type="radio" name="option_item_settings_1" checked class="icheck" value="checkbox">Checkbox</label>
-                                                            <label class="margin_left">
-                                                                <input type="radio" name="option_item_settings_1" class="icheck" value="radio">Radio</label>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="width:20%">
-                                                            <input type="text" class="form-control" placeholder="+ $5.50">
-                                                        </td>
-                                                        <td style="width:50%">
-                                                            <input type="text" class="form-control" placeholder="Ex. Large">
-                                                        </td>
-                                                        <td style="width:30%">
-                                                            <label>
-                                                                <input type="radio" name="option_item_settings_2" class="icheck" value="checkbox">Checkbox</label>
-                                                            <label class="margin_left">
-                                                                <input type="radio" name="option_item_settings_2" class="icheck" value="radio" checked>Radio</label>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-
-                                    <div class="form-group">
-                                        <label>Item ingredients</label>
-                                        <div class="table-responsive">
-                                        <table class="table table-striped notifications">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $2.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra tomato">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_3" checked class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_3" class="icheck" value="radio">Radio</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $5.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra Pepper">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_4" class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_4" class="icheck" value="radio" checked>Radio</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-                                </div>
-                            </div><!-- End row -->
-                        </div><!-- End strip_menu_items -->
-
-
-
-                        <div class="menu-item-section clearfix">
-                            <h4>Menu item #2</h4>
-                            <div><a href="#0"><i class="icon_plus_alt"></i></a><a href="#0"><i class="icon_minus_alt"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="strip_menu_items">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="menu-item-pic dropzone">
-                                        <input name="file" type="file">
-                                        <div class="dz-default dz-message"><span>Click or Drop<br>Images Here</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text" name="menu_item_title" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Price</label>
-                                                <input type="text" name="menu_item_title_price" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Short description</label>
-                                        <input type="text" name="menu_item_description" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Item options</label>
-                                        <div class="table-responsive">
-                                        <table class="table table-striped notifications">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $3.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Medium">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_5" checked class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_5" class="icheck" value="radio">Radio</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $5.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Large">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_7" class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_7" class="icheck" value="radio" checked>Radio</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-
-                                    <div class="form-group">
-                                        <label>Item ingredients</label>
-                                        <div class="table-responsive">
-                                        <table class="table table-striped notifications">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $2.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra tomato">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_8" checked class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_8" class="icheck" value="radio">Radio</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $5.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra Pepper">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_9" class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_9" class="icheck" value="radio" checked>Radio</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-                                </div>
-                            </div><!-- End row -->
-                        </div><!-- End strip_menu_items -->
-                    </div><!-- End wrapper_indent -->
-
-                    <hr class="styled_2">
-                    
-                    <div class="wrapper_indent">
-                        <div class="form-group">
-                            <label>Menu Category</label>
-                            <input type="text" name="menu_category" class="form-control" placeholder="EX. Main courses">
-                        </div>
-
-                        <div class="menu-item-section clearfix">
-                            <h4>Menu item #1</h4>
-                            <div><a href="#0"><i class="icon_plus_alt"></i></a><a href="#0"><i class="icon_minus_alt"></i></a>
-                            </div>
-                        </div>
-
-                        <div class="strip_menu_items">
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="menu-item-pic dropzone">
-                                        <input name="file" type="file">
-                                        <div class="dz-default dz-message"><span>Click or Drop<br>Images Here</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-9">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Title</label>
-                                                <input type="text" name="menu_item_title" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Price</label>
-                                                <input type="text" name="menu_item_title_price" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Short description</label>
-                                        <input type="text" name="menu_item_description" class="form-control">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Item options</label>
-                                        <div class="table-responsive">
-                                        <table class="table table-striped notifications">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $3.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Medium">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_10" checked class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_10" class="icheck" value="radio">Radio</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $5.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Large">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_11" class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_11" class="icheck" value="radio" checked>Radio</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-
-                                    <div class="form-group">
-                                        <label>Item ingredients</label>
-                                        <div class="table-responsive">
-                                        <table class="table table-striped notifications">
-                                            <tbody>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $2.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra tomato">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_12" checked class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_12" class="icheck" value="radio">Radio</label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width:20%">
-                                                        <input type="text" class="form-control" placeholder="+ $5.50">
-                                                    </td>
-                                                    <td style="width:50%">
-                                                        <input type="text" class="form-control" placeholder="Ex. Extra Pepper">
-                                                    </td>
-                                                    <td style="width:30%">
-                                                        <label>
-                                                            <input type="radio" name="option_item_settings_13" class="icheck" value="checkbox">Checkbox</label>
-                                                        <label class="margin_left">
-                                                            <input type="radio" name="option_item_settings_13" class="icheck" value="radio" checked>Radio</label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        </div>
-                                    </div><!-- End form-group -->
-                                </div>
-                            </div><!-- End row -->
-                        </div><!-- End strip_menu_items -->
-                    </div><!-- End wrapper_indent -->
-                    
-                    <hr class="styled_2">
-                    
-                    <div class="wrapper_indent">
-                        <div class="add_more_cat"><a href="#0" class="btn_1">Save now</a> <a href="#0" class="btn_1">Add menu category</a> </div>
-                    </div><!-- End wrapper_indent -->
-                    
-                </section><!-- End section 2 -->
-
-                <section id="section-3">
-
-                    <div class="row">
-                    
-                        <div class="col-md-6 col-sm-6 add_bottom_15">
-                            <div class="indent_title_in">
-                                <i class="icon_lock_alt"></i>
-                                <h3>Change your password</h3>
-                                <p>
-                                    Mussum ipsum cacilds, vidis litro abertis.
-                                </p>
-                            </div>
-                            <div class="wrapper_indent">
-                                <div class="form-group">
-                                    <label>Old password</label>
-                                    <input class="form-control" name="old_password" id="old_password" type="password">
-                                </div>
-                                <div class="form-group">
-                                    <label>New password</label>
-                                    <input class="form-control" name="new_password" id="new_password" type="password">
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirm new password</label>
-                                    <input class="form-control" name="confirm_new_password" id="confirm_new_password" type="password">
-                                </div>
-                                <button type="submit" class="btn_1 green">Update Password</button>
-                            </div><!-- End wrapper_indent -->
-                        </div>
-                        
-                        <div class="col-md-6 col-sm-6 add_bottom_15">
-                            <div class="indent_title_in">
-                                <i class="icon_mail_alt"></i>
-                                <h3>Change your email</h3>
-                                <p>
-                                    Mussum ipsum cacilds, vidis litro abertis.
-                                </p>
-                            </div>
-                            <div class="wrapper_indent">
-                                <div class="form-group">
-                                    <label>Old email</label>
-                                    <input class="form-control" name="old_email" id="old_email" type="email">
-                                </div>
-                                <div class="form-group">
-                                    <label>New email</label>
-                                    <input class="form-control" name="new_email" id="new_email" type="email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirm new email</label>
-                                    <input class="form-control" name="confirm_new_email" id="confirm_new_email" type="email">
-                                </div>
-                                <button type="submit" class="btn_1 green">Update Email</button>
-                            </div><!-- End wrapper_indent -->
-                        </div>
-                        
-                    </div><!-- End row -->
-
-                    <hr class="styled_2">
-                    
-                    <div class="indent_title_in">
-                        <i class="icon_shield"></i>
-                        <h3>Notification settings</h3>
-                        <p>
-                            Mussum ipsum cacilds, vidis litro abertis.
-                        </p>
-                    </div>
-                    <div class="row">
-                    
-                        <div class="col-md-6 col-sm-6">
-                            <div class="wrapper_indent">
-                                <table class="table table-striped notifications">
-                                    <tbody>
-                                        <tr>
-                                            <td style="width:5%">
-                                                <i class="icon_pencil-edit_alt"></i>
-                                            </td>
-                                            <td style="width:65%">
-                                                New orders
-                                            </td>
-                                            <td style="width:35%">
-                                                <label>
-                                                    <input type="checkbox" name="option_1_settings" checked class="icheck" value="yes">Yes</label>
-                                                <label class="margin_left">
-                                                    <input type="checkbox" name="option_1_settings" class="icheck" value="no">No</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <i class="icon_pencil-edit_alt"></i>
-                                            </td>
-                                            <td>
-                                                Modified orders
-                                            </td>
-                                            <td>
-                                                <label>
-                                                    <input type="checkbox" name="option_2_settings" checked class="icheck" value="yes">Yes</label>
-                                                <label class="margin_left">
-                                                    <input type="checkbox" name="option_2_settings" class="icheck" value="no">No</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <i class="icon_pencil-edit_alt"></i>
-                                            </td>
-                                            <td>
-                                                New user registration
-                                            </td>
-                                            <td>
-                                                <label>
-                                                    <input type="checkbox" name="option_3_settings" checked class="icheck" value="yes">Yes</label>
-                                                <label class="margin_left">
-                                                    <input type="checkbox" name="option_3_settings" class="icheck" value="no">No</label>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <i class="icon_pencil-edit_alt"></i>
-                                            </td>
-                                            <td>
-                                                New comments
-                                            </td>
-                                            <td>
-                                                <label>
-                                                    <input type="checkbox" name="option_4_settings" checked class="icheck" value="yes">Yes</label>
-                                                <label class="margin_left">
-                                                    <input type="checkbox" name="option_4_settings" class="icheck" value="no">No</label>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button type="submit" class="btn_1 green">Update notifications settings</button>
-                            </div>
-                            
-                        </div><!-- End row -->
-                    </div><!-- End wrapper_indent -->
-                    
-                </section><!-- End section 3 -->
+                <?php include "add-rest.php" ?>
+                <?php include "add-menu.php" ?>
+                <!-- End section 2 -->
+                <?php include "add-coupan.php" ?>
+                <!-- End section 3 -->
 
             </div><!-- End content -->
         </div>
@@ -663,61 +67,7 @@
     <!-- Footer ================================================== -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-3">
-                    <h3>Secure payments with</h3>
-                    <p><img src="img/cards.png" alt="" class="img-responsive">
-                    </p>
-
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="about.html">About us</a>
-                        </li>
-                        <li><a href="faq.html">Faq</a>
-                        </li>
-                        <li><a href="contacts.html">Contacts</a>
-                        </li>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a>
-                        </li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Register</a>
-                        </li>
-                        <li><a href="#0">Terms and conditions</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3" id="newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Join our newsletter to keep be informed about offers and news.</p>
-                    <div id="message-newsletter_2"></div>
-                    <form method="post" action="http://www.ansonika.com/quickfood/assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                        <div class="form-group">
-                            <input name="email_newsletter_2" id="email_newsletter_2" type="email" value="" placeholder="Your mail" class="form-control">
-                        </div>
-                        <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-                    </form>
-                </div>
-                <div class="col-md-2 col-sm-3">
-                    <h3>Settings</h3>
-                    <div class="styled-select">
-                        <select class="form-control" name="lang" id="lang">
-                            <option value="English" selected>English</option>
-                            <option value="French">French</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="Russian">Russian</option>
-                        </select>
-                    </div>
-                    <div class="styled-select">
-                        <select class="form-control" name="currency" id="currency">
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="RUB">RUB</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+           
             <!-- End row -->
             <div class="row">
                 <div class="col-md-12">
@@ -877,5 +227,59 @@ if (isset($_POST['r_submit']))
     }else{
             echo "<script>alert('Error Upload $img_name')</script>";
     }
+}
+if (isset($_POST['m_submit']))
+{
+    $name = $_POST["m_name"];
+    $desc=$_POST['m_desk'];
+    $sub=$_POST['m_sub'];
+    $category=$_POST['m_cat'];
+    $price=$_POST['m_price'];
+    $rest=$_POST['m_rest'];
+    $inq2 = "SELECT * FROM restaurant WHERE name='$rest'";
+        $query2 = mysqli_query($dbcon,$inq2);
+        if ($row=mysqli_fetch_array($query2))
+        {
+            $restid=$row[0];
+            
+            $img_name = $_FILES['m_logo']['name'];
+    $img_tmp_name = $_FILES['m_logo']['tmp_name'];
+    $code = substr( md5(rand()), 0, 7);
+    $img = "m".$code.$img_name;
+    
+    if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
+        $inq = "INSERT INTO item VALUES(NULL,'$restid','$name','$category','$sub','$price','$img','$desc')";
+        $query = mysqli_query($dbcon,$inq);
+        if($query){
+            echo "<script>alert('Added')</script>";
+        }else{
+                echo "<script>alert('Error')</script>";
+        }
+    }else{
+            echo "<script>alert('Error Upload $img_name')</script>";
+    }
+        }
+        else
+        {
+            echo "<script>alert('restaurant not present')</script>";
+        }
+    
+}
+if (isset($_POST['c_submit']))
+{
+    $name = $_POST["name"];
+    $type=$_POST['type'];
+    $amount=$_POST['value'];
+    $valid=$_POST['valid'];
+    
+        $inq = "INSERT INTO coupon VALUES(NULL,'$name','$type','$amount','$valid')";
+        $query = mysqli_query($dbcon,$inq);
+        if($query){
+            echo "<script>alert('Added')</script>";
+        }else{
+                echo "<script>alert('Error')</script>";
+        }
+    
+    
 }
 ?>
