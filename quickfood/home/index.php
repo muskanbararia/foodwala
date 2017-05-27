@@ -9,7 +9,8 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
 <![endif]-->
 
-<?php include "preloader.php"; ?><!-- End Preload -->
+<?php include "preloader.php"; ?>
+<!-- End Preload -->
 
     <!-- Header ================================================== -->
    <?php include "header.php"; ?>
@@ -23,7 +24,7 @@
             <p>
                 Your Online solution to all the hunger issues.
             </p>
-            <form method="post" action="http://www.ansonika.com/quickfood/list_page.html">
+            <!--form method="post" action="http://www.ansonika.com/quickfood/list_page.html">
                 <div id="custom-search-input">
                     <div class="input-group ">
                         <input type="text" class=" search-query" placeholder="Your Address or postal code">
@@ -32,7 +33,7 @@
                         </span>
                     </div>
                 </div>
-            </form>
+            </form-->
         </div><!-- End sub_content -->
     </div><!-- End subheader -->
     <div id="count" class="hidden-xs">
@@ -56,7 +57,7 @@
             <div class="col-md-3">
                 <div class="box_home" id="one">
                     <span>1</span>
-                    <h3>Search by address</h3>
+                    <h3>Browse All Restaurants</h3>
                     <p>
                         Find all restaurants available in your zone.
                     </p>
@@ -120,7 +121,7 @@
     </section><!-- End section -->
     <!-- End Content =============================================== -->
 	
-	<div class="container margin_60">
+	<!--div class="container margin_60">
       <div class="main_title margin_mobile">
             <h2 class="nomargin_top">Work with Us</h2>
             <p>
@@ -144,8 +145,10 @@
                 <div class="btn_1">Read more</div>
                 </a>
             </div>
-      </div><!-- End row -->
-    </div><!-- End container -->
+      </div>
+      <!End row -->
+    <!--/div-->
+    <!-- End container -->
 
     <!-- Footer ================================================== -->
     <footer>
@@ -244,7 +247,8 @@
 				</form>
 			</div>
 		</div>
-	</div><!-- End Register modal -->
+	</div>
+    <!-- End Register modal -->
     
 <!-- COMMON SCRIPTS -->
 <script src="js/jquery-2.2.4.min.js"></script>
