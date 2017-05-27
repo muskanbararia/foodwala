@@ -109,8 +109,8 @@
                     </div>
                     <div class="wrapper_indent">
                         <div class="form-group">
-                            <label>Restaurant name</label>
-                            <input class="form-control" name="r_addr" id="restaurant_name" type="text">
+                            <label>Restaurant Address</label>
+                            <textarea class="wysihtml5 form-control" name="r_addr" placeholder="Enter text ..." style="height: 200px;"></textarea>
                         </div><!--End row -->
                     </div><!-- End wrapper_indent -->
 
@@ -867,14 +867,15 @@ if (isset($_POST['r_submit']))
     $img = "f".$code.$img_name;
     
     if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
-        $inq = "INSERT INTO restaurant(name,location,logo,phone,category,detail) VALUE ('$name','$address','$img','$phone','$category','$desc')";
+        $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img','$phone','$category','$desc')";
         $query = mysqli_query($dbcon,$inq);
         if($query){
             echo "<script>alert('Added')</script>";
-            }else{
-                echo "<script>alert('Error')</script>";
-            }
         }else{
-            echo "<script>alert('Error Upload $img_name')</script>";
+                echo "<script>alert('Error')</script>";
         }
+    }else{
+            echo "<script>alert('Error Upload $img_name')</script>";
     }
+}
+?>
