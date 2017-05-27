@@ -66,6 +66,7 @@
             <div class="content">
 
                 <section id="section-1">
+                <form action="index.php" method="post"  enctype="multipart/form-data">
                     <div class="indent_title_in">
                         <i class="icon_house_alt"></i>
                         <h3>General restaurant description</h3>
@@ -75,23 +76,23 @@
                     <div class="wrapper_indent">
                         <div class="form-group">
                             <label>Restaurant name</label>
-                            <input class="form-control" name="restaurant_name" id="restaurant_name" type="text">
+                            <input class="form-control" name="r_name" id="restaurant_name" type="text">
                         </div>
                         <div class="form-group">
                             <label>Restaurant description</label>
-                            <textarea class="wysihtml5 form-control" placeholder="Enter text ..." style="height: 200px;"></textarea>
+                            <textarea class="wysihtml5 form-control" name="r_desc" placeholder="Enter text ..." style="height: 200px;"></textarea>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Telephone</label>
-                                    <input type="text" id="Telephone" name="Telephone" class="form-control">
+                                    <input type="text" id="Telephone" name="r_telephone" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" id="Email" name="Email" class="form-control">
+                                    <label>Category</label>
+                                    <input type="text" id="Email" name="r_cat" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -107,52 +108,9 @@
                         </p>
                     </div>
                     <div class="wrapper_indent">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control" name="country" id="country">
-                                        <option value="" selected>Select your country</option>
-                                        <option value="Europe">Europe</option>
-                                        <option value="United states">United states</option>
-                                        <option value="Asia">Asia</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Street line 1</label>
-                                    <input type="text" id="street_1" name="street_1" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Street line 2</label>
-                                    <input type="text" id="street_2" name="street_2" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <input type="text" id="city_booking" name="city_booking" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>State</label>
-                                    <input type="text" id="state_booking" name="state_booking" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Postal code</label>
-                                    <input type="text" id="postal_code" name="postal_code" class="form-control">
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label>Restaurant Address</label>
+                            <textarea class="wysihtml5 form-control" name="r_addr" placeholder="Enter text ..." style="height: 200px;"></textarea>
                         </div><!--End row -->
                     </div><!-- End wrapper_indent -->
 
@@ -169,27 +127,20 @@
                         <div class="form-group">
                             <label>Upload your restaurant logo</label>
                             <div id="logo_picture" class="dropzone">
-                                <input name="file" type="file">
+                                <input name="r_logo" type="file">
                                 <div class="dz-default dz-message"><span>Click or Drop Images Here</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Upload your restaurant photos</label>
-                            <div id="photos" class="dropzone">
-                                <input name="file" type="file" multiple>
-                                <div class="dz-default dz-message"><span>Click or Drop Images Here</span>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div><!-- End wrapper_indent -->
                     
                     <hr class="styled_2">
                     <div class="wrapper_indent">
-                        <button class="btn_1">Save now</button>
+                        <input class="btn_1" type="submit" name = "r_submit" value="Add">
                     </div><!-- End wrapper_indent -->
-                    
+                </form>   
                 </section><!-- End section 1 -->
 
                 <section id="section-2">
@@ -901,3 +852,31 @@
 </body>
 
 </html>
+<?php
+include("../database/db_conection.php");  
+if (isset($_POST['r_submit']))
+{
+     $name = $_POST["r_name"];
+    $desc=$_POST['r_desc'];
+    $phone=$_POST['r_telephone'];
+    $category=$_POST['r_cat'];
+    $address=$_POST['r_addr'];
+                  //$book_image = $_POST["book_image"];
+              $img_name = $_FILES['r_logo']['name'];
+              $img_tmp_name = $_FILES['r_logo']['tmp_name'];
+              $code = substr( md5(rand()), 0, 7);
+              $img = "f".$code.$img_name;
+              if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
+              $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img','$phone','$category','$desc','$img')";
+
+      
+              $query = mysqli_query($dbcon,$inq);
+              if($query){
+                echo "<script>alert('Added')</script>";
+              }else{
+                echo "<script>alert('Error')</script>";
+              }
+            }else{
+               echo "<script>alert('Error Upload $img_name')</script>";
+           }
+}
