@@ -191,17 +191,21 @@
             if(isset($_GET['action'])){
               $opt = $_GET['action'];
             }
+            else{
+              $opt = 'empty';
+            }
             switch ($opt) {
             case "add":
               if(!empty($_POST["quantity"])) {
                 $id = $_GET['code'];
-                $productByCode = $db_handle->runQuery("SELECT * FROM item WHERE id=$id");
-                $itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
-                
+                $productByCode = "SELECT * FROM item WHERE id=$id";
+                $q = mysqli_query($dbcon, $productByCode);
+                $productByCode = mysqli_fetch_array($q);
+                $itemArray = array($productByCode[0]=>array('name'=>$productByCode[1], 'code'=>$productByCode[0], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]));
                 if(!empty($_SESSION["cart_item"])) {
-                  if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
+                  if(in_array($productByCode[0],array_keys($_SESSION["cart_item"]))) {
                     foreach($_SESSION["cart_item"] as $k => $v) {
-                        if($productByCode[0]["code"] == $k) {
+                        if($productByCode[0] == $k) {
                           if(empty($_SESSION["cart_item"][$k]["quantity"])) {
                             $_SESSION["cart_item"][$k]["quantity"] = 0;
                           }
