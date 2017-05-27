@@ -31,17 +31,17 @@
                     <?php else: ?>
                         <?php 
                         include("../database/db_conection.php");          
-        $email=$_SESSION['email'];
-        $view_users_query="select * from user WHERE email='$email' ORDER BY id DESC";//select query for viewing users.  
-        $run=mysqli_query($dbcon,$view_users_query);//here run the sql query.  
-  
-        if($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
-        {  
-            $user_name=$row[1];
-        }
-        ?>
-        <li><a href="/signup.php"/>Hello, <?php echo $user_name; ?></a></li>
-                <?php endif; ?>
+                        $email=$_SESSION['email'];
+                        $view_users_query="select * from user WHERE email='$email' ORDER BY id DESC";//select query for viewing users.  
+                        $run=mysqli_query($dbcon,$view_users_query);//here run the sql query.  
+                  
+                        if($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
+                        {  
+                            $user_name=$row[1];
+                        }
+                        ?>
+                         <li><a href="/signup.php"/>Hello, <?php echo $user_name; ?></a></li>
+                         <?php endif; ?>
                     
                     
                     
