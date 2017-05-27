@@ -126,8 +126,8 @@
                     <div class="wrapper_indent add_bottom_45">
                         <div class="form-group">
                             <label>Upload your restaurant logo</label>
-                            <div id="logo_picture" class="dropzone">
-                                <input name="r_logo" type="file">
+                            <div id="logo_picture" >
+                                <input type="file" name="r_logo">
                                 <div class="dz-default dz-message"><span>Click or Drop Images Here</span>
                                 </div>
                             </div>
@@ -856,27 +856,25 @@
 include("../database/db_conection.php");  
 if (isset($_POST['r_submit']))
 {
-     $name = $_POST["r_name"];
+    $name = $_POST["r_name"];
     $desc=$_POST['r_desc'];
     $phone=$_POST['r_telephone'];
     $category=$_POST['r_cat'];
     $address=$_POST['r_addr'];
-                  //$book_image = $_POST["book_image"];
-              $img_name = $_FILES['r_logo']['name'];
-              $img_tmp_name = $_FILES['r_logo']['tmp_name'];
-              $code = substr( md5(rand()), 0, 7);
-              $img = "f".$code.$img_name;
-              if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
-              $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img','$phone','$category','$desc','$img')";
-
-      
-              $query = mysqli_query($dbcon,$inq);
-              if($query){
-                echo "<script>alert('Added')</script>";
-              }else{
-                echo "<script>alert('Error')</script>";
-              }
+    $img_name = $_FILES['r_logo']['name'];
+    $img_tmp_name = $_FILES['r_logo']['tmp_name'];
+    $code = substr( md5(rand()), 0, 7);
+    $img = "f".$code.$img_name;
+    
+    if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
+        $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img',$phone','$category','$desc')";
+        $query = mysqli_query($dbcon,$inq);
+        if($query){
+            echo "<script>alert('Added')</script>";
             }else{
-               echo "<script>alert('Error Upload $img_name')</script>";
-           }
-}
+                echo "<script>alert('Error')</script>";
+            }
+        }else{
+            echo "<script>alert('Error Upload $img_name')</script>";
+        }
+    }
