@@ -871,10 +871,11 @@ if (isset($_POST['r_submit']))
         $query = mysqli_query($dbcon,$inq);
         if($query){
             echo "<script>alert('Added')</script>";
-            }else{
-                echo "<script>alert('Error')</script>";
-            }
         }else{
-            echo "<script>alert('Error Upload $img_name')</script>";
+                echo "<script>alert('Error')</script>";
         }
+    }else{
+            echo "<script>alert('Error Upload $img_name')</script>";
     }
+}
+?>

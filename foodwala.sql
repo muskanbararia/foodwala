@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 27, 2017 at 07:17 AM
+-- Generation Time: May 27, 2017 at 08:20 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -119,8 +119,8 @@ CREATE TABLE `restaurant` (
   `location` text NOT NULL,
   `logo` text NOT NULL,
   `phone` varchar(200) NOT NULL,
-  `oTime` date NOT NULL,
-  `category` text NOT NULL
+  `category` text NOT NULL,
+  `detail` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -149,6 +149,42 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cartItem`
+--
+ALTER TABLE `cartItem`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coupon`
+--
+ALTER TABLE `coupon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dineIn`
+--
+ALTER TABLE `dineIn`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `restaurant`
+--
+ALTER TABLE `restaurant`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -162,6 +198,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `cartItem`
+--
+ALTER TABLE `cartItem`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `dineIn`
+--
+ALTER TABLE `dineIn`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `restaurant`
+--
+ALTER TABLE `restaurant`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
