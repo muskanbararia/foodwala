@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col--md-4 col-sm-4 col-xs-4">
-                <a href="index.html" id="logo">
+                <a href="index.php" id="logo">
                 <img src="img/logo.png" width="120" height="60" alt="" data-retina="true" class="hidden-xs">
                 <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
@@ -26,12 +26,12 @@
                      ?>
                      <?php if (!isset($_SESSION['user'])): ?> 
                    
-                    <li><a href="/signup.php"/>Signup</a></li>
-                    <li><a href="/#0"/ data-toggle="/modal"/ data-target="/#login_2"/>Login</a></li>
+                    <li><a href="#0" data-toggle="modal" data-target="#register">Signup</a></li>
+                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
                     <?php else: ?>
                         <?php 
                         include("../database/db_conection.php");          
-                        $email=$_SESSION['email'];
+                        $email=$_SESSION['user'];
                         $view_users_query="select * from user WHERE email='$email' ORDER BY id DESC";//select query for viewing users.  
                         $run=mysqli_query($dbcon,$view_users_query);//here run the sql query.  
                   
@@ -40,7 +40,7 @@
                             $user_name=$row[1];
                         }
                         ?>
-                         <li><a href="/signup.php"/>Hello, <?php echo $user_name; ?></a></li>
+                         <li><a href="#">Hello, <?php echo $user_name; ?></a></li>
                          <?php endif; ?>
                     
                     
