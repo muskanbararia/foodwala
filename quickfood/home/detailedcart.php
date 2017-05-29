@@ -1,4 +1,14 @@
 <div id="cart_box" >
+<?php session_start(); 
+
+if(!isset($_SESSION['user']))
+{
+    echo '<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>';
+    echo '<a href="#0" class="btn_full" data-toggle="modal" data-target="#login_2">Login</a>';
+    echo '</div>';
+}
+else{
+?>
     <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
     <table class="table table_summary">
       <tbody>
@@ -11,7 +21,7 @@
 ?>
           <tr>
             <td>
-              <a href="javascript:void(0)" onclick="removeitem(<?=$row['id'] ?>)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
+              <a href="javascript:void(0)" onclick="removeitem(<?=$row['item_id'] ?>)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
             </td>
             <td>
               <strong class="pull-right">₹<?=$row['price']?></strong>
@@ -65,3 +75,4 @@
     <hr>
     <a class="btn_full" href="cart.html">Order now</a>
   </div><!-- End cart_box -->
+<?php } ?>

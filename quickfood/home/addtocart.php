@@ -1,7 +1,9 @@
 <?php
 session_start();
-
-if(isset($_GET['itemid']))
+if(!isset($_SESSION['user'])){
+  echo "You must login in order to continue.";
+}
+if(isset($_GET['itemid']) && isset($_SESSION['user']))
 {
       include "../database/db_conection.php";
       $itemid = $_GET['itemid'];
@@ -30,7 +32,7 @@ if(isset($_GET['itemid']))
 
         if($dbcon->query( $insertquery))
         {
-         echo "Inserted successfully";
+         echo $name." added to cart successfully";
          }
          else
          {
@@ -57,7 +59,8 @@ if(isset($_GET['itemid']))
 
               if($dbcon->query( $insertquery))
               {
-               echo "Inserted successfully";
+               echo $name." added to cart successfully.<br/>";
+               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id)'>remove item.</a>";
               }//end if
               else
                {
@@ -75,7 +78,7 @@ if(isset($_GET['itemid']))
             $sql = "UPDATE cart SET quan=$quan WHERE item_id=$itemid AND user_id='$userid'";
               if ($dbcon->query( $sql)) 
               {
-                echo "Updated successfully";
+                echo "Quantity updated successfully";
               }// end if
               else{
                 echo "Couldnot update!";
