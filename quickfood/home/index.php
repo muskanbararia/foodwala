@@ -176,7 +176,7 @@
     </footer>
     <!-- End Footer =============================================== -->
 
-<div class="layer"></div><!-- Mobile menu overlay mask -->
+<!-- Mobile menu overlay mask -->
 
 <!-- Login modal -->   
 <div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true" style="">
