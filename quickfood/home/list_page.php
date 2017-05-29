@@ -59,8 +59,8 @@
         include "../database/db_conection.php";
         $limit = 10;
         $query = "SELECT * FROM restaurant" ;
-        $run   = mysqli_query($dbcon, $query);
-        while ($row = mysqli_fetch_array($run)) {
+        $run   = $dbcon->query($query);
+        while ($row = $run->fetch_array()) {
           # code...
           $id = $row[0]; 
           $name = $row[1];
@@ -142,7 +142,7 @@
           </div>
         </div>
           <!-- End Register modal -->
-      <? } ?>
+      <?php } ?>
               
     </div><!-- End col-md-9-->
         

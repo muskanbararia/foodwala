@@ -25,8 +25,8 @@
     include "../database/db_conection.php";
     $limit = 10;
     $query = "SELECT * FROM restaurant WHERE id = $rid" ;
-    $run   = mysqli_query($dbcon, $query);
-    while ($row = mysqli_fetch_array($run)) {
+    $run   = $dbcon->query($query);
+    while ($row = $run->fetch_array()) {
       # code...
       $id = $row[0]; 
       $name = $row[1];
@@ -72,8 +72,10 @@
           <!--Sub Menu Starts-->
           <?php
             $query = "SELECT DISTINCT category FROM item WHERE rest_id = $rid" ;
-            $run   = mysqli_query($dbcon, $query);
-            while ($row = mysqli_fetch_array($run)) {
+            // $run   = mysqli_query($dbcon, $query);
+            $run = $dbcon->query($query);
+            // while ($row = mysqli_fetch_array($run)) {
+            while ($row = $run->fetch_array()) {
               # code...
               $cat = $row[0];
           ?>
@@ -98,12 +100,13 @@
           <tbody>
           <?php
             $query = "SELECT * FROM item WHERE rest_id = $rid AND category = '$cat'" ;
-            $runz   = mysqli_query($dbcon, $query);
+            $runz = $dbcon->query($query);
             $i = 0;
-            while ($irow = mysqli_fetch_array($runz)) {
+            while ($irow = $runz->fetch_array()) {
               # code...
               $id     = $irow[0];
               $i += 1;
+              $rest_id = $irow[1];
               $item   = $irow[2];
               $catg   = $irow[3];
               $sub    = $irow[4];
@@ -125,23 +128,14 @@
             </td>
             <!-- Cart Options -->
             <td class="options">
-                        <div class="dropdown dropdown-options">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
-                            <div class="dropdown-menu">
-                                <h5>Select an Qty</h5>
-                                <form method="post" action="detail.php?action=add&name=<?=$rid?>&code=<?=$id?>">
-                                <input type="text" name="quantity" value="1" size="2" />
-                                <input type="submit" value="Add to cart" class="btnAddAction" />
-                                </form>
-                            </div>
-                        </div>
+              <a href="javascript:void(0)" onclick="addtocart(<?=$id?>)" style="text-decoration: none;" class="button"><i class="icon_plus_alt2"></i></a>
                     </td>
           </tr>
-          <?}?>
+          <?php }?>
           </tbody>
           </table>
           <hr>
-          <? } ?>
+          <?php } ?>
           <!--Sub0menu end-->
           
         </div><!-- End box_style_1 -->
@@ -149,93 +143,9 @@
       
       <!--Cart View -->
       <div class="col-md-3" id="sidebar">
-            <div class="theiaStickySidebar">
-        <div id="cart_box" >
-          <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
-          <table class="table table_summary">
-          <tbody>
-          <tr>
-          <?php
-            
-          ?>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>x</strong> <?=$row[2]?>
-            </td>
-            <td>
-              <strong class="pull-right">$11</strong>
-            </td>
-          </tr>
-          <?
-            
-          ?>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Burrito
-            </td>
-            <td>
-              <strong class="pull-right">$14</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Chicken
-            </td>
-            <td>
-              <strong class="pull-right">$20</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Corona Beer
-            </td>
-            <td>
-              <strong class="pull-right">$9</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Cheese Cake
-            </td>
-            <td>
-              <strong class="pull-right">$12</strong>
-            </td>
-          </tr>
-          </tbody>
-          </table>
-          <hr>
-          <div class="row" id="options_2">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-              <label><input type="radio" value="" checked name="option_2" class="icheck">Delivery</label>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-              <label><input type="radio" value="" name="option_2" class="icheck">Take Away</label>
-            </div>
-          </div><!-- Edn options 2 -->
-                    
-          <hr>
-          <table class="table table_summary">
-          <tbody>
-          <tr>
-            <td>
-               Subtotal <span class="pull-right">$56</span>
-            </td>
-          </tr>
-          <tr>
-            <td>
-               Delivery fee <span class="pull-right">$10</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="total">
-               TOTAL <span class="pull-right">$66</span>
-            </td>
-          </tr>
-          </tbody>
-          </table>
-          <hr>
-          <a class="btn_full" href="cart.html">Order now</a>
-        </div><!-- End cart_box -->
-                </div><!-- End theiaStickySidebar -->
+            <div class="theiaStickySidebar" id="detailedcart">
+              
+            </div><!-- End theiaStickySidebar -->
       </div><!-- End col-md-3 -->
             
     </div><!-- End row -->
@@ -258,7 +168,7 @@
                             <li><a href="#0"><i class="icon-vimeo"></i></a></li>
                             <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
                         </ul>
-                        <p>© daily dukaan 2015</p>
+                        <p>© daily dukaan 2017</p>
                     </div>
                 </div>
             </div><!-- End row -->
@@ -342,6 +252,25 @@ $('#cat_nav a[href^="#"]').on('click', function (e) {
         window.location.hash = target;
       });
     });
+
+function addtocart(id)
+{
+  $.get( "addtocart.php?itemid="+id, function(data) {
+    alert( data );
+  })
+  .done(function() {
+      alert("item added to cart");
+      $("#detailedcart").load('detailedcart.php');
+    })
+    .fail(function() {
+      alert( "Failed to add to cart. Please try again." );
+    });
+    
+  }
+
+  $(document).ready(function(){
+    $("#detailedcart").load('detailedcart.php');
+  });
 </script>
 
 </body>

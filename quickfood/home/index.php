@@ -247,10 +247,10 @@ $("#js-rotating").Morphext({
                 $check_user="select * from user WHERE email='$email' AND password='$password'";
 
 
-                    $run=mysqli_query($dbcon,$check_user);  
-                    $data = mysqli_fetch_assoc($run);
+                    $run= $dbcon->query($check_user);  
+                    $data = $run->fetch_assoc();
                   
-                    if(mysqli_num_rows($run))  
+                    if($run->num_rows>0)  
                     {  
                         $_SESSION['user']=$email;
                         echo "<script>window.open('./index.php','_self')</script>";  
@@ -275,9 +275,9 @@ $("#js-rotating").Morphext({
 
                     //here query check if package already registered so can't register again.  
                         $check_if_package="select * from user WHERE email='$email'";
-                        $run_query=mysqli_query($dbcon,$check_if_package);  
+                        $run_query=$dbcon->query($check_if_package);  
 
-                        if(mysqli_num_rows($run_query)>0)  
+                        if($run_query->num_rows>0)  
                         {  
                             echo "<script>alert('User already exists')</script>";  
                             exit();  
@@ -287,7 +287,7 @@ $("#js-rotating").Morphext({
                         $insert_package="insert into user (name, email, mobile, address,password) VALUE ('$name','$email','$phone','$address','$pwd')";  
 
                         
-                        if(mysqli_query($dbcon,$insert_package))  
+                        if($dbcon->query($insert_package))  
                         {  
                             echo"<script>alert('Registered successfully')</script>";
                             $_SESSION['user']=$email;

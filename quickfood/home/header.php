@@ -20,10 +20,7 @@
                     
                     </li>
                     
-                    <?php  
-    
-                     session_start(); 
-                     ?>
+                    
                      <?php if (!isset($_SESSION['user'])): ?> 
                    
                     <li><a href="#0" data-toggle="modal" data-target="#register">Signup</a></li>
@@ -33,9 +30,9 @@
                         include("../database/db_conection.php");          
                         $email=$_SESSION['user'];
                         $view_users_query="select * from user WHERE email='$email' ORDER BY id DESC";//select query for viewing users.  
-                        $run=mysqli_query($dbcon,$view_users_query);//here run the sql query.  
+                        $run=$dbcon->query($view_users_query);//here run the sql query.  
                   
-                        if($row=mysqli_fetch_array($run))//while look to fetch the result and store in a array $row.  
+                        if($row=$run->fetch_array())//while look to fetch the result and store in a array $row.  
                         {  
                             $user_name=$row[1];
                         }

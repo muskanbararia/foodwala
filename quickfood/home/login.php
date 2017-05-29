@@ -8,10 +8,10 @@
 		        $check_user="select * from user WHERE email='$email' AND pass='$password'";
 
 
-		            $run=mysqli_query($dbcon,$check_user);  
-		            $data = mysqli_fetch_assoc($run);
+		            $run=$dbcon->query($check_user);  
+		            $data = $run->fetch_assoc();
 		          
-		            if(mysqli_num_rows($run))  
+		            if($run->num_rows)  
 		            {  
 		                $_SESSION['email']=$email;
 		                echo "<script>window.open('./index.php','_self')</script>";  
