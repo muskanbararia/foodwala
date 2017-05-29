@@ -164,9 +164,8 @@
                             <li><a href="#0"><i class="icon-instagram"></i></a></li>
                             <li><a href="#0"><i class="icon-pinterest"></i></a></li>
                             <li><a href="#0"><i class="icon-vimeo"></i></a></li>
-                            <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
                         </ul>
-                        <p>© Quick Food 2015</p>
+                        <p>© Daily Dukaan 2017</p>
                     </div>
                 </div>
             </div><!-- End row -->
