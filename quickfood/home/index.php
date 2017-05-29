@@ -238,7 +238,7 @@ $("#js-rotating").Morphext({
 </body>
 </html>
 <?php
-        session_start();     
+           
         include("../database/db_conection.php");      
             if(isset($_POST['login-submit']))  
             {  
