@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 29, 2017 at 08:41 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- Host: 127.0.0.1
+-- Generation Time: May 29, 2017 at 03:14 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -47,21 +47,29 @@ INSERT INTO `admin` (`id`, `email`, `pass`) VALUES
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `item` int(11) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `oTime` date NOT NULL,
-  `stat` int(11) NOT NULL,
-  `total` int(11) NOT NULL
+  `item_id` int(11) NOT NULL,
+  `rest_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quan` int(11) NOT NULL,
+  `user_id` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `item_id`, `rest_id`, `name`, `price`, `quan`, `user_id`) VALUES
+(4, 1, 10, ' Veg Sweet Corn Soup', 50, 4, 'demo@demo.com'),
+(5, 2, 10, ' Veg Manchow Soup', 50, 3, 'demo@demo.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cartItem`
+-- Table structure for table `cartitem`
 --
 
-CREATE TABLE `cartItem` (
+CREATE TABLE `cartitem` (
   `id` int(11) NOT NULL,
   `cid` int(11) NOT NULL,
   `item` int(11) NOT NULL,
@@ -86,10 +94,10 @@ CREATE TABLE `coupon` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dineIn`
+-- Table structure for table `dinein`
 --
 
-CREATE TABLE `dineIn` (
+CREATE TABLE `dinein` (
   `id` int(11) NOT NULL,
   `restId` int(11) NOT NULL,
   `bTime` datetime NOT NULL,
@@ -216,9 +224,9 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cartItem`
+-- Indexes for table `cartitem`
 --
-ALTER TABLE `cartItem`
+ALTER TABLE `cartitem`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -228,9 +236,9 @@ ALTER TABLE `coupon`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dineIn`
+-- Indexes for table `dinein`
 --
-ALTER TABLE `dineIn`
+ALTER TABLE `dinein`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -264,11 +272,11 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT for table `cartItem`
+-- AUTO_INCREMENT for table `cartitem`
 --
-ALTER TABLE `cartItem`
+ALTER TABLE `cartitem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `coupon`
@@ -276,9 +284,9 @@ ALTER TABLE `cartItem`
 ALTER TABLE `coupon`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `dineIn`
+-- AUTO_INCREMENT for table `dinein`
 --
-ALTER TABLE `dineIn`
+ALTER TABLE `dinein`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `item`

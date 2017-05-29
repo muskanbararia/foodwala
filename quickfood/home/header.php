@@ -7,7 +7,7 @@
                 <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
             </div>
-            <nav class="col--md-8 col-sm-8 col-xs-8">
+            <nav class="col--md-8 col-sm-8 col-xs-8" style="padding-top: 15px;">
             <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
             <div class="main-menu">
                 <div id="header_menu">
