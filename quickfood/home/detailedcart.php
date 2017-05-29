@@ -2,46 +2,23 @@
     <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
     <table class="table table_summary">
       <tbody>
+<?php session_start();
+        include("../database/db_conection.php");          
+
+        $sql = "SELECT * FROM cart where user_id='".$_SESSION['user']."'";
+        $result = $dbcon->query($sql);
+        while($row = $result->fetch_assoc()){
+?>
           <tr>
             <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>x</strong> Burrito
+              <a href="javascript:void(0)" onclick="removeitem(<?=$row['id'] ?>)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
             </td>
             <td>
-              <strong class="pull-right">$11</strong>
+              <strong class="pull-right">₹<?=$row['price']?></strong>
             </td>
           </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Burrito
-            </td>
-            <td>
-              <strong class="pull-right">$14</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Chicken
-            </td>
-            <td>
-              <strong class="pull-right">$20</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Corona Beer
-            </td>
-            <td>
-              <strong class="pull-right">$9</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Cheese Cake
-            </td>
-            <td>
-              <strong class="pull-right">$12</strong>
-            </td>
-          </tr>
+<?php } ?>  
+
       </tbody>
     </table>
     <hr>
@@ -58,17 +35,29 @@
       <tbody>
       <tr>
         <td>
-           Subtotal <span class="pull-right">$56</span>
+        <?php
+
+          $sql = "SELECT SUM(price) AS total FROM cart where user_id='".$_SESSION['user']."'";
+          $result = $dbcon->query($sql);
+          while($row = $result->fetch_assoc()){
+            $subtotal = $row['total'];
+            $delivery = 10;
+            $total = (int)$subtotal + 10;
+        ?>
+           Subtotal <span class="pull-right">₹<?=$subtotal?></span>
+        <?php
+           }
+        ?>
         </td>
       </tr>
       <tr>
         <td>
-           Delivery fee <span class="pull-right">$10</span>
+           Delivery fee <span class="pull-right">₹<?=$delivery?></span>
         </td>
       </tr>
       <tr>
         <td class="total">
-           TOTAL <span class="pull-right">$66</span>
+           TOTAL <span class="pull-right">₹<?=$total ?></span>
         </td>
       </tr>
       </tbody>

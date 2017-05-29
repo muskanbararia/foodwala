@@ -26,6 +26,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <script src="//cdn.jsdelivr.net/alertifyjs/1.10.0/alertify.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/alertify.min.css"/>
+    <!-- Default theme -->
+    <!-- <link rel="stylesheet" href="css/themes/default.min.css"/> -->
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="css/themes/bootstrap.min.css"/>
 
     <!-- BASE CSS -->
     <link href="css/base.css" rel="stylesheet">
@@ -34,6 +41,7 @@
     <link href="css/morphext.css" rel="stylesheet">
     <link rel="stylesheet" href="css/datepicker.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
 
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>

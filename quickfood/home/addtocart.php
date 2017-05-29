@@ -83,6 +83,9 @@ if(isset($_GET['itemid']))
               
             }//end else
       }
+      else{
+        echo "You cannot add an item from differnt shop on this cart. please remove the items to do so.";
+      }
     }
 }
 
