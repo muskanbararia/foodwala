@@ -122,7 +122,22 @@
             ?>
 
               <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-              <form action="list-page.php" class="popup-form" id="dineIn<?$id?>">
+              <form action="list-page.php" method ="post" class="popup-form" id="dineIn<?$id?>">
+              <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
                 <input type="text" class="form-control form-white" placeholder="Name">
                 <input type="text" class="form-control form-white" placeholder="Last Name">
                 <input type="email" class="form-control form-white" placeholder="Email">
