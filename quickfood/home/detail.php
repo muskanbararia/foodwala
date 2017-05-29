@@ -156,49 +156,7 @@
           <tbody>
           <tr>
           <?php
-            if(isset($_GET['action'])){
-              $opt = $_GET['action'];
-            }
-            else{
-              $opt = 'empty';
-            }
-            switch ($opt) {
-            case "add":
-              if(!empty($_POST["quantity"])) {
-                $id = $_GET['code'];
-                $productByCode = "SELECT * FROM item WHERE id=$id";
-                $q = mysqli_query($dbcon, $productByCode);
-                $productByCode = mysqli_fetch_array($q);
-                $itemArray = array($productByCode[0]=>array('name'=>$productByCode[1], 'code'=>$productByCode[0], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]));
-                if(!empty($_SESSION["cart_item"])) {
-                  if(in_array($productByCode[0],array_keys($_SESSION["cart_item"]))) {
-                    foreach($_SESSION["cart_item"] as $k => $v) {
-                        if($productByCode[0] == $k) {
-                          if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-                            $_SESSION["cart_item"][$k]["quantity"] = 0;
-                          }
-                          $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-                        }
-                    }
-                  } else {
-                    $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
-                  }
-                } else {
-                  $_SESSION["cart_item"] = $itemArray;
-                }
-              }
-            break;
-            case "remove":
-              if(!empty($_SESSION["cart_item"])) {
-                foreach($_SESSION["cart_item"] as $k => $v) {
-                  if($_GET["code"] == $k) unset($_SESSION["cart_item"][$k]);        
-                  if(empty($_SESSION["cart_item"])) unset($_SESSION["cart_item"]);
-                }
-              }
-            break;
-            case "empty":
-              unset($_SESSION["cart_item"]);
-            break;
+            
           ?>
             <td>
               <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>x</strong> <?=$row[2]?>
@@ -208,7 +166,7 @@
             </td>
           </tr>
           <?
-            }
+            
           ?>
           <tr>
             <td>
