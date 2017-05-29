@@ -122,7 +122,7 @@
             ?>
 
               <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-              <form action="list-page.php" method ="post" class="popup-form" id="dineIn<?$id?>">
+              <form action="list_page.php" method ="post" class="popup-form" id="dineIn<?$id?>">
                 <input type="text" class="form-control form-white" id="datetimepicker2" />
                 <script type="text/javascript">
                   $('#datetimepicker2').datetimepicker({format : "DD/MM/YYYY hh:mm"});
