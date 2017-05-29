@@ -79,7 +79,7 @@
           ?>
           <h3 class="nomargin_top" id="starters"><?=$cat?></h3>
           <p>
-            Te ferri iisque aliquando pro, posse nonumes efficiantur in cum. Sensibus reprimique eu pro. Fuisset mentitum deleniti sit ea.
+            
           </p>
           <table class="table table-striped cart-list">
           <thead>
@@ -110,10 +110,11 @@
               $price  = $irow[5];
               $logo   = $irow[6];
               $desk   = $irow[7];
+              $img=$irow[6];
           ?>
           <tr>
             <td>
-            <figure class="thumb_menu_list"><img src="img/menu-thumb-1.jpg" alt="thumb"></figure>
+            <figure class="thumb_menu_list"><img src="img/<?=$img?>" alt="thumb"></figure>
               <h5><?=$i?>. <?=$item?></h5>
               <p>
                 <?=$desk?>
