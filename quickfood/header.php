@@ -39,11 +39,9 @@
                             $user_name=$row[1];
                         }
                         ?>
-                         <li>Hello, <?php echo $user_name; ?><a href="logout.php">Logout</a></li>
+                         <li><a href="logout.php">Hello, <?php echo $user_name; ?></a></li>
+                         <li><a href="logout.php">Logout</a></li>
                          <?php endif; ?>
-                    
-                    
-                    
                     
                     
                     
