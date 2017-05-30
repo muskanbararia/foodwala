@@ -30,7 +30,6 @@
       <script src="js/html5shiv.min.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -60,16 +59,17 @@
         <video autoplay loop class="" style="position:absolute; z-index:0; width:100%;">
                 <source src="../videobg.mp4" type="video/mp4"/>
                 </video>
-            <h1>Order Takeaway or Delivery Food</h1>
+            <h1>Order Dine-In or Delivery Food</h1>
             
 
-            <form method="post" action="http://www.ansonika.com/quickfood/list_page.html">
+            <form method="post" action="list_page.php">
                 <div id="custom-search-input">
                     <div class="input-group">
-                        <input type="text" class=" search-query" placeholder="Your Address or postal code">
+                        <input type="select" class=" search-query"  placeholder="Your Address or postal code">
                         <span class="input-group-btn">
                         <input type="submit" class="btn_search" value="submit">
                         </span>
+                        <div id="livesearch"></div>
                     </div>
                 </div>
             </form>
@@ -222,23 +222,6 @@
 
 <!-- COMMON SCRIPTS -->
 <?php include "scripts.php"; ?>
-
-<!-- SPECIFIC SCRIPTS -->
-<script src="js/morphext.min.js"></script>
-<script>
-    $("#js-rotating").Morphext({
-    animation: "fadeIn", // Overrides default "bounceIn"
-    separator: ",", // Overrides default ","
-    speed: 2300, // Overrides default 2000
-    complete: function () {
-        // Overrides default empty function
-    }
-});
-</script>
-<script src="js/jquery-2.2.4.min.js"></script>
-<script src="js/common_scripts_min.js"></script>
-<script src="js/functions.js"></script>
-<script src="assets/validate.js"></script>
 
 <!-- SPECIFIC SCRIPTS -->
 <script src="js/video_header.js"></script>
