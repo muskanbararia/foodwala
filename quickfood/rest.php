@@ -20,7 +20,7 @@
                       $phone=$row[4];
                       $category=$row[5];
             ?>
-                <a href="detail_page.html" class="strip_list">
+                <a href="list_page.php" class="strip_list">
                 <div class="ribbon_1">
                     Popular
                 </div>
@@ -61,7 +61,7 @@
                       $phone=$row[4];
                       $category=$row[5];
             ?>
-                <a href="detail_page.html" class="strip_list">
+                <a href="list_page.php" class="strip_list">
                 <div class="ribbon_1">Popular</div>
                     <div class="desc">
                         <div class="thumb_strip">

@@ -56,7 +56,7 @@
       <!--End tools -->
       <!-- List Of Restaurants Begins Here-->
       <?php
-        // include "../database/db_conection.php";
+        include "./database/db_conection.php";
         $limit = 10;
         $query = "SELECT * FROM restaurant" ;
         $run   = $dbcon->query($query);
