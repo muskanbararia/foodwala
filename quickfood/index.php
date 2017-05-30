@@ -17,9 +17,13 @@
     <!-- End Header =============================================== -->
     
     <!-- SubHeader =============================================== -->
-    <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="img/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">
-        <div id="subheader">
-            <div id="sub_content">
+    <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="" data-natural-width="1400" data-natural-height="550">
+        <div id="subheader" style="position: relative;">
+            <div id="sub_content" style="">
+                <video autoplay loop class="" style="position:absolute; z-index:0; width:100%;">
+                <source src="../videobg.mp4" type="video/mp4"/>
+                Your browser does not support the video tag. I suggest you upgrade your browser.
+                </video>
                 <h1>Order <strong id="js-rotating">Food, Dine-in</strong> Online</h1>
                 <p>
                     Your Online solution to all the hunger issues.
