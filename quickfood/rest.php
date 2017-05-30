@@ -45,7 +45,7 @@
                     </div><!-- End desc-->
                 </a><!-- End strip_list-->
                <!-- End strip_list-->
-             <? } ?><!-- End col-md-6-->
+             <?php } ?><!-- End col-md-6-->
             </div>
             <div class="col-md-6">
             <?php
