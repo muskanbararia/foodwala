@@ -26,7 +26,7 @@
     <!-- End Header =============================================== -->
     
     <!-- SubHeader =============================================== -->
-   <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_cart.jpg" data-natural-width="1400" data-natural-height="350">
+   <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="../img/sub_header_cart.jpg" data-natural-width="1400" data-natural-height="350">
         <div id="subheader">
             <div id="sub_content">
                 <h1>Admin section</h1>
@@ -101,54 +101,6 @@
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
 
-    <!-- Login modal -->
-    <div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-                <form action="#" class="popup-form" id="myLogin">
-                    <div class="login_icon"><i class="icon_lock_alt"></i>
-                    </div>
-                    <input type="text" class="form-control form-white" placeholder="Username">
-                    <input type="text" class="form-control form-white" placeholder="Password">
-                    <div class="text-left">
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="btn btn-submit">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- End modal -->
-
-    <!-- Register modal -->
-    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content modal-popup">
-                <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-                <form action="#" class="popup-form" id="myRegister">
-                    <div class="login_icon"><i class="icon_lock_alt"></i>
-                    </div>
-                    <input type="text" class="form-control form-white" placeholder="Name">
-                    <input type="text" class="form-control form-white" placeholder="Last Name">
-                    <input type="email" class="form-control form-white" placeholder="Email">
-                    <input type="text" class="form-control form-white" placeholder="Password" id="password1">
-                    <input type="text" class="form-control form-white" placeholder="Confirm password" id="password2">
-                    <div id="pass-info" class="clearfix"></div>
-                    <div class="checkbox-holder text-left">
-                        <div class="checkbox">
-                            <input type="checkbox" value="accept_2" id="check_2" name="check_2" />
-                            <label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span>
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-submit">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- End Register modal -->
-
     <!-- Search Menu -->
     <div class="search-overlay-menu">
         <span class="search-overlay-close"><i class="icon_close"></i></span>
@@ -161,22 +113,22 @@
     <!-- End Search Menu -->
 
     <!-- COMMON SCRIPTS -->
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/common_scripts_min.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="assets/validate.js"></script>
+    <script src="../js/jquery-2.2.4.min.js"></script>
+    <script src="../js/common_scripts_min.js"></script>
+    <script src="../js/functions.js"></script>
+    <script src="../assets/validate.js"></script>
 
     <!-- Specific scripts -->
-    <script src="js/tabs.js"></script>
+    <script src="../js/tabs.js"></script>
     <script>
         new CBPFWTabs(document.getElementById('tabs'));
     </script>
 
-    <script src="js/bootstrap3-wysihtml5.min.js"></script>
+    <script src="../js/bootstrap3-wysihtml5.min.js"></script>
     <script type="text/javascript">
         $('.wysihtml5').wysihtml5({});
     </script>
-    <script src="js/dropzone.min.js"></script>
+    <script src="../js/dropzone.min.js"></script>
     <script>
         if ($('.dropzone').length > 0) {
             Dropzone.autoDiscover = false;
@@ -216,7 +168,7 @@ if (isset($_POST['r_submit']))
     $code = substr( md5(rand()), 0, 7);
     $img = "f".$code.$img_name;
     
-    if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
+    if(move_uploaded_file($img_tmp_name, "../img/".$img)){
         $inq = "INSERT INTO restaurant VALUES(NULL,'$name','$address','$img','$phone','$category','$desc')";
         $query = mysqli_query($dbcon,$inq);
         if($query){
@@ -247,7 +199,7 @@ if (isset($_POST['m_submit']))
     $code = substr( md5(rand()), 0, 7);
     $img = "m".$code.$img_name;
     
-    if(move_uploaded_file($img_tmp_name, "../home/img/".$img)){
+    if(move_uploaded_file($img_tmp_name, "../img/".$img)){
         $inq = "INSERT INTO item VALUES(NULL,'$restid','$name','$category','$sub','$price','$img','$desc')";
         $query = mysqli_query($dbcon,$inq);
         if($query){
