@@ -46,11 +46,11 @@
                         </ul>
                     </div><!-- End desc-->
                 </a><!-- End strip_list-->
-               <!-- End strip_list-->
-            </div>
-             <?php }
+                <?php }
                 else {
-                 ?><!-- End col-md-6-->
+                 ?>
+              <!-- End strip_list-->
+            </div>
             <div class="col-md-6">
                 <a href="detail_page.html" class="strip_list">
                 <div class="ribbon_1">Popular</div>
@@ -79,6 +79,5 @@
         </div><!-- End row -->   
         <?php }
         } ?>
-        </div>
-        <!-- End container -->
+        </div><!-- End container -->
         </div>

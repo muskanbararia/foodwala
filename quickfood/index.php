@@ -97,7 +97,7 @@
     <h4>The minutes that usually takes to deliver!</h4>
 </div>
 </div><!-- End container -->
-
+<?php include "rest.php"; ?>
 <!-- End white_bg -->
 
 <div class="high_light">
