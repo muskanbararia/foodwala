@@ -22,10 +22,14 @@ else{
           ?>
             <tr>
               <td>
-                <a href="javascript:void(0)" onclick="removeitem(<?=$row['item_id'] ?>)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
+                <a href="javascript:void(0)" onclick="removeitem(<?=$row['item_id'] ?>,1)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
               </td>
               <td>
                 <strong class="pull-right">₹<?=$row['price']?></strong>
+              </td>
+              <td>
+                <i class="icon_minus" onclick="removeitem(<?=$row['item_id'] ?>,2)"></i>
+                <i class="icon_plus" onclick="addtocart(<?=$row['item_id'] ?>)"></i>
               </td>
             </tr>
           <?php } ?>

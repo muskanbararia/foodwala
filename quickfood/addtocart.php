@@ -33,7 +33,7 @@ if(isset($_GET['itemid']) && isset($_SESSION['user']))
         if($dbcon->query( $insertquery))
         {
          echo $name." added to cart successfully.<br/>";
-               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id)'>remove item.</a>";
+               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
          }
          else
          {
@@ -61,7 +61,7 @@ if(isset($_GET['itemid']) && isset($_SESSION['user']))
               if($dbcon->query( $insertquery))
               {
                echo $name." added to cart successfully.<br/>";
-               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id)'>remove item.</a>";
+               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
               }//end if
               else
                {

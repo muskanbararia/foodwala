@@ -231,9 +231,10 @@
 
         }
 
-        function removeitem(itemid){
+        function removeitem(itemid, rm)
+        {
           $("body").css({ opacity:0.2});
-          $.get("removefromcart.php?itemid="+itemid+"&remove="+1)
+          $.get("removefromcart.php?itemid="+itemid+"&remove="+rm)
           .done(function(data){
             alertify.success(data);
             $("body").css({ opacity:1});
@@ -243,6 +244,9 @@
             alertify.success(data);
           });
         }
+
+
+
 
         $(document).ready(function(){
           $("#detailedcart").load('detailedcart.php');
