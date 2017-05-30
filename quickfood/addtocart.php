@@ -79,7 +79,7 @@ if(isset($_GET['itemid']) && isset($_SESSION['user']))
             $sql = "UPDATE cart SET quan=$quan WHERE item_id=$itemid AND user_id='$userid'";
               if ($dbcon->query( $sql)) 
               {
-                echo "Quantity updated successfully";
+                echo "Quantity updated successfully.";
               }// end if
               else{
                 echo "Couldnot update!";

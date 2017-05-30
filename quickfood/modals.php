@@ -5,8 +5,8 @@
         <a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
         <form action="index.php" method="post" class="popup-form" id="myLogin" onsubmit="return false;">
                   <div class="login_icon"><i class="icon_lock_alt"></i></div>
-          <input type="text" name="name" id="name" class="form-control form-white" placeholder="Useremail">
-          <input type="text" name="password" id="password" class="form-control form-white" placeholder="Password">
+          <input type="email" required="" name="name" id="name" class="form-control form-white" placeholder="Enter your email here..">
+          <input type="text" required="" name="password" id="password" class="form-control form-white" placeholder="Enter your password here..">
           
           <input type="submit" onclick="submitLogin()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
         </form>

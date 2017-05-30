@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
-<?php include "head.php"; ?>
+<?php
+if(!isset($_GET['mode'])){
+  if(isset($_SERVER['HTTP_REFERER'])){
+    $referer= $_SERVER['HTTP_REFERER'];
+    header('LOCATION:'.$referer);
+  }  
+  header('LOCATION:list_page.php');
+}
+else{
+  $mode = $_GET['mode'];
+}
+
+?>
+<?php include "head.php"; 
+      
+  include("database/db_conection.php");
+  $user_id = $_SESSION['user'];
+  $sql = "SELECT COUNT(*) AS cart_tot FROM cart WHERE user_id='$user_id'";
+  $result = $dbcon->query($sql);
+  $row = $result->fetch_assoc();
+  if($row['cart_tot']==0){
+    header('LOCATION:list_page.php');
+  }
+?>
 
 <body>
 
@@ -30,6 +53,7 @@
                                
                 <div class="col-xs-4 bs-wizard-step disabled">
                   <div class="text-center bs-wizard-stepnum"><strong>2.</strong> Payment</div>
+ 
                   <div class="progress"><div class="progress-bar"></div></div>
                   <a href="cart_2.html" class="bs-wizard-dot"></a>
                 </div>
@@ -57,7 +81,7 @@
     </div><!-- Position -->
 
 <!-- Content -->
-<div class="container margin_60_35">
+<div class="container-fluid margin_60_35">
     <div class="row">
       <div class="col-md-3">
             
@@ -85,88 +109,11 @@
       <div class="col-md-6">
         <div class="box_style_2" id="order_process">
           <h2 class="inner">Your order details</h2>
-          <div class="form-group">
-            <label>First name</label>
-            <input type="text" class="form-control" id="firstname_order" name="firstname_order" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label>Last name</label>
-            <input type="text" class="form-control" id="lastname_order" name="lastname_order" placeholder="Last name">
-          </div>
-          <div class="form-group">
-            <label>Telephone/mobile</label>
-            <input type="text" id="tel_order" name="tel_order" class="form-control" placeholder="Telephone/mobile">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="email_booking_2" name="email_order" class="form-control" placeholder="Your email">
-          </div>
-          <div class="form-group">
-            <label>Your full address</label>
-            <input type="text" id="address_order" name="address_order" class="form-control" placeholder=" Your full address">
-          </div>
-          <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <label>City</label>
-                <input type="text" id="city_order" name="city_order" class="form-control" placeholder="Your city">
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <label>Postal code</label>
-                <input type="text" id="pcode_oder" name="pcode_oder" class="form-control" placeholder=" Your postal code">
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <label>Delivery Day</label>
-                <select class="form-control" name="delivery_schedule_day" id="delivery_schedule_day">
-                  <option value="" selected>Select day</option>
-                  <option value="Today">Today</option>
-                  <option value="Tomorrow">Tomorrow</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="form-group">
-                <label>Delivery time</label>
-                <select class="form-control" name="delivery_schedule_time" id="delivery_schedule_time">
-                  <option value="" selected>Select time</option>
-                  <option value="11.30am">11.30am</option>
-                  <option value="11.45am">11.45am</option>
-                  <option value="12.15am">12.15am</option>
-                  <option value="12.30am">12.30am</option>
-                  <option value="12.45am">12.45am</option>
-                  <option value="01.00pm">01.00pm</option>
-                  <option value="01.15pm">01.15pm</option>
-                  <option value="01.30pm">01.30pm</option>
-                  <option value="01.45pm">01.45pm</option>
-                  <option value="02.00pm">02.00pm</option>
-                  <option value="07.00pm">07.00pm</option>
-                  <option value="07.15pm">07.15pm</option>
-                  <option value="07.30pm">07.30pm</option>
-                  <option value="07.45pm">07.45pm</option>
-                  <option value="08.00pm">08.00pm</option>
-                  <option value="08.15pm">08.15pm</option>
-                  <option value="08.30pm">08.30pm</option>
-                  <option value="08.45pm">08.45pm</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-md-12">
-        
-                <label>Notes for the restaurant</label>
-                <textarea class="form-control" style="height:150px" placeholder="Ex. Allergies, cash change..." name="notes" id="notes"></textarea>
-        
-            </div>
-          </div>
+
+          <?php if($mode=='dinein') include("dinein-form.php"); ?>
+          <?php if($mode=='delivery') include("delivery-form.php"); ?>
+
+          
         </div><!-- End box_style_1 -->
       </div><!-- End col-md-6 -->
             
@@ -223,10 +170,7 @@
                     </div>
                     <div class="styled-select">
                         <select class="form-control" name="currency" id="currency">
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="RUB">RUB</option>
+                            <option value="INR" selected>INR</option>
                         </select>
                     </div>
                 </div>
@@ -274,21 +218,47 @@
     jQuery('#sidebar').theiaStickySidebar({
       additionalMarginTop: 80
     });
-    function removeitem(itemid){
-          $("body").css({ opacity:0.2});
-          $.get("removefromcart.php?itemid="+itemid+"&remove="+1)
-          .done(function(data){
-            alertify.success(data);
-            $("body").css({ opacity:1});
-            $("#detailedcart").load('detailedcart.php');
-          }).fail(function(){
-            $("body").css({ opacity:1});
-            alertify.success(data);
-          });
+    function addtocart(id)
+    {
+      $("body").css({ opacity:0.1});
+      $.get( "addtocart.php?itemid="+id)
+      .done(function(data) {
+        $("#detailedcart").load('detailedcart.php?mode=<?=$_GET['mode']?>');
+        alertify.success(data);
+        $("body").css({ opacity:1});
+      })
+      .fail(function() {
+        $("body").css({ opacity:1});
+        alert( "Failed to add to cart. Please try again." );
+      });
+
+    }
+
+    function removeitem(itemid, rm)
+    {
+      $("body").css({ opacity:0.2});
+      $.get("removefromcart.php?itemid="+itemid+"&remove="+rm)
+      .done(function(data){
+        if(data == 1){
+          $("#ritem").attr("disabled",true);
         }
+        else{
+          alertify.success(data);
+          $("#detailedcart").load('detailedcart.php?mode=<?=$_GET['mode']?>');
+        }
+        $("body").css({ opacity:1});
+        
+      }).fail(function(){
+        $("body").css({ opacity:1});
+        alertify.success(data);
+      });
+      if(rm==1){
+        window.location.reload();
+      }
+    }
 
       $(document).ready(function(){
-        $("#detailedcart").load('detailedcart.php');
+        $("#detailedcart").load('detailedcart.php?mode=<?=$_GET['mode']?>');
       });
 </script>
 

@@ -11,8 +11,5 @@
 	if ($dbcon->connect_error) {
 	    die("Connection failed: " . $dbcon->connect_error);
 	} 
-
-    // $dbcon=mysqli_connect("localhost","","");  
-    // mysqli_select_db($dbcon,"foodwala"); 
     
 ?>  

@@ -13,7 +13,7 @@
 				if(data == 0){
 
 					$('#login_2').modal("hide");
-					alertify.alert("Login Failed","Username or Password is incorrect",function(){
+					alertify.alert("<span class='icon_close_alt' style='vertical-align:middle; color:#e10000; '></span> Login Failed","Username or Password is incorrect",function(){
 						$('#login_2').modal("show");
 					});
 				} else if (data == 1){
@@ -44,12 +44,10 @@
 
 	function validateLogin(){
 			if($("#name").val() === ''){
-				alertify.alert("You must provide a username");
 				$("#name").focus();
 				return false;
 			}
 			if($("#password").val() === ''){
-				alertify.alert("You must provide a password");
 				$("#password").focus();
 				return false;
 			}
