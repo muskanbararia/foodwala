@@ -1,36 +1,71 @@
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
-<?php include "head.php"; ?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
+    <meta name="description" content="">
+    <meta name="author" content="Ansonika">
+    <title>QuickFood - Quality delivery or take away food</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+    
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
+
+    <!-- BASE CSS -->
+    <link href="css/base.css" rel="stylesheet">
+    
+    <!-- Modernizr -->
+	<script src="js/modernizr.js"></script> 
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
 
 <body>
 
-<!--[if lte IE 8]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+    <!--[if lte IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
     <![endif]-->
-
-    <?php include "preloader.php"; ?>
-    <!-- End Preload -->
-
+    
+    <div id="preloader">
+        <div class="sk-spinner sk-spinner-wave" id="status">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div><!-- End Preload -->
+    
     <!-- Header ================================================== -->
-    <?php include "header.php"; ?>
-    <!-- End Header =============================================== -->
+   <?php include "header.php"; ?>
+	<!-- End Header =============================================== -->
     
     <!-- SubHeader =============================================== -->
-    <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="" data-natural-width="1400" data-natural-height="550">
-        <div id="subheader" style="position: relative;">
-            <div id="sub_content" style="">
-                <video autoplay loop class="" style="position:absolute; z-index:0; width:100%;">
+    <section class="header-video">
+    <div id="hero_video">
+        <div id="sub_content">
+        <video autoplay loop class="" style="position:absolute; z-index:0; width:100%;">
                 <source src="../videobg.mp4" type="video/mp4"/>
-                Your browser does not support the video tag. I suggest you upgrade your browser.
                 </video>
-                <h1>Order <strong id="js-rotating">Food, Dine-in</strong> Online</h1>
-                <p>
-                    Your Online solution to all the hunger issues.
-                </p>
+            <h1>Order Takeaway or Delivery Food</h1>
+            
+
             <form method="post" action="http://www.ansonika.com/quickfood/list_page.html">
                 <div id="custom-search-input">
-                    <div class="input-group ">
+                    <div class="input-group">
                         <input type="text" class=" search-query" placeholder="Your Address or postal code">
                         <span class="input-group-btn">
                         <input type="submit" class="btn_search" value="submit">
@@ -39,7 +74,8 @@
                 </div>
             </form>
         </div><!-- End sub_content -->
-    </div><!-- End subheader -->
+    </div>
+    <img src="img/video_fix.png" alt="" class="header-video--media" data-video-src="video/intro" data-teaser-source="video/intro" data-provider="Vimeo" data-video-width="1920" data-video-height="960">
     <div id="count" class="hidden-xs">
         <ul>
             <li><span class="number">2650</span> Restaurant</li>
@@ -47,11 +83,11 @@
             <li><span class="number">12350</span> Registered Users</li>
         </ul>
     </div>
-</section><!-- End section -->
-<!-- End SubHeader ============================================ -->
-
-<!-- Content ================================================== -->
-<div class="container margin_60">
+    </section><!-- End Header video -->
+    <!-- End SubHeader ============================================ -->
+    
+   <!-- Content ================================================== -->
+        <div class="container margin_60">
 
    <div class="main_title">
     <h2 class="nomargin_top" style="padding-top:0">How it works</h2>
@@ -125,16 +161,16 @@
 </section><!-- End section -->
 <!-- End Content =============================================== -->
 
-	<!--div class="container margin_60">
+    <!--div class="container margin_60">
       <div class="main_title margin_mobile">
             <h2 class="nomargin_top">Work with Us</h2>
             <p>
                 We are hiring
             </p>
         </div>
-      	<div class="row">
+        <div class="row">
             <div class="col-md-4 col-md-offset-2">
-            	<a class="box_work" href="submit_restaurant.html">
+                <a class="box_work" href="submit_restaurant.html">
                 <img src="img/submit_restaurant.jpg" width="848" height="480" alt="" class="img-responsive">
                 <h3>Submit your Restaurant<span>Start to earn customers</span></h3>
                 <p>Register yourself with us </p>
@@ -142,9 +178,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-            	<a class="box_work" href="submit_driver.html">
+                <a class="box_work" href="submit_driver.html">
                 <img src="img/delivery.jpg" width="848" height="480" alt="" class="img-responsive">
-				<h3>We are looking for a Driver<span>Start to earn money</span></h3>
+                <h3>We are looking for a Driver<span>Start to earn money</span></h3>
                 <p>Lorem ipsum dolor sit amet, ut virtute fabellas vix, no pri falli eloquentiam adversarium. Ea legere labore eam. Et eum sumo ocurreret, eos ei saepe oratio omittantur, legere eligendi partiendo pro te.</p>
                 <div class="btn_1">Read more</div>
                 </a>
@@ -199,7 +235,25 @@
     }
 });
 </script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/common_scripts_min.js"></script>
+<script src="js/functions.js"></script>
+<script src="assets/validate.js"></script>
 
+<!-- SPECIFIC SCRIPTS -->
+<script src="js/video_header.js"></script>
+<script>
+$(document).ready(function() {
+    'use strict';
+      HeaderVideo.init({
+      container: $('.header-video'),
+      header: $('.header-video--media'),
+      videoTrigger: $("#video-trigger"),
+      autoPlayVideo: true
+    });    
+
+});
+</script>
 </body>
 </html>
 <?php
