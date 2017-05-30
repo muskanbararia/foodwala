@@ -19,6 +19,8 @@
                     <a href="list_page.php" class="show-submenu">Restaurants</a>
                     
                     </li>
+                    <li><a href="about.php">About us</a></li>
+                    <li><a href="faq.php">Faq</a></li>
                     
                     
                      <?php if (!isset($_SESSION['user'])): ?> 
@@ -37,15 +39,13 @@
                             $user_name=$row[1];
                         }
                         ?>
-                         <li><a href="logout.php">Hello, <?php echo $user_name; ?></a></li>
+                         <li>Hello, <?php echo $user_name; ?><a href="logout.php">Logout</a></li>
                          <?php endif; ?>
                     
                     
                     
                     
-                    <li><a href="about.php">About us</a></li>
-                    <li><a href="faq.php">Faq</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    
                     
                 </ul>
             </div><!-- End main-menu -->

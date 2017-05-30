@@ -21,15 +21,24 @@ else{
           while($row = $result->fetch_assoc()){
           ?>
             <tr>
-              <td>
-                <a href="javascript:void(0)" onclick="removeitem(<?=$row['item_id'] ?>,1)" class="remove_item"><i class="icon_minus_alt"></i></a> <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
+              <td class="col-md-1">
+                <a href="javascript:void(0)" onclick="removeitem(<?=$row['item_id'] ?>,1)" class="remove_item"><i class="icon_close_alt"></i></a>
               </td>
-              <td>
+              <td class="col-md-5">
+                 <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
+              </td>
+              <td class="col-md-2">
                 <strong class="pull-right">₹<?=$row['price']?></strong>
               </td>
-              <td>
-                <i class="icon_minus" onclick="removeitem(<?=$row['item_id'] ?>,2)"></i>
-                <i class="icon_plus" onclick="addtocart(<?=$row['item_id'] ?>)"></i>
+              <td class="col-md-4">
+                <ul class="list-inline">
+                  <li><button class="btn btn-sm btn-danger" onclick="removeitem(<?=$row['item_id'] ?>,2)"><i class="icon_minus_alt" ></i></button>
+                  </li>
+                  <li>
+                <button class="btn btn-sm btn-info" onclick="addtocart(<?=$row['item_id'] ?>)"><i class="icon_plus_alt"></i></button>
+                  </li>
+                </ul>
+                
               </td>
             </tr>
           <?php } ?>
@@ -37,7 +46,8 @@ else{
       </tbody>
     </table>
 <?php
-    if($result->num_rows==0){
+    if($result->num_rows==0)
+    {
               echo "<h3>Your cart is now empty!</h3>";
 
         }

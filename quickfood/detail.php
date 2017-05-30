@@ -20,6 +20,7 @@
     
     <!-- SubHeader === -->
     <?php
+    include("database/db_conection.php"); 
     if(isset($_GET['name'])){
       $rid = $_GET['name'];
       $limit = 10;
@@ -65,7 +66,7 @@
 
         <!-- End col-md-3 -->
 
-        <div class="col-md-9">
+        <div class="col-md-8">
           <div class="box_style_2" id="main_menu">
             <h2 class="inner">Menu</h2>
             <!--Sub Menu Starts-->
@@ -141,7 +142,7 @@
           </div><!-- End col-md-6 -->
 
           <!--Cart View -->
-          <div class="col-md-3" id="sidebar">
+          <div class="col-md-4" id="sidebar">
             <div class="theiaStickySidebar" id="detailedcart">
 
             </div><!-- End theiaStickySidebar -->
