@@ -20,6 +20,7 @@
     
     <!-- SubHeader === -->
     <?php
+    include "./database/db_conection.php";
     if(isset($_GET['name'])){
       $rid = $_GET['name'];
       $limit = 10;
