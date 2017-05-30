@@ -1,123 +1,24 @@
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="pizza, delivery food, fast food, sushi, take away, chinese, italian food">
-    <meta name="description" content="">
-    <meta name="author" content="Ansonika">
-    <title>QuickFood - Quality delivery or take away food</title>
-
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-    
-    <!-- GOOGLE WEB FONT -->
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Gochi+Hand' rel='stylesheet' type='text/css'>
-
-    <!-- BASE CSS -->
-    <link href="css/base.css" rel="stylesheet">
-
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<?php include "head.php"; ?>
 
 <body>
+
 <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
-<![endif]-->
+    <![endif]-->
 
-	<div id="preloader">
-        <div class="sk-spinner sk-spinner-wave" id="status">
-            <div class="sk-rect1"></div>
-            <div class="sk-rect2"></div>
-            <div class="sk-rect3"></div>
-            <div class="sk-rect4"></div>
-            <div class="sk-rect5"></div>
-        </div>
-    </div><!-- End Preload -->
+    <?php include "preloader.php"; ?>
+    <!-- End Preload -->
 
     <!-- Header ================================================== -->
-    <header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col--md-4 col-sm-4 col-xs-4">
-                <a href="index.html" id="logo">
-                <img src="img/logo.png" width="190" height="23" alt="" data-retina="true" class="hidden-xs">
-                <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
-                </a>
-            </div>
-            <nav class="col--md-8 col-sm-8 col-xs-8">
-            <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
-            <div class="main-menu">
-                <div id="header_menu">
-                    <img src="img/logo.png" width="190" height="23" alt="" data-retina="true">
-                </div>
-                <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
-                 <ul>
-                    <li class="submenu">
-                    <a href="javascript:void(0);" class="show-submenu">Home<i class="icon-down-open-mini"></i></a>
-                    <ul>
-                        <li><a href="index.html">Home Video background</a></li>
-                        <li><a href="index_2.html">Home Static image</a></li>
-                        <li><a href="index_3.html">Home Text rotator</a></li>
-                        <li><a href="index_8.html">Home Layer slider</a></li>
-                        <li><a href="index_4.html">Home Cookie bar</a></li>
-                        <li><a href="index_5.html">Home Popup</a></li>
-                        <li><a href="index_6.html">Home Mobile synthetic</a></li>
-                        <li><a href="index_7.html">Top Menu version 2</a></li>
-                    </ul>
-                    </li>
-                    <li class="submenu">
-                    <a href="javascript:void(0);" class="show-submenu">Restaurants<i class="icon-down-open-mini"></i></a>
-                    <ul>
-                        <li><a href="list_page.html">Row listing</a></li>
-                        <li><a href="grid_list.html">Grid listing</a></li>
-                        <li><a href="map_listing.html">Map listing</a></li>
-                        <li><a href="detail_page.html">Restaurant Menu</a></li>
-                        <li><a href="submit_restaurant.html">Submit Restaurant</a></li>
-                        <li><a href="cart.html">Order step 1</a></li>
-                        <li><a href="cart_2.html">Order step 2</a></li>
-                        <li><a href="cart_3.html">Order step 3</a></li>
-                        <li><a href="cart_datepicker.html">Order Date/Time picker</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="faq.html">Faq</a></li>
-                    <li class="submenu">
-                    <a href="javascript:void(0);" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
-                    <ul>
-                        <li><a href="RTL_version/index.html">RTL version</a></li>
-                        <li><a href="admin.html">Admin section</a></li>
-                        <li><a href="submit_driver.html">Submit Driver</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">User Login</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">User Register</a></li>
-                        <li><a href="detail_page_2.html">Restaurant detail page</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="coming_soon/index.html">Coming soon page</a></li>
-                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                        <li><a href="icon_pack_1.html">Icon pack 1</a></li>
-                        <li><a href="icon_pack_2.html">Icon pack 2</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                    <li><a href="http://themeforest.net/item/quickfood-delivery-or-takeaway-food-template/13958100?ref=ansonika">Purchase this template</a></li>
-                </ul>
-            </div><!-- End main-menu -->
-            </nav>
-        </div><!-- End row -->
-    </div><!-- End container -->
-    </header>
+    <?php include "header.php"; ?>
+    <!-- End Header =============================================== -->
+    
     <!-- End Header =============================================== -->
 
 <!-- SubHeader =============================================== -->
@@ -125,56 +26,23 @@
     <div id="subheader">
     	<div id="sub_content">
     	 <h1>About us</h1>
-         <p>Qui debitis meliore ex, tollit debitis conclusionemque te eos.</p>
+         
          <p></p>
         </div><!-- End sub_content -->
 	</div><!-- End subheader -->
 </section><!-- End section -->
 <!-- End SubHeader ============================================ -->
 
-    <div id="position">
-        <div class="container">
-            <ul>
-                <li><a href="#0">Home</a></li>
-                <li><a href="#0">Category</a></li>
-                <li>Page active</li>
-            </ul>
-            <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
-        </div>
-    </div><!-- Position -->
+    <!-- Position -->
 
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
-	<div class="row">
-		<div class="col-md-4">
-			<h3 class="nomargin_top">Some words about us</h3>
-			<p>
-				 Id pri consul aeterno petentium. Vivendo abhorreant et vim, et quot persecuti mel. Libris hendrerit ex sea. Duo legere evertitur an, pri hinc <strong>doctus definitiones</strong> an, vix id dicam putent. Ius ornatus instructior in.
-			</p>
-			<p>
-				 Id pri consul aeterno petentium. Vivendo abhorreant et vim, et quot persecuti mel. Libris hendrerit ex sea. Duo legere evertitur an, pri hinc doctus definitiones an, vix id dicam putent. Ius ornatus instructior in.
-			</p>
-			<h4>Mission</h4>
-			<p>
-				 Id pri consul aeterno petentium. Vivendo abhorreant et vim, et quot persecuti mel. <strong>Libris hendrerit</strong> ex sea. Duo legere evertitur an, pri hinc doctus definitiones an, vix id dicam putent. Ius ornatus instructior in.
-			</p>
-			<p>
-				 Id pri consul aeterno petentium. Vivendo abhorreant et vim, et quot persecuti mel. Libris hendrerit ex sea. Duo legere evertitur an, pri hinc doctus definitiones an, vix id dicam putent. Ius ornatus instructior in.
-			</p>
-			<h4>Filosofy</h4>
-			<p>
-				 Id pri consul aeterno petentium. Vivendo abhorreant et vim, et quot persecuti mel. <strong>Libris hendrerit</strong> ex sea. Duo legere evertitur an, pri hinc doctus definitiones an, vix id dicam putent. Ius ornatus instructior in.
-			</p>
-		</div>
-		<div class="col-md-7 col-md-offset-1 text-right hidden-sm hidden-xs">
-			<img src="img/devices.jpg" alt="" class="img-responsive">
-		</div>
-	</div><!-- End row -->
+	<!-- End row -->
 	<hr class="more_margin">
     <div class="main_title">
-            <h2 class="nomargin_top">Quick food quality feautures</h2>
+            <h2 class="nomargin_top">Daily dukaan quality feautures</h2>
             <p>
-                Cum doctus civibus efficiantur in imperdiet deterruisset.
+                Here is what we have done:
             </p>
         </div>
 	<div class="row">
@@ -183,7 +51,7 @@
 				<i class="icon_building"></i>
 				<h3><span>+ 1000</span> Restaurants</h3>
 				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+					 Our team gathers information from every restaurant on a regular basis to ensure our data is fresh. Our vast community of food lovers share their reviews and photos, so you have all that you need to make an informed choice.
 				</p>
 			</div>
 		</div>
@@ -191,8 +59,7 @@
 			<div class="feature">
 				<i class="icon_documents_alt"></i>
 				<h3><span>+1000</span> Food Menu</h3>
-				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+				<p>With dedicated engagement and management tools, we're enabling restaurants to spend more time focusing on food itself, which translates directly to better dining experiences.
 				</p>
 			</div>
 		</div>
@@ -203,7 +70,8 @@
 				<i class="icon_bag_alt"></i>
 				<h3><span>Delivery</span> or Takeaway</h3>
 				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+					 Your products will be home-delivered
+                     as per your order.
 				</p>
 			</div>
 		</div>
@@ -212,31 +80,12 @@
 				<i class="icon_mobile"></i>
 				<h3><span>Mobile</span> support</h3>
 				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
+					 Our Dedicated team offers 24*7 support to all our customers.
 				</p>
 			</div>
 		</div>
 	</div><!-- End row -->
-	<div class="row">
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.5s">
-			<div class="feature">
-				<i class="icon_wallet"></i>
-				<h3><span>Cash</span> payment</h3>
-				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
-				</p>
-			</div>
-		</div>
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.6s">
-			<div class="feature">
-				<i class="icon_creditcard"></i>
-				<h3><span>Secure card</span> payment</h3>
-				<p>
-					 Lorem ipsum dolor sit amet, vix erat audiam ei. Cum doctus civibus efficiantur in. Nec id tempor imperdiet deterruisset, doctus volumus explicari qui ex, appareat similique an usu.
-				</p>
-			</div>
-		</div>
-	</div><!-- End row -->
+	<!-- End row -->
 </div><!-- End container -->
 
 <div class="container-fluid">
@@ -249,12 +98,17 @@
 		</div>
 		<div class="col-md-6 nopadding">
 			<div class="features-content">
-				<h3>"Ex vero mediocrem"</h3>
+				<h3>"Great offers"</h3>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-				</p>
-				<p>
-					Per ea erant aeque corpora, an agam tibique nec. At recusabo expetendis vim. Tractatos principes mel te, dolor solet viderer usu ad.
+					
+
+
+Our daily deals will help you get free delivery or a nice discount from your favorite restaurant. That might help you decide for discovering new incredible restaurants, dishes, cuisines or even to save space on your freezer. Who knows, finding a new love for food might be easier than you thought.
+</p>
+                <p>
+Stay tuned to our latest events and news by signing up for our newsletter and make sure to share them with your family and friends. We recommend you to follow us on Facebook, Twitter, Instagram or our Magazine to ensure you won’t miss any opportunity to enjoy food at a good price.
+
+				
 				</p>
 			</div>
 		</div>
@@ -264,55 +118,7 @@
 
 <!-- Footer ================================================== -->
 	<footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-3">
-                  	<h3>Secure payments with</h3>
-                    <p><img src="img/cards.png" alt="" class="img-responsive"></p>
-                    
-                </div>
-                <div class="col-md-3 col-sm-3">
-                    <h3>About</h3>
-                    <ul>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="faq.html">Faq</a></li>
-                         <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                        <li><a href="#0">Terms and conditions</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-3"  id="newsletter">
-                    <h3>Newsletter</h3>
-                    <p>Join our newsletter to keep be informed about offers and news.</p>
-					<div id="message-newsletter_2"></div>
-						<form method="post" action="http://www.ansonika.com/quickfood/assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                        <div class="form-group">
-                            <input name="email_newsletter_2" id="email_newsletter_2"  type="email" value=""  placeholder="Your mail" class="form-control">
-                          </div>
-                            <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-                    	</form>
-                </div>
-                <div class="col-md-2 col-sm-3">
-                    <h3>Settings</h3>
-                    <div class="styled-select">
-                        <select class="form-control" name="lang" id="lang">
-                            <option value="English" selected>English</option>
-                            <option value="French">French</option>
-                            <option value="Spanish">Spanish</option>
-                            <option value="Russian">Russian</option>
-                        </select>
-                    </div>
-                    <div class="styled-select">
-                        <select class="form-control" name="currency" id="currency">
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="RUB">RUB</option>
-                        </select>
-                    </div>
-                </div>
-            </div><!-- End row -->
+        
             <div class="row">
                 <div class="col-md-12">
                     <div id="social_footer">
@@ -333,67 +139,83 @@
     </footer>
 <!-- End Footer =============================================== -->
 
-<div class="layer"></div><!-- Mobile menu overlay mask -->
+    <div class="layer"></div><!-- Mobile menu overlay mask -->
 
-<!-- Login modal -->   
-<div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<form action="#" class="popup-form" id="myLogin">
-                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
-					<input type="text" class="form-control form-white" placeholder="Username">
-					<input type="text" class="form-control form-white" placeholder="Password">
-					<div class="text-left">
-						<a href="#">Forgot Password?</a>
-					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div><!-- End modal -->   
-    
-<!-- Register modal -->   
-<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content modal-popup">
-				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<form action="#" class="popup-form" id="myRegister">
-                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
-					<input type="text" class="form-control form-white" placeholder="Name">
-					<input type="text" class="form-control form-white" placeholder="Last Name">
-                    <input type="email" class="form-control form-white" placeholder="Email">
-                    <input type="text" class="form-control form-white" placeholder="Password"  id="password1">
-                    <input type="text" class="form-control form-white" placeholder="Confirm password"  id="password2">
-                    <div id="pass-info" class="clearfix"></div>
-					<div class="checkbox-holder text-left">
-						<div class="checkbox">
-							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
-							<label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-submit">Register</button>
-				</form>
-			</div>
-		</div>
-	</div><!-- End Register modal -->
-    
-     <!-- Search Menu -->
-	<div class="search-overlay-menu">
-		<span class="search-overlay-close"><i class="icon_close"></i></span>
-		<form role="search" id="searchform" method="get">
-			<input value="" name="q" type="search" placeholder="Search..." />
-			<button type="submit"><i class="icon-search-6"></i>
-			</button>
-		</form>
-	</div>
-	<!-- End Search Menu -->
-    
+    <?php include "modals.php"; ?>
+
 <!-- COMMON SCRIPTS -->
-<script src="js/jquery-2.2.4.min.js"></script>
-<script src="js/common_scripts_min.js"></script>
-<script src="js/functions.js"></script>
-<script src="assets/validate.js"></script>
+<?php include "scripts.php"; ?>
+
+<!-- SPECIFIC SCRIPTS -->
+<script src="js/morphext.min.js"></script>
+<script>
+    $("#js-rotating").Morphext({
+    animation: "fadeIn", // Overrides default "bounceIn"
+    separator: ",", // Overrides default ","
+    speed: 2300, // Overrides default 2000
+    complete: function () {
+        // Overrides default empty function
+    }
+});
+</script>
 
 </body>
 </html>
+<?php
+
+// include("../database/db_conection.php");      
+if(isset($_POST['login-submit']))  
+{  
+    $email=($_POST['name']);  
+    $password=($_POST['password']);  
+    $check_user="select * from user WHERE email='$email' AND password='$password'";
+
+
+    $run= $dbcon->query($check_user);  
+    $data = $run->fetch_assoc();
+
+    if($run->num_rows)  
+    {  
+        $_SESSION['user']=$email;
+        echo "<script>window.open('./index.php','_self')</script>";  
+
+    }  
+    else  
+    {  
+      echo "<script>alert('Email or password is incorrect!')</script>";
+
+      echo "<script>window.open('./index.php','_self')</script>";       
+  }  
+}
+if(isset($_POST['signin-submit']))  
+{  
+                        //here getting result from the post array after submitting the form.
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $phone=$_POST['mobile'];
+    $pwd=$_POST['password'];
+    $address=$_POST['address'];
+
+
+                    //here query check if package already registered so can't register again.  
+    $check_if_package="select * from user WHERE email='$email'";
+    $run_query=$dbcon->query($check_if_package);  
+
+    if($run_query->num_rows>0)  
+    {  
+        echo "<script>alert('User already exists')</script>";  
+        exit();  
+    }
+
+
+    $insert_package="insert into user (name, email, mobile, address,password) VALUE ('$name','$email','$phone','$address','$pwd')";  
+
+
+    if($dbcon->query($insert_package))  
+    {  
+        echo"<script>alert('Registered successfully')</script>";
+        $_SESSION['user']=$email;
+        echo"<script>window.open('./index.php','_self')</script>";
+    }     
+}
+?>

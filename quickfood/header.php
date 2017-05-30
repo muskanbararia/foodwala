@@ -38,6 +38,7 @@
                         }
                         ?>
                          <li><a href="logout.php">Hello, <?php echo $user_name; ?></a></li>
+                         <li><a href="logout.php">Logout</a></li>
                          <?php endif; ?>
                     
                     
@@ -45,7 +46,7 @@
                     
                     <li><a href="about.php">About us</a></li>
                     <li><a href="faq.php">Faq</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    
                     
                 </ul>
             </div><!-- End main-menu -->
