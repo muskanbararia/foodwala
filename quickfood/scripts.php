@@ -9,7 +9,7 @@
 
 		// console.log("Hellpo");
 		// console.log($("#myLogin").serialize());
-			$.post('auth/login.php', $("#myLogin").serialize(), function(data){
+			$.post('login.php', $("#myLogin").serialize(), function(data){
 				if(data == 0){
 
 					$('#login_2').modal("hide");
@@ -25,7 +25,7 @@
 	function submitRegister(){
 	  if(validateRegister("register")){
 
-			$.post('auth/register.php', $("#myRegister").serialize(), function(data){
+			$.post('register.php', $("#myRegister").serialize(), function(data){
 
 				if(data == 0){
 					$('#register').modal("hide");
