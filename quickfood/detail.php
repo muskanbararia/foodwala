@@ -153,27 +153,7 @@
       <!-- End Content === -->
 
       <!-- Footer ====== -->
-      <footer>
-        <div class="container">
-          <!-- End row -->
-          <div class="row">
-            <div class="col-md-12">
-              <div id="social_footer">
-                <ul>
-                  <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                  <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                  <li><a href="#0"><i class="icon-google"></i></a></li>
-                  <li><a href="#0"><i class="icon-instagram"></i></a></li>
-                  <li><a href="#0"><i class="icon-pinterest"></i></a></li>
-                  <li><a href="#0"><i class="icon-vimeo"></i></a></li>
-                  <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
-                </ul>
-                <p>© daily dukaan 2017</p>
-              </div>
-            </div>
-          </div><!-- End row -->
-        </div><!-- End container -->
-      </footer>
+      <?php include("footer.php"); ?>
       <!-- End Footer === -->
 
       <div class="layer"></div><!-- Mobile menu overlay mask -->
@@ -237,16 +217,33 @@
           $("body").css({ opacity:0.2});
           $.get("removefromcart.php?itemid="+itemid+"&remove="+rm)
           .done(function(data){
-            alertify.success(data);
+            if(data != 1){
+              alertify.success(data);
+              $("#detailedcart").load('detailedcart.php');
+            }
+            else{
+              $("#ritem").attr("disabled",true);
+            }
             $("body").css({ opacity:1});
-            $("#detailedcart").load('detailedcart.php');
+            
           }).fail(function(){
             $("body").css({ opacity:1});
             alertify.success(data);
           });
         }
 
+        function checkMode(){
 
+          var radioValue = $("input[name='mode']:checked"). val();
+          if(radioValue){
+            window.open('cart.php?mode='+radioValue, '_self');
+          }
+          else{
+            alertify.alert('Dining Method','You must choose a method to continue.')
+          }
+        }
+
+        
 
 
         $(document).ready(function(){

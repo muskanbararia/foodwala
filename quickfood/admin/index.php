@@ -49,6 +49,8 @@
                     </li>
                     <li><a href="#section-3" class="icon-settings"><span>Coupans</span></a>
                     </li>
+                    <li><a href="#section-4" class="icon-settings"><span>Change Password</span></a>
+                    </li>
                 </ul>
             </nav>
             <div class="content">
@@ -57,6 +59,7 @@
                 <?php include "add-menu.php" ?>
                 <!-- End section 2 -->
                 <?php include "add-coupan.php" ?>
+                <?php include "pass.php" ?>
                 <!-- End section 3 -->
 
             </div><!-- End content -->
@@ -226,6 +229,22 @@ if (isset($_POST['c_submit']))
     
         $inq = "INSERT INTO coupon VALUES(NULL,'$name','$type','$amount','$valid')";
         $query = mysqli_query($dbcon,$inq);
+        if($query){
+            echo "<script>alert('Added')</script>";
+        }else{
+                echo "<script>alert('Error')</script>";
+        }
+    
+    
+}
+if (isset($_POST['p_submit']))
+{
+    $name = $_SESSION['admin'];
+    $type=$_POST['new_password'];
+    
+    
+    $inq = "UPDATE admin SET pass = '$type' WHERE email='$name'; ";
+       $query = mysqli_query($dbcon,$inq);
         if($query){
             echo "<script>alert('Added')</script>";
         }else{

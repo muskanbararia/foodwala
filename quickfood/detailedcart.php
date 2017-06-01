@@ -32,7 +32,11 @@ else{
               </td>
               <td class="col-md-4">
                 <ul class="list-inline">
-                  <li><button class="btn btn-sm btn-danger" onclick="removeitem(<?=$row['item_id'] ?>,2)"><i class="icon_minus_alt" ></i></button>
+                  <li><button class="btn btn-sm btn-danger" id="ritem"
+                  <?php
+                    if($row['quan']==1) echo "disabled";
+                  ?>
+                   onclick="removeitem(<?=$row['item_id'] ?>,2)"><i class="icon_minus_alt" ></i></button>
                   </li>
                   <li>
                 <button class="btn btn-sm btn-info" onclick="addtocart(<?=$row['item_id'] ?>)"><i class="icon_plus_alt"></i></button>
@@ -55,11 +59,38 @@ else{
           ?>
           <hr>
           <div class="row" id="options_2">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-              <label><input type="radio" value="" checked name="option_2" class="icheck">Delivery</label>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-              <label><input type="radio" value="" name="option_2" class="icheck">Take Away</label>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">
+                <div class="row maxl">
+                  <label class="radio inline"> 
+                      <input type="radio" name="mode" value="delivery" 
+                          <?php 
+                            if(isset($_GET['mode'])){ 
+                              if($_GET['mode']=='delivery'){ 
+                                echo "checked=''";
+                              }
+                              else{
+                                echo "disabled";
+                              }
+                            }
+                           ?> >
+                      <span style="font-size: 20px;"> Delivery </span> 
+                   </label>
+                  <label class="radio inline"> 
+                      <input type="radio" name="mode" value="dinein" 
+                          <?php 
+                            if(isset($_GET['mode'])){ 
+                              if($_GET['mode']=='dinein'){ 
+                                echo "checked";
+                              }
+                              else{
+                                echo "disabled";
+                              }
+                            }
+                           ?> >
+                      <span style="font-size: 20px;"> Dine In </span> 
+                  </label>
+                </div>
+              
             </div>
           </div><!-- Edn options 2 -->       
           <hr>
@@ -97,7 +128,7 @@ else{
             </tbody>
           </table>
           <hr>
-          <a class="btn_full" href="cart.php">Order now</a>
+          <button class="btn_full" onclick="checkMode()">Order now</button>
           </div><!-- End cart_box -->
 <?php } 
 }

@@ -23,22 +23,19 @@ if(isset($_GET['itemid'])&&isset($_GET['remove']))
 			$quan = $row['quan'];
 		}
 		$quan -= 1;
-		if($quan==0)
+		if($quan!=0)
 		{
-			$sql = "DELETE FROM cart WHERE item_id=$itemid AND user_id='$userid'";
-			$dbcon->query($sql);
-			echo "Item removed from cart successfully. <a href='javascript:void(0)' onclick='addtocart($itemid)'>Add Again?</a>";
-
-		}
-		else{
 			$sql = "UPDATE cart SET quan=$quan WHERE item_id=$itemid AND user_id='$userid'";
 			if ($dbcon->query( $sql)) 
 			{
-				echo "Quantity reduced successfully";
+				echo "Quantity reduced successfully. <a href='javascript:void(0)' onclick='addtocart($itemid)'>Add Again?</a>";
 			}// end if
 			else{
 				echo "Couldnot reduce quantity! Please try again!";
 			}
+		}
+		else{
+			echo 1;
 		}
 		
 

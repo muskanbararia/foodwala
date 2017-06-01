@@ -21,3 +21,6 @@ if(isset($_POST['name']) && isset($_POST['password']))
 		echo 0;      
 	}  
 }
+else{
+	header('Location:404.php');
+}

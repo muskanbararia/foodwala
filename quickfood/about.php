@@ -8,84 +8,84 @@
 
 <body>
 
-<!--[if lte IE 8]>
+    <!--[if lte IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
     <![endif]-->
 
     <?php include "preloader.php"; ?>
     <!-- End Preload -->
 
-    <!-- Header ================================================== -->
+    <!-- Header ===== -->
     <?php include "header.php"; ?>
-    <!-- End Header =============================================== -->
+    <!-- End Header == -->
     
-    <!-- End Header =============================================== -->
+    <!-- End Header == -->
 
-<!-- SubHeader =============================================== -->
-<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_cart.jpg" data-natural-width="1400" data-natural-height="350">
-    <div id="subheader">
-    	<div id="sub_content">
-    	 <h1>About us</h1>
-         
-         <p></p>
-        </div><!-- End sub_content -->
-	</div><!-- End subheader -->
-</section><!-- End section -->
-<!-- End SubHeader ============================================ -->
+    <!-- SubHeader == -->
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="img/sub_header_cart.jpg" data-natural-width="1400" data-natural-height="350">
+        <div id="subheader">
+           <div id="sub_content">
+              <h1>About us</h1>
 
-    <!-- Position -->
+              <p></p>
+          </div><!-- End sub_content -->
+      </div><!-- End subheader -->
+  </section><!-- End section -->
+  <!-- End SubHeader  -->
 
-<!-- Content ================================================== -->
-<div class="container margin_60_35">
-	<!-- End row -->
-	<hr class="more_margin">
-    <div class="main_title">
-            <h2 class="nomargin_top">Daily dukaan quality feautures</h2>
-            <p>
-                Here is what we have done:
-            </p>
-        </div>
-	<div class="row">
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
-			<div class="feature">
-				<i class="icon_building"></i>
-				<h3><span>+ 1000</span> Restaurants</h3>
-				<p>
-					 Our team gathers information from every restaurant on a regular basis to ensure our data is fresh. Our vast community of food lovers share their reviews and photos, so you have all that you need to make an informed choice.
-				</p>
-			</div>
-		</div>
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
-			<div class="feature">
-				<i class="icon_documents_alt"></i>
-				<h3><span>+1000</span> Food Menu</h3>
-				<p>With dedicated engagement and management tools, we're enabling restaurants to spend more time focusing on food itself, which translates directly to better dining experiences.
-				</p>
-			</div>
-		</div>
-	</div><!-- End row -->
-	<div class="row">
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
-			<div class="feature">
-				<i class="icon_bag_alt"></i>
-				<h3><span>Delivery</span> or Takeaway</h3>
-				<p>
-					 Your products will be home-delivered
-                     as per your order.
-				</p>
-			</div>
-		</div>
-		<div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
-			<div class="feature">
-				<i class="icon_mobile"></i>
-				<h3><span>Mobile</span> support</h3>
-				<p>
-					 Our Dedicated team offers 24*7 support to all our customers.
-				</p>
-			</div>
-		</div>
-	</div><!-- End row -->
-	<!-- End row -->
+  <!-- Position -->
+
+  <!-- Content ===== -->
+  <div class="container margin_60_35">
+   <!-- End row -->
+   <hr class="more_margin">
+   <div class="main_title">
+    <h2 class="nomargin_top">Daily dukaan quality feautures</h2>
+    <p>
+        Here is what we have done:
+    </p>
+</div>
+<div class="row">
+  <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+     <div class="feature">
+        <i class="icon_building"></i>
+        <h3><span>+ 1000</span> Restaurants</h3>
+        <p>
+          Our team gathers information from every restaurant on a regular basis to ensure our data is fresh. Our vast community of food lovers share their reviews and photos, so you have all that you need to make an informed choice.
+      </p>
+  </div>
+</div>
+<div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
+ <div class="feature">
+    <i class="icon_documents_alt"></i>
+    <h3><span>+1000</span> Food Menu</h3>
+    <p>With dedicated engagement and management tools, we're enabling restaurants to spend more time focusing on food itself, which translates directly to better dining experiences.
+    </p>
+</div>
+</div>
+</div><!-- End row -->
+<div class="row">
+  <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+     <div class="feature">
+        <i class="icon_bag_alt"></i>
+        <h3><span>Delivery</span> or Takeaway</h3>
+        <p>
+          Your products will be home-delivered
+          as per your order.
+      </p>
+  </div>
+</div>
+<div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
+ <div class="feature">
+    <i class="icon_mobile"></i>
+    <h3><span>Mobile</span> support</h3>
+    <p>
+      Our Dedicated team offers 24*7 support to all our customers.
+  </p>
+</div>
+</div>
+</div><!-- End row -->
+<!-- End row -->
 </div><!-- End container -->
 
 <div class="container-fluid">
@@ -101,47 +101,26 @@
 				<h3>"Great offers"</h3>
 				<p>
 					
-
-
-Our daily deals will help you get free delivery or a nice discount from your favorite restaurant. That might help you decide for discovering new incredible restaurants, dishes, cuisines or even to save space on your freezer. Who knows, finding a new love for food might be easier than you thought.
-</p>
+                    Our daily deals will help you get free delivery or a nice discount from your favorite restaurant. That might help you decide for discovering new incredible restaurants, dishes, cuisines or even to save space on your freezer. Who knows, finding a new love for food might be easier than you thought.
+                </p>
                 <p>
-Stay tuned to our latest events and news by signing up for our newsletter and make sure to share them with your family and friends. We recommend you to follow us on Facebook, Twitter, Instagram or our Magazine to ensure you won’t miss any opportunity to enjoy food at a good price.
+                    Stay tuned to our latest events and news by signing up for our newsletter and make sure to share them with your family and friends. We recommend you to follow us on Facebook, Twitter, Instagram or our Magazine to ensure you won’t miss any opportunity to enjoy food at a good price.
 
-				
-				</p>
-			</div>
-		</div>
-	</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
 </div><!-- End container-fluid  -->
-<!-- End Content =============================================== -->
+<!-- End Content == -->
 
-<!-- Footer ================================================== -->
-	<footer>
-        
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="social_footer">
-                        <ul>
-                            <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#0"><i class="icon-google"></i></a></li>
-                            <li><a href="#0"><i class="icon-instagram"></i></a></li>
-                            <li><a href="#0"><i class="icon-pinterest"></i></a></li>
-                            <li><a href="#0"><i class="icon-vimeo"></i></a></li>
-                            <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
-                        </ul>
-                        <p>© Quick Food 2015</p>
-                    </div>
-                </div>
-            </div><!-- End row -->
-        </div><!-- End container -->
-    </footer>
-<!-- End Footer =============================================== -->
+<!-- Footer ===== -->
+<?php include("footer.php"); ?>
+<!-- End Footer == -->
 
-    <div class="layer"></div><!-- Mobile menu overlay mask -->
+<div class="layer"></div><!-- Mobile menu overlay mask -->
 
-    <?php include "modals.php"; ?>
+<?php include "modals.php"; ?>
 
 <!-- COMMON SCRIPTS -->
 <?php include "scripts.php"; ?>

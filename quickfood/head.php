@@ -27,6 +27,7 @@
     <!-- ALERTIFY CSS -->
     <link rel="stylesheet" href="css/alertify.min.css"/>
     <link rel="stylesheet" href="css/themes/bootstrap.min.css"/>
+    <script src="js/modernizr.js"></script> 
 
     
     <!-- SPECIFIC CSS -->
