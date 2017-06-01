@@ -28,7 +28,7 @@
     <div id="hero_video">
         <div id="sub_content">
         <video autoplay loop class="" style="position:absolute; z-index:0; width:100%;">
-                <source src="../videobg.mp4" type="video/mp4"/>
+                <source src="img/videobg.mp4" type="video/mp4"/>
                 </video>
             <h1>Order Dine-In or Delivery Food</h1>
             
@@ -162,29 +162,7 @@
       <!-- End container -->
 
       <!-- Footer ================================================== -->
-      <footer>
-        <div class="container">
-            <!-- End row -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="social_footer">
-                        <ul>
-                            <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                            <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                            <li><a href="#0"><i class="icon-google"></i></a></li>
-                            <li><a href="#0"><i class="icon-instagram"></i></a></li>
-                            <li><a href="#0"><i class="icon-pinterest"></i></a></li>
-                            <li><a href="#0"><i class="icon-vimeo"></i></a></li>
-                            <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
-                        </ul>
-                        <p>
-                            © Daily Dukaan 2015
-                        </p>
-                    </div>
-                </div>
-            </div><!-- End row -->
-        </div><!-- End container -->
-    </footer>
+      <?php include("footer.php"); ?>
     <!-- End Footer =============================================== -->
 
     <div class="layer"></div><!-- Mobile menu overlay mask -->

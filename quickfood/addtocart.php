@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])){
-  echo "You must login in order to continue.";
+  header('location:index.php');
 }
 if(isset($_GET['itemid']) && isset($_SESSION['user']))
 {
@@ -26,71 +26,71 @@ if(isset($_GET['itemid']) && isset($_SESSION['user']))
      // var_dump($result);
       if($result->num_rows==0)
       {
-                //cart has no items so directly add item
-        $insertquery = "INSERT INTO cart(id,item_id,rest_id,name,price,quan,user_id) 
-        VALUES('', $itemid, $rest_id, '$name', $price, $quan, '$userid')";
+           //cart has no items so directly add item
+          $insertquery = "INSERT INTO cart(id,item_id,rest_id,name,price,quan,user_id) 
+          VALUES('', $itemid, $rest_id, '$name', $price, $quan, '$userid')";
 
-        if($dbcon->query( $insertquery))
-        {
-         echo $name." added to cart successfully.<br/>";
-               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
-         }
-         else
-         {
+          if($dbcon->query( $insertquery))
+          {
+           echo $name." added to cart successfully.<br/>";
+                 echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
+          }
+          else
+          {
            echo "Error adding";
-         }
+          }
       }
-     else
-     {
+      else
+      {
        while($row = $result->fetch_assoc()) 
        {
         $user_cart_rest_id = $row['rest_id'];
 
        }
-      if($user_cart_rest_id == $rest_id)
-      {
-            $sql = "SELECT * FROM cart where item_id=$itemid AND user_id='$userid'";
-            $result = $dbcon->query($sql);
+        if($user_cart_rest_id == $rest_id)
+        {
+              $sql = "SELECT * FROM cart where item_id=$itemid AND user_id='$userid'";
+              $result = $dbcon->query($sql);
 
-            if($result->num_rows==0)
-            {
-                        //Insert
-              $insertquery = "INSERT INTO cart(id,item_id,rest_id,name,price,quan,user_id) 
-              VALUES('', $itemid, $rest_id, '$name', $price, $quan, '$userid')";
-
-              if($dbcon->query( $insertquery))
+              if($result->num_rows==0)
               {
-               echo $name." added to cart successfully.<br/>";
-               echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
-              }//end if
-              else
-               {
-                 echo "Error adding";
-               } //end else
-           }// end if
-           else
-           {
-            //Update
-            while($row = $result->fetch_assoc()) 
+                          //Insert
+                $insertquery = "INSERT INTO cart(id,item_id,rest_id,name,price,quan,user_id) 
+                VALUES('', $itemid, $rest_id, '$name', $price, $quan, '$userid')";
+
+                if($dbcon->query( $insertquery))
+                {
+                 echo $name." added to cart successfully.<br/>";
+                 echo "Click here to <a href='javascript:void(0)' onclick='removeitem($dbcon->insert_id,2)'>remove item.</a>";
+                }//end if
+                else
+                 {
+                   echo "Error adding";
+                 } //end else
+             }// end if
+             else
              {
-              $quan = $row['quan'];
-             }
-             $quan+=1;
-            $sql = "UPDATE cart SET quan=$quan WHERE item_id=$itemid AND user_id='$userid'";
-              if ($dbcon->query( $sql)) 
-              {
-                echo "Quantity updated successfully.";
-              }// end if
-              else{
-                echo "Couldnot update!";
-              }
-              
-            }//end else
+              //Update
+              while($row = $result->fetch_assoc()) 
+               {
+                $quan = $row['quan'];
+               }
+               $quan+=1;
+              $sql = "UPDATE cart SET quan=$quan WHERE item_id=$itemid AND user_id='$userid'";
+                if ($dbcon->query( $sql)) 
+                {
+                  echo "Quantity updated successfully.";
+                }// end if
+                else{
+                  echo "Couldnot update!";
+                }
+                
+              }//end else
+        }
+        else{
+          echo "You cannot add an item from differnt shop on this cart. please remove the items to do so.";
+        }
       }
-      else{
-        echo "You cannot add an item from differnt shop on this cart. please remove the items to do so.";
-      }
-    }
 }
 
 
