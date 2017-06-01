@@ -15,8 +15,11 @@
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                      <ul>
+                        <li>
+                            <a href="index.php" class="show-submenu">Home</a>  
+                        </li>
                         <li >
-                        <a href="list_page.php" class="show-submenu">Restaurants</a>
+                            <a href="list_page.php" class="show-submenu">Restaurants</a>
                         
                         </li>
                         <li><a href="about.php">About us</a></li>

@@ -115,7 +115,17 @@
                             </td>
                             <!-- Cart Options -->
                             <td class="options">
-                              <a href="javascript:void(0)" onclick="addtocart(<?=$id?>)" style="text-decoration: none;" class="button"><i class="icon_plus_alt2"></i></a>
+                              <a href="javascript:void(0)" onclick="
+                              <?php if(isset($_SESSION['user'])){ ?>
+
+                                addtocart(<?=$id?>)
+                              <?php }
+                                else{
+                              ?>  
+                              $('#login_2').modal('show');
+
+                              <?php } ?>
+                               " style="text-decoration: none;" class="button"><i class="icon_plus_alt2"></i></a>
                             </td>
                           </tr>
                       <?php }?>
