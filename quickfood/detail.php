@@ -218,7 +218,7 @@
             });
           }
 
-          function checkMode(){
+          function goToOrder(){
 
             var radioValue = $("input[name='mode']:checked"). val();
             if(radioValue){

@@ -11,7 +11,7 @@
     ?>
     <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
     <table class="table table_summary">
-      <tbody>
+      <tbody id="cartdetail">
         <?php
         include("database/db_conection.php");          
 
@@ -75,7 +75,7 @@
               <span style="font-size: 20px;"> Delivery </span> 
             </label>
             <label class="radio inline"> 
-              <input type="radio" name="mode" value="dinein" 
+              <input type="radio"  class="icheck" name="mode" value="dinein" 
               <?php 
               if(isset($_GET['mode'])){ 
                 if($_GET['mode']=='dinein'){ 
@@ -127,7 +127,7 @@
      </tbody>
    </table>
    <hr>
-   <button class="btn_full" onclick="checkMode()">Order now</button>
+   <button class="btn_full" onclick="goToOrder()">Order now</button>
  </div><!-- End cart_box -->
  <?php } 
 }

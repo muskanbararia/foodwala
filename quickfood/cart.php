@@ -12,7 +12,7 @@ if(!isset($_GET['mode'])){
 else{
   $mode = $_GET['mode'];
 }
-
+include "partials/head.php"; 
 include("database/db_conection.php");
 $user_id = $_SESSION['user'];
 $sql = "SELECT COUNT(*) AS cart_tot FROM cart WHERE user_id='$user_id'";
@@ -23,7 +23,7 @@ if($row['cart_tot']==0){
 }
 ?>
 
-        <?php include "partials/head.php"; ?>
+        
 
 <body>
         <?php include "partials/preloader.php"; ?>
@@ -98,23 +98,24 @@ if($row['cart_tot']==0){
               </div>
               
             </div><!-- End col-md-3 -->
-            
-            <div class="col-md-6">
-              <div class="box_style_2" id="order_process">
-                <h2 class="inner">Your order details</h2>
+            <form id="order-form" method="POST" onsubmit="return false;">
+              <div class="col-md-6">
+                <div class="box_style_2" id="order_process">
+                  <h2 class="inner">Your order details</h2>
 
-                <?php if($mode=='dinein') include("dinein-form.php"); ?>
-                <?php if($mode=='delivery') include("delivery-form.php"); ?>
+                  <?php if($mode=='dinein') include "partials/dinein-form.php"; ?>
+                  <?php if($mode=='delivery') include "partials/delivery-form.php"; ?>
 
-                
-              </div><!-- End box_style_1 -->
-            </div><!-- End col-md-6 -->
-            
-            <div class="col-md-3" id="sidebar">
-              <div class="theiaStickySidebar" id="detailedcart">
-                
-              </div><!-- End theiaStickySidebar -->
-            </div><!-- End col-md-3 -->
+                  
+                </div><!-- End box_style_1 -->
+              </div><!-- End col-md-6 -->
+              
+              <div class="col-md-3" id="sidebar">
+                <div class="theiaStickySidebar" id="detailedcart">
+                  
+                </div><!-- End theiaStickySidebar -->
+              </div><!-- End col-md-3 -->
+            </form>
             
           </div><!-- End row -->
         </div><!-- End container -->
@@ -191,6 +192,19 @@ if($row['cart_tot']==0){
           $(document).ready(function(){
             $("#detailedcart").load('detailedcart.php?mode=<?=$_GET['mode']?>');
           });
+
+
+          function goToOrder(){
+            var i = 1;
+            var formvars = $('#order-form').serializeArray();
+            $('#cartdetail > tr').each(function(tr){
+              formvars.push({name:'items[]', value:$(this).text().trim().replace(/\s+/g, '')});
+            });
+            console.log($.param(formvars));
+            $.post('order.php', $.param(formvars), function(data){
+              console.log(data);
+            });
+          }
         </script>
 
 </body>

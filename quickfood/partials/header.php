@@ -34,7 +34,7 @@
                             <?php 
                             include("database/db_conection.php");          
                             $email=$_SESSION['user'];
-                            $view_users_query="select * from user WHERE email='$email' ORDER BY id DESC";//select query for viewing users.  
+                            $view_users_query="SELECT * from user WHERE email='$email' LIMIT 1";//select query for viewing users.  
                             $run=$dbcon->query($view_users_query);//here run the sql query.  
                       
                             if($row=$run->fetch_array())//while look to fetch the result and store in a array $row.  
@@ -42,7 +42,7 @@
                                 $user_name=$row[1];
                             }
                             ?>
-                             <li><a href="logout.php">Hello, <?php echo $user_name; ?></a></li>
+                             <li><a href="profile.php">Hello, <?php echo $user_name; ?></a></li>
                              <li><a href="logout.php">Logout</a></li>
                              <?php endif; ?>
                         

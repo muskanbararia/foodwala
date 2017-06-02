@@ -19,7 +19,8 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['mobile']) &&
 	}
 
 
-	$insert_package="insert into user (name, email, mobile, address,password) VALUE ('$name','$email','$phone','$address','$pwd')";  
+	$insert_package="INSERT INTO user (name, email, mobile, address,password) 
+					VALUES ('$name','$email','$phone','$address','$pwd')";
 
 
 	if($dbcon->query($insert_package))  
