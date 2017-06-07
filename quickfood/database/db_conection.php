@@ -1,4 +1,6 @@
  <?php
+
+
  	$servername = "localhost";
  	$username = "root";
 	$password = "";
@@ -10,6 +12,8 @@
 	// Check connection
 	if ($dbcon->connect_error) {
 	    die("Connection failed: " . $dbcon->connect_error);
-	} 
+	}
+
+	
     
 ?>  

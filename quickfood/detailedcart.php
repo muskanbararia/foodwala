@@ -99,19 +99,16 @@
             <td>
               <?php
 
-              $sql = "SELECT SUM(price) AS total FROM cart where user_id='".$_SESSION['user']."'";
+              $sql = "SELECT `quan`,`price` FROM cart where user_id='".$_SESSION['user']."'";
               $result = $dbcon->query($sql);
-
-
+              $subtotal = 0;
               while($row = $result->fetch_assoc()){
-                $subtotal = $row['total'];
+                $subtotal += $row['quan'] * $row['price'];
                 $delivery = 10;
                 $total = (int)$subtotal + 10;
-                ?>
-                Subtotal <span class="pull-right">₹<?=$subtotal?></span>
-                <?php
               }
               ?>
+              Subtotal <span class="pull-right">₹<?=$subtotal?></span>
             </td>
           </tr>
           <tr>
