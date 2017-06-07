@@ -11,6 +11,11 @@ if(!isset($_GET['mode'])){
 }
 else{
   $mode = $_GET['mode'];
+  if($mode != 'delivery' && $mode != 'dinein')
+  {
+    header('LOCATION:404.php');
+  }
+  
 }
 include "partials/head.php"; 
 include("database/db_conection.php");

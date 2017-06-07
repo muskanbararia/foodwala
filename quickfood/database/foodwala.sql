@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2017 at 03:14 PM
+-- Generation Time: Jun 07, 2017 at 08:54 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -60,8 +62,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `item_id`, `rest_id`, `name`, `price`, `quan`, `user_id`) VALUES
-(4, 1, 10, ' Veg Sweet Corn Soup', 50, 4, 'demo@demo.com'),
-(5, 2, 10, ' Veg Manchow Soup', 50, 3, 'demo@demo.com');
+(59, 1, 10, ' Veg Sweet Corn Soup', 50, 2, 'demo@demo.com'),
+(60, 2, 10, ' Veg Manchow Soup', 50, 1, 'demo@demo.com');
 
 -- --------------------------------------------------------
 
@@ -142,7 +144,7 @@ INSERT INTO `item` (`id`, `rest_id`, `name`, `category`, `sub`, `price`, `logo`,
 (12, 10, 'Half Biryani Rice', 'BIRYANI', 'Chicken Biryani', 150, 'm83d397bone.jpeg', ''),
 (13, 10, ' Full Chicken Special Leg Biryani ', 'BIRYANI', 'Chicken Special Leg Biryani ', 320, 'maa6a137index.jpeg', ''),
 (14, 10, 'Half Chicken Special Leg Biryani ', 'BIRYANI', 'Chicken Special Leg Biryani', 170, 'mf445867images.jpeg', ''),
-(15, 10, ' Full Kebab Biryani', 'BIRYANI', 'Kebab Biryani', 320, 'm1812ec2images.jpeg', ''),
+(15, 11, ' Full Kebab Biryani', 'BIRYANI', 'Kebab Biryani', 320, 'm1812ec2images.jpeg', ''),
 (16, 10, ' Half Kebab Biryani', 'BIRYANI', 'Kebab Biryani', 170, 'm45b3218images.jpeg', ''),
 (17, 10, ' Full Mutton Biryani', 'BIRYANI', 'Mutton Biryani', 340, 'ma8d6cf2images.jpeg', ''),
 (18, 10, 'Half Mutton Biryani', 'BIRYANI', 'Mutton Biryani', 170, 'm65b2867images.jpeg', ''),
@@ -155,6 +157,41 @@ INSERT INTO `item` (`id`, `rest_id`, `name`, `category`, `sub`, `price`, `logo`,
 (25, 10, 'Lacha Paratha', 'PARATHA', '', 20, 'md3b88d4index.jpeg', ''),
 (26, 10, ' Egg Lachha Paratha', 'PARATHA', '', 30, 'md86ea5bindex.jpeg', ''),
 (27, 10, ' Double Egg Paratha', 'PARATHA', '', 40, 'm0d314a3images.jpeg', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `order_id` varchar(10) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `mobile` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `city` varchar(20) NOT NULL,
+  `pincode` varchar(10) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `dinein` tinyint(1) NOT NULL,
+  `people` varchar(50) NOT NULL,
+  `note` varchar(150) NOT NULL,
+  `status` int(11) NOT NULL,
+  `items` varchar(500) NOT NULL,
+  `user_email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`, `user_email`) VALUES
+(16, 'DD14968435', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', 'UPPER POLICE COLONY, TULASIPUR', 'Cuttack', '753008', 'today', '25mins', 0, '', 'adsdasds', 0, '[\"2xVegSweetCornSoupu20b950\",\"3xVegManchowSoupu20b950\"]', ''),
+(17, 'DD14968575', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', 'UPPER POLICE COLONY, TULASIPUR', 'Cuttack', '753008', 'today', '25mins', 0, '', 'dasdsada', 0, '[\"3xVegSweetCornSoupu20b950\",\"2xVegManchowSoupu20b950\"]', ''),
+(18, 'DD14968600', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'today', '11.30am', 1, '2', 'sasasasasa', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', '');
 
 -- --------------------------------------------------------
 
@@ -205,7 +242,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `name`, `email`, `mobile`, `address`, `password`) VALUES
 (1, 'demo', 'demo@demo.com', '7878', '78', 'demo'),
-(2, 'sdf', 'muskan@gmail.comv', 'sfdf', 'dgdf', 'sgdg');
+(2, 'sdf', 'muskan@gmail.comv', 'sfdf', 'dgdf', 'sgdg'),
+(3, 'Aditya Padhi', 'adityapadhi1996@gmail.com', '7381110897', 'UPPER POLICE COLONY, TULASIPUR', 'Aditya');
 
 --
 -- Indexes for dumped tables
@@ -248,6 +286,12 @@ ALTER TABLE `item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `restaurant`
 --
 ALTER TABLE `restaurant`
@@ -272,7 +316,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `cartitem`
 --
@@ -294,6 +338,11 @@ ALTER TABLE `dinein`
 ALTER TABLE `item`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
 -- AUTO_INCREMENT for table `restaurant`
 --
 ALTER TABLE `restaurant`
@@ -302,7 +351,8 @@ ALTER TABLE `restaurant`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

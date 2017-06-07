@@ -165,7 +165,7 @@
         <script  src="js/cat_nav_mobile.js"></script>
         <script>$('#cat_nav').mobileMenu();</script>
         <script src="js/theia-sticky-sidebar.js"></script>
-        <script type="text/javascript" src="js/detail.js"></script>
+        <script type="text/javascript" src="js/detail.min.js"></script>
         <script>
           
         </script>
