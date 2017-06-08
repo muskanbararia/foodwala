@@ -20,7 +20,7 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 		$orderid = $_GET['orderid'];
 
 
-		$sql = "SELECT * FROM orders WHERE id='$orderid'";
+		$sql = "SELECT * FROM orders WHERE order_id='$orderid'";
 		$results = $dbcon->query($sql);
 		while($row = $results->fetch_assoc()){
 			$order_id = $row['order_id'];
@@ -42,10 +42,10 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 		$oitems = array();
 
 		foreach ($items as $key => $item) {
+			$oitems[$key]['name'] = preg_replace('/(?<!\ )[A-Z]/', ' $0', get_string_between($item,'x','Rs.'));
 			$oitems[$key]['quantity'] = $item[0];
-			$oitems[$key]['name'] = preg_replace('/(?<!\ )[A-Z]/', ' $0', get_string_between($item,'x','u20b9'));
-			$oitems[$key]['price'] = explode('u20b9', $item)[1];
-			$oitems[$key]['subtot'] = $item[0] * explode('u20b9', $item)[1];
+			$oitems[$key]['price'] = explode('Rs.', $item)[1];
+			$oitems[$key]['subtot'] = $item[0] * explode('Rs.', $item)[1];
 		}
 
 		$total = 0;
@@ -153,13 +153,19 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 					  }
 					  echo('</tr>');
 					} ?>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>Total</th>
+						<th><?=$total?>/-</th>
+					</tr>
 					</table>
 				</td>
 			</tr>
 			<tr>
 				<td><?=++$i?></td>
-				<td>Total</td>
-				<td><?=$total?>/-</td>
+				<td>Total + Delivery</td>
+				<td><?=$total+$delivery?>/-</td>
 				
 			</tr>
 		</table>
@@ -170,7 +176,7 @@ else{
 ?>
 <table>
 <?php
-	$sql = "SELECT * FROM orders WHERE email='adityapadhi1996@gmail.com'";
+	$sql = "SELECT * FROM orders WHERE user_email='".$useremail."'";
 	$results = $dbcon->query($sql);
 
 	while($row = $results->fetch_assoc())

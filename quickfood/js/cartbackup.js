@@ -49,18 +49,23 @@ function goToOrder(){
   var i = 1;
   var formvars = $('#order-form').serializeArray();
   $('#cartdetail > tr').each(function(tr){
+    // console.log($(this).text().trim().replace(/\s+/g, ''));
     formvars.push({name:'items[]', value:$(this).text().trim().replace(/\s+/g, '')});
   });
   // console.log($.param(formvars));
   $.post('order.php', $.param(formvars), function(data){
-    // console.log(data);
-    var obj = JSON.parse(data);
-    if(obj.success==1)
-    {
-      window.open('myorders.php?orderid='+obj.orderid, '_self');
+    
+    console.log(data);
+    if(data.length > 0){
+        var obj = JSON.parse(data);
+        if(obj.success==1)
+        {
+          window.open('myorders.php?orderid='+obj.orderid, '_self');
+        }
+        else{
+          alertify.alert('Server Busy','Please try again.');
+        }
     }
-    else{
-      alertify.alert('Server Busy','Please try again.');
-    }
+    
   });
 }

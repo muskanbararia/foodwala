@@ -38,7 +38,7 @@
     <div class="form-group">
       <label>Delivery Day</label>
       <select class="form-control" name="date" id="date">
-        <option value="today" selected>Today</option>
+        <option value="Today" selected>Today</option>
       </select>
     </div>
   </div>

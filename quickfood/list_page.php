@@ -34,10 +34,40 @@
               <!-- List Of Restaurants Begins Here-->
               <?php
                 include "database/db_conection.php";
-                $limit = 10;
-                $query = "SELECT * FROM restaurant" ;
+                $record_limit = 2;
+                /* Get total number of records */
+                 $sql = "SELECT count(id) FROM restaurant";
+                 $result = $dbcon->query( $sql );
+                 
+                 if(! $result ) {
+                    die('Could not get data: ' . $dbcon->error());
+                 }
+                 $row = $result->fetch_array(MYSQLI_NUM);
+                 $totalrecords = $row[0];
+                 
+                 if( isset($_GET{'page'} ) ) 
+                 {
+                    $page = $_GET{'page'};
+                    $offset = $record_limit * $page ;
+                 }
+                 else 
+                 {
+                    $page = 0;
+                    $offset = 0;
+                 }
+                 
+                 $left_records = $totalrecords - ($page * $record_limit);
+                 if($left_records<=$record_limit)
+                 {
+                  $next = 0;
+                 }else{
+                  $next = $page+1;
+                 }
+
+
+                $query = "SELECT * FROM restaurant LIMIT $offset, $record_limit" ;
                 $run   = $dbcon->query($query);
-                while ($row = $run->fetch_array()) {
+                while ($row = $run->fetch_array(MYSQLI_NUM)) {
                   # code...
                   $id = $row[0]; 
                   $name = $row[1];
@@ -86,7 +116,23 @@
               <?php } ?>
                       
             </div><!-- End col-md-9-->
-                
+            <div class="text-center">
+            <?php
+              $_PHP_SELF = $_SERVER["PHP_SELF"];
+              if( $page > 0 ) {
+                    $last = $page - 1;
+                    echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last 10 Records</a>";
+                    if( $next!=0 ){
+                      echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                    }
+                    else{
+                      echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                    }
+                 }else if( $page == 0 ) {
+                    echo "<a class='btn btn-info' href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                 }
+              ?>
+            </div>
           </div><!-- End row -->
         </div><!-- End container -->
         <!-- End Content  -->

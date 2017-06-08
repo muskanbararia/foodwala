@@ -150,7 +150,8 @@ if($row['cart_tot']==0){
         <!-- SPECIFIC SCRIPTS -->
         <script src="js/theia-sticky-sidebar.js"></script>
         <script type="text/javascript">var method = '<?=$_GET['mode']?>';</script>
-        <script type="text/javascript" src="js/cart.min.js"></script>
+        <script type="text/javascript" src="js/cartbackup.js"></script>
+        <!-- <script type="text/javascript" src="js/cart.min.js"></script> -->
 
 </body>
 </html>

@@ -4,6 +4,8 @@
  	$servername = "localhost";
  	$username = "root";
 	$password = "";
+	$delivery = 10;
+	$adminemail = 'adityapadhi1996@gmail.com';
 
 	$dbname = "foodwala";
 

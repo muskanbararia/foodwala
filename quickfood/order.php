@@ -5,23 +5,15 @@ include("database/db_conection.php");
 returns json data 
 
 */
-function get_string_between($string, $start, $end){
-	    $string = ' ' . $string;
-	    $ini = strpos($string, $start);
-	    if ($ini == 0) return '';
-	    $ini += strlen($start);
-	    $len = strpos($string, $end, $ini) - $ini;
-	    return substr($string, $ini, $len);
+if(!isset($_SESSION['user'])){
+	exit(1);
+}
+else{
+	$user_email = $_SESSION['user'];
 }
 
-if(isset($_POST['first_name'])&&
-	isset($_POST['last_name']) &&
-	isset($_POST['mobile']) && 
-	isset($_POST['email']) && 
-	isset($_POST['date']) && 
-	isset($_POST['time']) && 
-	isset($_POST['notes']) &&
-	isset($_POST['mode']) &&
+
+if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mobile']) && isset($_POST['email']) && isset($_POST['date']) && isset($_POST['time']) && isset($_POST['notes']) && isset($_POST['mode']) &&
 	isset($_POST['items']) ) 
 {
 	// status 0 for  payment status pending.
@@ -58,171 +50,29 @@ if(isset($_POST['first_name'])&&
 		$city = ' ';
 		$pincode = ' ';
 	}
-	else{
+	else
+	{
 		header('location:'.$_SERVER['HTTP_REFERER']);
 	}
 
-	// echo "Hello";
-	// var_dump($dbcon);
 
-	$sql = "INSERT INTO `orders`(`order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`) VALUES ('$order_id','$first_name', '$last_name', '$mobile', '$email', '$address', '$city', '$pincode', '$date', '$time', $dinein, $people , '$note', $status,'$itemdetailed')";
+	$sql = "INSERT INTO `orders`(`order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`, `user_email`) VALUES ('$order_id','$first_name', '$last_name', '$mobile', '$email', '$address', '$city', '$pincode', '$date', '$time', $dinein, '$people' , '$note', $status,'$itemdetailed', '$user_email')";
 	if($dbcon->query($sql))
 	{
-
 		$last_id = $dbcon->insert_id;
-
-		$sql2 = "SELECT * FROM orders WHERE id='$last_id'";
-		$resulta = $dbcon->query($sql2);
-		while($row = $resulta->fetch_assoc())
-		{
-			$first_name = $row['first_name'];
-			$last_name = $row['last_name'];
-			$mobile = $row['mobile'];
-			$email = $row['email'];
-			$address = $row['address'];
-			$city = $row['city'];
-			$pincode = $row['pincode'];
-			$date = $row['date'];
-			$time = $row['time'];
-			$status = $row['status'];
-			$items = json_decode($row['items']);
-		}
-		$oitems = array();
-		foreach ($items as $key => $item) {
-			$oitems[$key]['quantity'] = $item[0];
-			$oitems[$key]['name'] = preg_replace('/(?<!\ )[A-Z]/', ' $0', get_string_between($item,'x','u20b9'));
-			$oitems[$key]['price'] = explode('u20b9', $item)[1];
-			$oitems[$key]['subtot'] = $item[0] * explode('u20b9', $item)[1];
-		}
-
-		$total = 0;
-		foreach($oitems as $oitem){
-			$total += $oitem['subtot'];
-		}
-		
-
-		$html1="<!DOCTYPE html>
-				<html>
-				<head>
-				<style>
-				table {
-				    font-family: arial, sans-serif;
-				    border-collapse: collapse;
-				    width: 100%;
-				}
-
-				td, th {
-				    border: 1px solid #dddddd;
-				    text-align: left;
-				    padding: 8px;
-				}
-
-				tr:nth-child(even) {
-				    background-color: #dddddd;
-				}
-				</style>
-				</head>
-				<body>";
-
-			$itemstable = "<table>";
-			foreach($oitems as $row) {
-				$itemstable .= '<tr>';
-				foreach($row as $cell) {
-					$itemstable .= '<td>'.$cell .'</td>';
-				}
-				$itemstable .= '</tr>';
-			}
-			$itemstable .= '</table>';
-
-
-			$admintable ="<table>
-						<thead>
-						  <tr>
-						    <th>#</th>
-						    <th>Item</th>
-						    <th>Description</th>
-						  </tr>
-						  </thead>";
-
-			$admintable .="<tbody>
-				<tr>
-					<td>1</td>
-					<td>Full Name</td>
-					<td>$first_name $last_name</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Mobile</td>
-					<td>$mobile</td>
-					
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>Email</td>
-					<td>$email</td>
-					
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>Address</td>
-					<td>$address, $city</td>
-					
-				</tr>
-				<tr>
-					<td>6</td>
-					<td>Pincode</td>
-					<td>$pincode</td>
-					
-				</tr>
-				<tr>
-					<td>7</td>
-					<td>Date</td>
-					<td>$date</td>
-					
-				</tr>
-				<tr>
-					<td>8</td>
-					<td>Status</td>
-					<td>$status</td>
-					
-				</tr>
-				<tr>
-					<td>9</td>
-					<td>Items</td>
-					<td>";
-
-				$admintable .= $itemstable;
-				$admintable .="		
-					</td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td>Total</td>
-					<td>$total /-</td>
-					
-				</tr>
-				</tbody>
-			</table>";
-
-			$html2 = "</body></html>";
-
-			$clientmail = $email;
-			$clientsubject = 'Thanks for your order';
-			$clientmsg = $html1;
-			$clientmsg .= "Your order has been placed successfully. \n\n\n";
-			$clientmsg .= $itemstable;
-			$clientmsg .= "Please click on the link below to check your order. <a href='http://foods.dailydukaan.com/myorders.php?orderid=$last_id'>http://foods.dailydukaan.com/myorders.php?orderid=$last_id</a>";
-			$clientmsg .= $html2;
-
-			$adminsub = "New order placed";
-			$adminmessage = $html1.$admintable.$html2;
-
-			@mail($clientmail, $clientsubject, $clientmsg);
-			@mail($adminmail, $adminsubject, $adminmessage);
+		class_exists('Order') || require('partials/class.order.php');
+		$order = new Order;
+		$detail = $order->getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $last_id);
+		$prop = $detail['prop'];
+		$total = $detail['total'];
+		$itemstable = $detail['itemstable'];
+		$order->sendClientMail($prop, $itemstable, $total, $delivery, $last_id);
+		$order->sendAdminMail($adminemail, $prop, $itemstable, $total);
+		$order->clearCart($user_email);
 
 			
-			$success = array('success' => 1,'orderid' => $last_id);
-			echo json_encode($success);
+		$success = array('success' => 1,'orderid' => $order_id);
+		echo json_encode($success);
 	}
 	
 

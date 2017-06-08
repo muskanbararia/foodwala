@@ -28,7 +28,7 @@
              <?=$row['quan'] ?> <strong> x </strong> <?=$row['name']?>
            </td>
            <td class="col-md-2">
-            <strong class="pull-right">₹<?=$row['price']?></strong>
+            <strong class="pull-right">Rs.<?=$row['price']?></strong>
           </td>
           <td class="col-md-4">
             <ul class="list-inline">
@@ -104,21 +104,20 @@
               $subtotal = 0;
               while($row = $result->fetch_assoc()){
                 $subtotal += $row['quan'] * $row['price'];
-                $delivery = 10;
                 $total = (int)$subtotal + 10;
               }
               ?>
-              Subtotal <span class="pull-right">₹<?=$subtotal?></span>
+              Subtotal <span class="pull-right">Rs.<?=$subtotal?></span>
             </td>
           </tr>
           <tr>
             <td>
-             Delivery fee <span class="pull-right">₹<?=$delivery?></span>
+             Delivery fee <span class="pull-right">Rs.<?=$delivery?></span>
            </td>
          </tr>
          <tr>
           <td class="total">
-           TOTAL <span class="pull-right">₹<?=$total ?></span>
+           TOTAL <span class="pull-right">Rs.<?=$total ?></span>
          </td>
        </tr>
      </tbody>

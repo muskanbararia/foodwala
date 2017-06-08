@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2017 at 08:54 PM
+-- Generation Time: Jun 08, 2017 at 10:49 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -166,7 +166,7 @@ INSERT INTO `item` (`id`, `rest_id`, `name`, `category`, `sub`, `price`, `logo`,
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `order_id` varchar(10) NOT NULL,
+  `order_id` varchar(20) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `mobile` varchar(10) NOT NULL,
@@ -191,7 +191,40 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`, `user_email`) VALUES
 (16, 'DD14968435', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', 'UPPER POLICE COLONY, TULASIPUR', 'Cuttack', '753008', 'today', '25mins', 0, '', 'adsdasds', 0, '[\"2xVegSweetCornSoupu20b950\",\"3xVegManchowSoupu20b950\"]', ''),
 (17, 'DD14968575', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', 'UPPER POLICE COLONY, TULASIPUR', 'Cuttack', '753008', 'today', '25mins', 0, '', 'dasdsada', 0, '[\"3xVegSweetCornSoupu20b950\",\"2xVegManchowSoupu20b950\"]', ''),
-(18, 'DD14968600', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'today', '11.30am', 1, '2', 'sasasasasa', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', '');
+(18, 'DD14968600', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'today', '11.30am', 1, '2', 'sasasasasa', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', ''),
+(19, 'DD14968975', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'today', '12.30am', 1, '3', 'ssdsadsadsadaddas', 0, '[\"3xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', ''),
+(20, 'DD14968978', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '4', 'fhjghjghghkhkgjkfhkggkkvhvcgn', 0, '[\"3xVegSweetCornSoupu20b950\",\"2xVegManchowSoupu20b950\"]', ''),
+(21, 'DD14969047', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdadadasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(22, 'DD14969048', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdadadasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(23, 'DD14969048', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'assas', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(24, 'DD14969049', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(25, 'DD14969050', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(26, 'DD14969050', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(27, 'DD14969051', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(28, 'DD14969051', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(29, 'DD14969051', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(30, 'DD14969051', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(31, 'DD14969051', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(32, 'DD14969052', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(33, 'DD14969052', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(34, 'DD14969053', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(35, 'DD14969053', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(36, 'DD14969054', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(37, 'DD14969054', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(38, 'DD14969055', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'sdsdsdsdsaasas', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(39, 'DD14969066', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'assasasas', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(40, 'DD14969066', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'dssaddas', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(41, 'DD14969069', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(42, 'DD14969069', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(43, 'DD14969070', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(44, 'DD14969070', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(45, 'DD14969071', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(46, 'DD14969071', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdasdasd', 0, '[\"2xVegSweetCornSoupu20b950\",\"1xVegManchowSoupu20b950\"]', 'demo@demo.com'),
+(47, 'DD14969074', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asdsdadsad', 0, '[\"2xVegSweetCornSoupRs.50\",\"1xVegManchowSoupRs.50\"]', 'demo@demo.com'),
+(48, 'DD14969074', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'asddsaasd', 0, '[\"2xVegSweetCornSoupRs.50\",\"1xVegManchowSoupRs.50\"]', 'demo@demo.com'),
+(49, 'DD14969076', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'dsaadadasdasdsa', 0, '[\"2xVegSweetCornSoupRs.50\",\"1xVegManchowSoupRs.50\"]', 'demo@demo.com'),
+(50, 'DD14969077', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Today', '12.00PM - 2:00PM', 1, '1', 'ddsdadsad', 0, '[\"1xVegSweetCornSoupRs.50\",\"1xVegManchowSoupRs.50\"]', 'demo@demo.com'),
+(51, 'DD1496911043', 'Aditya', 'Padhi', '7381110897', 'adityapadhi1996@gmail.com', ' ', ' ', ' ', 'Tomorrow', '12.00PM - 2:00PM', 1, '4', 'sasaasasasasa', 0, '[\"2xVegSweetCornSoupRs.50\",\"1xVegManchowSoupRs.50\"]', 'demo@demo.com');
 
 -- --------------------------------------------------------
 
@@ -341,7 +374,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `restaurant`
 --

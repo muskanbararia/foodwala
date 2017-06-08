@@ -35,7 +35,6 @@
     <div class="form-group">
       <label>DineIn Day</label>
       <select class="form-control" name="date" id="date">
-        <option value="today" selected>Today</option>
         <option value="Today">Today</option>
         <option value="Tomorrow">Tomorrow</option>
       </select>
@@ -45,13 +44,11 @@
     <div class="form-group">
       <label>Time Slot</label>
       <select class="form-control" name="time" id="time">
-        <option value="11.30am">11.30am</option>
-        <option value="11.45am">11.45am</option>
-        <option value="12.15am">12.15am</option>
-        <option value="12.30am">12.30am</option>
-        <option value="12.45am">12.45am</option>
-        <option value="01.00pm">01.00pm</option>
-        <option value="01.15pm">01.15pm</option>
+        <option value="12.00PM - 2:00PM">12.00PM - 2:00PM</option>
+        <option value="2.00PM - 4.00PM">2.00PM - 4.00PM</option>
+        <option value="6.00PM - 8.00PM">6.00PM - 8.00PM</option>
+        <option value="8.00PM - 10.00PM">8.00PM - 10.00PM</option>
+        <option value="10.00PM - 11.00PM">10.00PM - 11.00PM</option>
       </select>
     </div>
   </div>
