@@ -41,7 +41,7 @@ class Order
 		    return substr($string, $ini, $len);
 	}
 
-	public function getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $last_id)
+	public function getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $rest_id, $last_id)
 	{
 		$results = array();
 
@@ -62,6 +62,16 @@ class Order
 		$prop['address'] = $address;
 		$prop['city'] = $city;
 		$prop['pincode'] = $pincode;
+		$prop['rest_id'] = $rest_id;
+
+		include "database/db_conection.php";
+		$sql = "SELECT * FROM  resturant  WHERE id = $rest_id";
+		$result = $dbcon->query($sql);
+		while($row = $result->fetch_assoc()){
+			$prop['restname'] = $row['name'];
+			$prop['restloc'] = $row['location'];
+			$prop['restphn'] = $row['phone'];
+		}
 
 		$oitems = array();
 		foreach ($items as $key => $item) 
@@ -95,39 +105,49 @@ class Order
 						<th></th>
 						<th></th>
 						<th>Total</th>
-						<th>$total/- (inc. taxes)</th>
+						<th>$total/-</th>
 						</tr>
 					</table>";
 
 		$results['prop'] = $prop;
 		$results['total'] = $total;
 		$results['itemstable'] = $itemstable;
-
+		$results['oitems'] = $oitems;
 		return $results;
 	}
 
-	public function sendClientMail($prop, $itemstable, $total, $delivery, $last_id)
+	public function sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail)
 	{
 		$coid = $prop['order_id'];
-		$csub = 'Thanks for your order';
+		$csub = "Your order with OrderID: #$coid has been placed successfully. Thanks for your order.";
 		$cmail = $prop['email'];
 		$cbody  = $this->html1;
-		$cbody .= "Your order has been placed successfully. \n\n\n";
-		$cbody .= $itemstable;
-		$cbody .= "\n\n\nPlease click on the link below to check your order. \n\n\n<a href='http://foods.dailydukaan.com/myorders.php?orderid=$coid'> http://foods.dailydukaan.com/myorders.php?orderid=$coid </a>";
 		$ototal = $total+$delivery;
+
+		$logo  = "http://dailydukaan.com";
+		$name = $prop['first_name']." ".$prop['last_name'];
+		$odate = $prop['date'];
+
+		$cbody .= "<h3>Your order has been placed successfully.</h3> \n\n\n";
+		$cbody .= "<h3> Resturant Name:".$prop['restname']."</h3>";
+		$cbody .= "<h3> Resturant Location:".$prop['restloc']."</h3>";
+		$cbody .= "<h3> Resturant Phone No.:".$prop['restphn']."</h3>";
+		$cbody .= $itemstable;
 		$cbody .= "<table>
 					<tr>
+						<th width='40%'></th>
 						<th></th>
-						<th></th>
-						<th>Total + Delivery Charges</th>
+						<th>Total + Taxes</th>
 						<th>$ototal /- (inc. taxes)</th>
 					</tr>
 					</table>";
+		$cbody .= "\n\n\n<h3>Please click on the link below to check your order.</h3> \n\n\n<a href='http://foods.dailydukaan.com/myorders.php?orderid=$coid'> http://foods.dailydukaan.com/myorders.php?orderid=$coid </a>";
+		$ototal = $total+$delivery;
+		
 		$cbody .= $this->endhtml;
 
-		$name = $prop['first_name']." ".$prop['last_name'];
-        $this->mail->setFrom('info@dailydukaan.com', 'Daily Dukaan - Foods');
+		
+        $this->mail->setFrom("$adminemail", 'Daily Dukaan - Foods');
         $this->mail->addAddress("$cmail", "$name");
         $this->mail->isHTML(true);
         $this->mail->Subject = "$csub";
@@ -136,9 +156,10 @@ class Order
         $this->mail->send();
 	}
 
-	public function sendAdminMail($adminemail, $prop, $itemstable, $total)
+	public function sendAdminMail($adminemail, $prop, $itemstable, $total, $delivery)
 	{
 		$name = $prop['first_name']." ".$prop['last_name'];
+		$order_id = $prop['order_id'];
 		$admintable ="<table>
 					<thead>
 					  <tr>
@@ -147,7 +168,7 @@ class Order
 					    <th>Description</th>
 					  </tr>
 					  </thead>";
-
+        $ototal = $total+$delivery;
 		$admintable .="<tbody>
 			<tr>
 				<td>1</td>
@@ -164,7 +185,10 @@ class Order
 				<td>Email</td>
 				<td>".$prop['email']."</td>
 				
-			</tr>
+			</tr>";
+		
+		if(!$prop['dinein']){
+		    $admintable .="	
 			<tr>
 				<td>4</td>
 				<td>Address</td>
@@ -176,7 +200,11 @@ class Order
 				<td>Pincode</td>
 				<td>".$prop['pincode']."</td>
 				
-			</tr>
+			</tr>";
+		}
+		
+		
+		$admintable .="
 			<tr>
 				<td>7</td>
 				<td>Date</td>
@@ -201,16 +229,16 @@ class Order
 				<tr>
 					<td>10</td>
 					<td>Total</td>
-					<td>$total /-</td>
+					<td>$ototal /-</td>
 					
 				</tr>
 				</tbody>
 			</table>";
-			$adminsub = "New order placed";
+			$adminsub = "New order placed with OrderId: $order_id";
 			$adminmessage = $this->html1.$admintable.$this->endhtml;
 
-            $this->mail->setFrom('info@dailydukaan.com', 'Daily Dukaan - Foods');
-            $this->mail->addAddress("$adminemail", 'Admin Daily Dukaan');
+            $this->mail->setFrom("$adminemail", 'Daily Dukaan - Foods');
+            $this->mail->addAddress('info@dailydukaan.com' , 'Admin Daily Dukaan');
             $this->mail->isHTML(true);
             $this->mail->Subject = "$adminsub";
             $this->mail->Body = "$adminmessage";

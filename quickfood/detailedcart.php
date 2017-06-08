@@ -112,7 +112,7 @@
           </tr>
           <tr>
             <td>
-             Delivery fee <span class="pull-right">Rs.<?=$delivery?></span>
+             Tax fee <span class="pull-right">Rs.<?=$delivery?></span>
            </td>
          </tr>
          <tr>

@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html>
 <?php
+error_reporting(0);
+ob_start();
+session_start();
+if(isset($_SESSION['order_id']))
+{
+    $orderid = $_SESSION['order_id'];
+    header("location:mo.php?orderid=$orderid");
+}
+else{
 if(!isset($_GET['mode'])){
   if(isset($_SERVER['HTTP_REFERER'])){
     $referer= $_SERVER['HTTP_REFERER'];
     header('LOCATION:'.$referer);
-  }  
+    exit();
+  }
   header('LOCATION:list_page.php');
 }
 else{
   $mode = $_GET['mode'];
-  if($mode != 'delivery' && $mode != 'dinein')
-  {
-    header('LOCATION:404.php');
-  }
-  
 }
-include "partials/head.php"; 
 include("database/db_conection.php");
 $user_id = $_SESSION['user'];
 $sql = "SELECT COUNT(*) AS cart_tot FROM cart WHERE user_id='$user_id'";
 $result = $dbcon->query($sql);
 $row = $result->fetch_assoc();
-if($row['cart_tot']==0){
-  header('LOCATION:list_page.php');
+if($row['cart_tot']==0)
+{
+  header('Location:list_page.php');
 }
 ?>
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<html>
+<?php
+include "partials/head.php"; ?>
 
 <body>
         <?php include "partials/preloader.php"; ?>
@@ -96,8 +103,8 @@ if($row['cart_tot']==0){
               <div class="box_style_2 hidden-xs" id="help">
                 <i class="icon_lifesaver"></i>
                 <h4>Need <span>Help?</span></h4>
-                <a href="tel://004542344599" class="phone">+45 423 445 99</a>
-                <small>Monday to Friday 9.00am - 7.30pm</small>
+                <a href="tel://<?=$phnnum?>" class="phone"><?=$phnnum?></a>
+                <small><?=$timings?></small>
               </div>
               
             </div><!-- End col-md-3 -->
@@ -149,9 +156,13 @@ if($row['cart_tot']==0){
 
         <!-- SPECIFIC SCRIPTS -->
         <script src="js/theia-sticky-sidebar.js"></script>
-        <script type="text/javascript">var method = '<?=$_GET['mode']?>';</script>
+        <script type="text/javascript">var method = '<?=$mode?>';</script>
         <script type="text/javascript" src="js/cartbackup.js"></script>
         <!-- <script type="text/javascript" src="js/cart.min.js"></script> -->
 
 </body>
 </html>
+<?php
+}
+
+?>

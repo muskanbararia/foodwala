@@ -13,8 +13,7 @@ else{
 }
 
 
-if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mobile']) && isset($_POST['email']) && isset($_POST['date']) && isset($_POST['time']) && isset($_POST['notes']) && isset($_POST['mode']) &&
-	isset($_POST['items']) ) 
+if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mobile']) && isset($_POST['email']) && isset($_POST['date']) && isset($_POST['time']) && isset($_POST['notes']) && isset($_POST['mode']) ) 
 {
 	// status 0 for  payment status pending.
 	// status 1 for payment status complete.
@@ -28,7 +27,22 @@ if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mob
 	$note = $_POST['notes'];
 	$dinein = $_POST['mode'];
 	$status = 0;
-	$items = $_POST['items'];
+
+	// Get items from cart
+	$query = "SELECT * FROM `cart` WHERE `user_id`='$user_email'";
+	$results = $dbcon->query($query);
+	$items = array();
+	$rest_id = null;
+	while($row = $results->fetch_assoc())
+	{
+		$item = $row['quan'];
+		$item .= 'x'.$row['name'];
+		$item .= 'Rs.'.$row['price'];
+		$rest_id = $row['rest_id'];
+		array_push($items, $item);
+	}
+
+
 	$itemdetailed = json_encode($items);
 
 	if($dinein=='delivery' &&
@@ -56,18 +70,20 @@ if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mob
 	}
 
 
-	$sql = "INSERT INTO `orders`(`order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`, `user_email`) VALUES ('$order_id','$first_name', '$last_name', '$mobile', '$email', '$address', '$city', '$pincode', '$date', '$time', $dinein, '$people' , '$note', $status,'$itemdetailed', '$user_email')";
+	$sql = "INSERT INTO `orders`(`order_id`, `first_name`, `last_name`, `mobile`, `email`, `address`, `city`, `pincode`, `date`, `time`, `dinein`, `people`, `note`, `status`, `items`, `rest_id`,`user_email`) VALUES ('$order_id','$first_name', '$last_name', '$mobile', '$email', '$address', '$city', '$pincode', '$date', '$time', $dinein, '$people' , '$note', $status,'$itemdetailed',$rest_id,'$user_email')";
 	if($dbcon->query($sql))
 	{
+	    $_SESSION['order_id']=$order_id;
 		$last_id = $dbcon->insert_id;
 		class_exists('Order') || require('partials/class.order.php');
 		$order = new Order;
-		$detail = $order->getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $last_id);
+		$detail = $order->getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $rest_id,$last_id);
 		$prop = $detail['prop'];
 		$total = $detail['total'];
 		$itemstable = $detail['itemstable'];
-		$order->sendClientMail($prop, $itemstable, $total, $delivery, $last_id);
-		$order->sendAdminMail($adminemail, $prop, $itemstable, $total);
+		$oitems = $detail['oitems'];
+		$order->sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail);
+		$order->sendAdminMail($adminemail, $prop, $itemstable, $total, $delivery);
 		$order->clearCart($user_email);
 
 			

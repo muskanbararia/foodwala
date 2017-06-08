@@ -22,6 +22,7 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 
 		$sql = "SELECT * FROM orders WHERE order_id='$orderid'";
 		$results = $dbcon->query($sql);
+		$row = array();
 		while($row = $results->fetch_assoc()){
 			$order_id = $row['order_id'];
 			$first_name = $row['first_name'];
@@ -53,7 +54,9 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 			$total += $oitem['subtot'];
 		}
 		$i = 1;
-		?>
+		$odate = $date;
+		include 'partials/clientemail.php';
+/*		?>
 		<style>
 			table {
 			    font-family: arial, sans-serif;
@@ -164,12 +167,12 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 			</tr>
 			<tr>
 				<td><?=++$i?></td>
-				<td>Total + Delivery</td>
+				<td>Total + Taxes</td>
 				<td><?=$total+$delivery?>/-</td>
 				
 			</tr>
 		</table>
-<?php
+<?php*/
 
 }
 else{

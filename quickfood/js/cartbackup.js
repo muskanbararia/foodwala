@@ -46,6 +46,7 @@ $(document).ready(function(){
 
 
 function goToOrder(){
+  $("body").css({ opacity:0.1});
   var i = 1;
   var formvars = $('#order-form').serializeArray();
   $('#cartdetail > tr').each(function(tr){
@@ -60,12 +61,17 @@ function goToOrder(){
         var obj = JSON.parse(data);
         if(obj.success==1)
         {
-          window.open('myorders.php?orderid='+obj.orderid, '_self');
+        //   window.open('cart.php?orderid='+obj.orderid, '_self');
+            window.location.assign("cart.php?mode="+method);
         }
         else{
           alertify.alert('Server Busy','Please try again.');
         }
     }
     
+  })
+  .fail(function() {
+    $("body").css({ opacity:1});
+    alert( "Failed to add to cart. Please try again." );
   });
 }

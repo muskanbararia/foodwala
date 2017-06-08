@@ -34,7 +34,6 @@
               <!-- List Of Restaurants Begins Here-->
               <?php
                 include "database/db_conection.php";
-                $record_limit = 2;
                 /* Get total number of records */
                  $sql = "SELECT count(id) FROM restaurant";
                  $result = $dbcon->query( $sql );
@@ -121,15 +120,15 @@
               $_PHP_SELF = $_SERVER["PHP_SELF"];
               if( $page > 0 ) {
                     $last = $page - 1;
-                    echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last 10 Records</a>";
+                    echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last $record_limit Records</a>";
                     if( $next!=0 ){
-                      echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                      echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
                     }
                     else{
-                      echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                      echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
                     }
                  }else if( $page == 0 ) {
-                    echo "<a class='btn btn-info' href = \"$_PHP_SELF?page=$next\">Next 10 Records</a>";
+                    echo "<a class='btn btn-info' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
                  }
               ?>
             </div>
