@@ -82,7 +82,7 @@ if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mob
 		$total = $detail['total'];
 		$itemstable = $detail['itemstable'];
 		$oitems = $detail['oitems'];
-		$order->sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail);
+		$order->sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail, $adminaddress);
 		$order->sendAdminMail($adminemail, $prop, $itemstable, $total, $delivery);
 		$order->clearCart($user_email);
 

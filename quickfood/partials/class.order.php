@@ -116,35 +116,25 @@ class Order
 		return $results;
 	}
 
-	public function sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail)
+	public function sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail, $adminaddress)
 	{
 		$coid = $prop['order_id'];
 		$csub = "Your order with OrderID: #$coid has been placed successfully. Thanks for your order.";
 		$cmail = $prop['email'];
-		$cbody  = $this->html1;
 		$ototal = $total+$delivery;
 
 		$logo  = "http://dailydukaan.com";
 		$name = $prop['first_name']." ".$prop['last_name'];
 		$odate = $prop['date'];
-
-		$cbody .= "<h3>Your order has been placed successfully.</h3> \n\n\n";
-		$cbody .= "<h3> Resturant Name:".$prop['restname']."</h3>";
-		$cbody .= "<h3> Resturant Location:".$prop['restloc']."</h3>";
-		$cbody .= "<h3> Resturant Phone No.:".$prop['restphn']."</h3>";
-		$cbody .= $itemstable;
-		$cbody .= "<table>
-					<tr>
-						<th width='40%'></th>
-						<th></th>
-						<th>Total + Taxes</th>
-						<th>$ototal /- (inc. taxes)</th>
-					</tr>
-					</table>";
-		$cbody .= "\n\n\n<h3>Please click on the link below to check your order.</h3> \n\n\n<a href='http://foods.dailydukaan.com/myorders.php?orderid=$coid'> http://foods.dailydukaan.com/myorders.php?orderid=$coid </a>";
 		$ototal = $total+$delivery;
-		
-		$cbody .= $this->endhtml;
+		$imgsrc = "http://foods.dailydukaan.com/img/logo.png";
+		$cname = $prop['first_name']." ".$prop['last_name'];
+		$restname = $prop['restname'];
+		$restloc = $prop['restloc'];
+		$restphn = $prop['restphn'];
+
+		include 'partials/clientemail.php';
+		$cbody = cbody($imgsrc, $cname, $coid, $odate, $restname, $restloc, $restphn, $oitems, $ototal, $adminaddress , $adminemail);
 
 		
         $this->mail->setFrom("$adminemail", 'Daily Dukaan - Foods');
