@@ -65,7 +65,8 @@ class Order
 		$prop['rest_id'] = $rest_id;
 
 		include "database/db_conection.php";
-		$sql = "SELECT * FROM  resturant  WHERE id = $rest_id";
+		$rest_id = intval(strip_tags($rest_id));
+		$sql = "SELECT * FROM  restaurant  WHERE id = $rest_id";
 		$result = $dbcon->query($sql);
 		while($row = $result->fetch_assoc()){
 			$prop['restname'] = $row['name'];

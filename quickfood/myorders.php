@@ -55,7 +55,20 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 		}
 		$i = 1;
 		$odate = $date;
+		$coid = $order_id;
+		$csub = "Your order with OrderID: #$coid has been placed successfully. Thanks for your order.";
+		$cmail = $email;
+		$ototal = $total+$delivery;
+
+		// $odate = $prop['date'];
+		$ototal = $total+$delivery;
+		$imgsrc = "http://foods.dailydukaan.com/img/logo.png";
+		$cname = $first_name." ".$last_name;
+		$restname = 'ABCD';
+		$restloc = 'restloc';
+		$restphn = 'restphn';
 		include 'partials/clientemail.php';
+		echo cbody($imgsrc, $cname, $coid, $odate, $restname, $restloc, $restphn, $oitems, $ototal, $adminaddress , $adminemail);
 /*		?>
 		<style>
 			table {
