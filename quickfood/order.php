@@ -77,16 +77,7 @@ if(isset($_POST['first_name'])&& isset($_POST['last_name']) && isset($_POST['mob
 		$last_id = $dbcon->insert_id;
 		class_exists('Order') || require('partials/class.order.php');
 		$order = new Order;
-		$detail = $order->getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $rest_id,$last_id);
-		$prop = $detail['prop'];
-		$total = $detail['total'];
-		$itemstable = $detail['itemstable'];
-		$oitems = $detail['oitems'];
-		$order->sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail, $adminaddress);
-		$order->sendAdminMail($adminemail, $prop, $itemstable, $total, $delivery);
 		$order->clearCart($user_email);
-
-			
 		$success = array('success' => 1,'orderid' => $order_id);
 		echo json_encode($success);
 	}

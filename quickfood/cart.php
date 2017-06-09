@@ -5,7 +5,7 @@ session_start();
 if(isset($_SESSION['order_id']))
 {
     $orderid = $_SESSION['order_id'];
-    header("location:mo.php?orderid=$orderid");
+    header("location:payment.php?order_id=$orderid");
 }
 else{
 if(!isset($_GET['mode'])){
@@ -157,8 +157,7 @@ include "partials/head.php"; ?>
         <!-- SPECIFIC SCRIPTS -->
         <script src="js/theia-sticky-sidebar.js"></script>
         <script type="text/javascript">var method = '<?=$mode?>';</script>
-        <script type="text/javascript" src="js/cartbackup.js"></script>
-        <!-- <script type="text/javascript" src="js/cart.min.js"></script> -->
+        <script type="text/javascript" src="js/cart.min.js"></script>
 
 </body>
 </html>

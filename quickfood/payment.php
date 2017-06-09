@@ -1,10 +1,91 @@
+<?php
+error_reporting(0);
+session_start();
+include "database/db_conection.php";
+if(!isset($_SESSION['user']))
+{
+	header('Location:myorders.php');
+}
+else{
+$user_email = $_SESSION['user'];
+if( isset($_SESSION['order_id']) )
+{
+    $order_id = $_SESSION['order_id'];
+	unset($_SESSION['order_id']);
+	
+}
+else if(isset($_GET['order_id']))
+{ 
+    $order_id = $_GET['order_id'];
+// 	echo $order_id;
+}
+else
+{
+	header('LOCATION:myorders.php');
+}
+
+if(!empty($order_id))
+{
+    // var_dump($order_id);
+	function get_string_between($string, $start, $end){
+	    $string = ' ' . $string;
+	    $ini = strpos($string, $start);
+	    if ($ini == 0) return '';
+	    $ini += strlen($start);
+	    $len = strpos($string, $end, $ini) - $ini;
+	    return substr($string, $ini, $len);
+	}
+
+	$email = $_SESSION['user'];
+
+	$sql = "SELECT * FROM orders WHERE order_id='$order_id' AND user_email='$email'";
+	$results = $dbcon->query($sql);
+	if($results->num_rows==0)
+	{
+		$_SESSION['error'] = "No such order available";
+		header('Location:myorders.php');
+	}
+	$rrows = array();
+	while($row = $results->fetch_assoc())
+	{
+		$rrows['order_id'] = $row['order_id'];
+		$rrows['rest_id'] = $row['rest_id'];
+		$rrows['first_name'] = $row['first_name'];
+		$rrows['last_name'] = $row['last_name'];
+		$rrows['mobile'] = $row['mobile'];
+		$rrows['email'] = $row['email'];
+		$rrows['address'] = $row['address'];
+		$rrows['city'] = $row['city'];
+		$rrows['pincode'] = $row['pincode'];
+		$rrows['dinein'] = $row['dinein'];
+		$rrows['people'] = $row['people'];
+		$rrows['date'] = $row['date'];
+		$rrows['time'] = $row['time'];
+		$rrows['status'] = $row['status'];
+		$items = json_decode($row['items']);
+	}
+    $fullname = $rrows['first_name'].' '.$rrows['last_name'];
+	if($rrows['status']!=0)
+	{
+		header('Location:myorders.php?order_id='.$order_id);
+	}
+
+	$oitems = array();
+
+	foreach ($items as $key => $item) 
+	{
+		$oitems[$key]['quantity'] = $item[0];
+		$oitems[$key]['name'] = preg_replace('/(?<!\ )[A-Z]/', ' $0', get_string_between($item,'x','Rs.'));
+		$oitems[$key]['price'] = explode('Rs.', $item)[1];
+		$oitems[$key]['subtot'] = $item[0] * explode('Rs.', $item)[1];
+	}
+}
+
+?>
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
 <html>
 <?php
-if(!isset($_GET['order_id'])){ 
-  header('LOCATION:myorders.php');
-}
  include "partials/head.php";
 ?>
 
@@ -55,162 +136,170 @@ if(!isset($_GET['order_id'])){
             <a href="#0" class="search-overlay-menu-btn"><i class="icon-search-6"></i> Search</a>
           </div>
         </div><!-- Position -->
-
-
-
-
-<!-- Content ================================================== -->
-<div class="container margin_60_35">
-		<div class="row">
-			<div class="col-md-3">
-				<div class="box_style_2 hidden-xs info">
-					<h4 class="nomargin_top">Delivery time <i class="icon_clock_alt pull-right"></i></h4>
-					<p>
-						Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
-					</p>
-					<hr>
-					<h4>Secure payment <i class="icon_creditcard pull-right"></i></h4>
-					<p>
-						Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
-					</p>
-				</div><!-- End box_style_2 -->
-                
-				<div class="box_style_2 hidden-xs" id="help">
-					<i class="icon_lifesaver"></i>
-					<h4>Need <span>Help?</span></h4>
-					<a href="tel://004542344599" class="phone">+45 423 445 99</a>
-					<small>Monday to Friday 9.00am - 7.30pm</small>
-				</div>
-			</div><!-- End col-md-3 -->
-            
-			<div class="col-md-6">
-				<div class="box_style_2">
-					<h2 class="inner">Payment methods</h2>
-					<div class="payment_select">
-						<label><input type="radio" value="" checked name="payment_method" class="icheck">Debit Card/ Credit Card (CCAVENUE)</label>
-						<i class="icon_creditcard"></i>
-					</div>
-					<div class="payment_select" id="paypal">
-						<label><input type="radio" value="" name="payment_method" class="icheck">Pay with paypal</label>
-					</div>
-					<div class="payment_select nomargin">
-						<label><input type="radio" value="" name="payment_method" class="icheck">Pay with cash (Cash on Delivery)</label>
-						<i class="icon_wallet"></i>
-					</div>
-				</div><!-- End box_style_1 -->
-			</div><!-- End col-md-6 -->
-            
-			<div class="col-md-3" id="sidebar">
-            	<div class="theiaStickySidebar">
-				<div id="cart_box">
-					<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
-					<table class="table table_summary">
-					<tbody>
-					<?php 
-
-					function get_string_between($string, $start, $end){
-					    $string = ' ' . $string;
-					    $ini = strpos($string, $start);
-					    if ($ini == 0) return '';
-					    $ini += strlen($start);
-					    $len = strpos($string, $end, $ini) - $ini;
-					    return substr($string, $ini, $len);
-					}
-
-					$email = $_SESSION['user'];
-					$order_id = $_GET['order_id'];
-					include "database/db_conection.php";
-					$sql = "SELECT * FROM orders WHERE order_id='$order_id' AND user_email='$email'";
-					$results = $dbcon->query($sql);
-					// var_dump($results->fetch_assoc());
-					while($row = $results->fetch_assoc())
-					{
-						$dinein = $row['dinein'];	
-						$items = json_decode($row['items']);
-					}
-
-
-					$oitems = array();
-
-					foreach ($items as $key => $item) {
-						$oitems[$key]['quantity'] = $item[0];
-						$oitems[$key]['name'] = preg_replace('/(?<!\ )[A-Z]/', ' $0', get_string_between($item,'x','u20b9'));
-						$oitems[$key]['price'] = explode('u20b9', $item)[1];
-						$oitems[$key]['subtot'] = $item[0] * explode('u20b9', $item)[1];
-					}
-
-					$total = 0;
-					foreach($oitems as $oitem){
-
-						$total += $oitem['subtot'];
-					?>
-					<tr>
-						<td>
-							<a href="javascript:void(0)" class="remove_item"><i class="icon_minus_alt"></i></a> <strong><?=$oitem['quantity']?> x</strong> <?=$oitem['name']?>
-						</td>
-						<td>
-							<strong class="pull-right">₹<?=$oitem['price']?></strong>
-						</td>
-					</tr>
-					<?php
-
-					}
-
-					?>
-					
-
-					</tbody>
-					</table>
-					<hr>
-					<div class="row" id="options_2">
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-							<label>
-							<input type="radio" value=""
-							<?php if($dinein == 0)
-							 echo "checked";
-							 else
-							 	echo "disabled";
-							 ?> name="option_2" class="icheck">Delivery
-							</label>
+		<div class="container margin_60_35">
+			<form method="post" name="customerData" action="http://dailydukaan.com/foods/ccavRequestHandler.php" >
+				<input type="hidden" name="order_id" value="<?=$rrows['order_id']?>"/>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="box_style_2 hidden-xs info">
+							<h4 class="nomargin_top">Delivery time <i class="icon_clock_alt pull-right"></i></h4>
+							<p>
+								Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
+							</p>
+							<hr>
+							<h4>Secure payment <i class="icon_creditcard pull-right"></i></h4>
+							<p>
+								Lorem ipsum dolor sit amet, in pri partem essent. Qui debitis meliore ex, tollit debitis conclusionemque te eos.
+							</p>
+						</div><!-- End box_style_2 -->
+		                
+						<div class="box_style_2 hidden-xs" id="help">
+							<i class="icon_lifesaver"></i>
+							<h4>Need <span>Help?</span></h4>
+							<a href="tel://<?=$phnnum?>" class="phone"><?=$phnnum?></a>
+							<small><?=$timings?></small>
 						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-							<label><input type="radio" value="" name="option_2" <?php if($dinein == 1)
-							 echo "checked";
-							 else
-							 	echo "disabled";
-							 ?> class="icheck">Dine In</label>
-						</div>
-					</div><!-- Edn options 2 -->
-					<hr>
-					<table class="table table_summary">
-					<tbody>
-					<tr>
-						<td>
-							 Subtotal <span class="pull-right">₹<?=$total?></span>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							 Delivery fee <span class="pull-right">₹10</span>
-						</td>
-					</tr>
-					<tr>
-						<td class="total">
-							 TOTAL <span class="pull-right">₹<?=($total+10)?></span>
-						</td>
-					</tr>
-					</tbody>
-					</table>
-					<hr>
-					<a class="btn_full" href="#">Confirm your order</a>
-					<a class="btn_full" href="myorders	.php"><i class="arrow_triangle-left"></i>Cancel Order</a>
-				</div><!-- End cart_box -->
-                </div><!-- End theiaStickySidebar -->
-			</div><!-- End col-md-3 -->
-            
-		</div><!-- End row -->
-</div><!-- End container -->
-<!-- End Content =============================================== -->
+					</div><!-- End col-md-3 -->
+		            
+					<div class="col-md-6">
+						<div class="box_style_2">
+							<h2 class="inner">Payment methods</h2>
+							<div class="payment_select">
+								<label><input type="radio" value="" checked name="payment_method" class="icheck">Debit Card/ Credit Card (CCAVENUE)</label>
+								<i class="icon_creditcard"></i>
+							</div>
+
+							<div class="form-group">
+								<label>Billing Name</label>
+								<input type="text" class="form-control" id="billing_name" name="billing_name" placeholder="First and last name" required="" value="<?=$fullname?>">
+							</div>
+							<div class="form-group">
+								<label>Billing Address</label>
+								<input type="text" class="form-control" id="billing_address" name="billing_address" placeholder="Billing Address" required="" <?php if(!empty($rrows['address'])) {
+										echo "value=".$rrows['address'];
+									} ?>>
+							</div>
+							<div class="form-group">
+								<label>Billing City</label>
+								<input type="text" class="form-control" id="billing_city" name="billing_city" placeholder="Billing City" required=""  <?php if(!empty($rrows['city'])) {
+										echo "value=".$rrows['city'];
+									} ?>>
+							</div>
+
+							<div class="form-group">
+								<label>Billing State</label>
+								<input type="text" class="form-control" id="billing_state" name="billing_state" placeholder="Billing State" required>
+							</div>
+							<div class="form-group">
+								<label>Billing Zip</label>
+								<input type="text" class="form-control" id="billing_zip" name="billing_zip" placeholder="Billing Zip" required="" <?php if(!empty($rrows['pincode'])) {
+										echo "value=".$rrows['pincode'];
+									} ?>>
+							</div>
+							<div class="form-group">
+								<label>Billing Country</label>
+								<input type="text" class="form-control" id="billing_country" name="billing_country" placeholder="Billing Country" value="INDIA">
+							</div>
+							<div class="form-group">
+								<label>Billing Email</label>
+								<input type="text" class="form-control" id="billing_email" name="billing_email" placeholder="Billing Email" value="<?=$rrows['email']?>">
+							</div>
+							<div class="form-group">
+								<label>Billing Telephone/ Mobile</label>
+								<input type="text" class="form-control" id="billing_tel" name="billing_tel" placeholder="Billing Telephone/ Mobile" value="<?=$rrows['mobile']?>">
+							</div>
+
+						</div><!-- End box_style_1 -->
+					</div><!-- End col-md-6 -->
+		            
+					<div class="col-md-3" id="sidebar">
+		            	<div class="theiaStickySidebar">
+						<div id="cart_box">
+							<h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
+							<table class="table table_summary">
+							<tbody>
+							<?php
+
+							$total = 0;
+							foreach($oitems as $oitem){
+
+								$total += $oitem['subtot'];
+							?>
+							<tr>
+								<td>
+									<a href="javascript:void(0)" class="remove_item"><i class="icon_minus_alt"></i></a> <strong><?=$oitem['quantity']?> x</strong> <?=$oitem['name']?>
+								</td>
+								<td>
+									<strong class="pull-right">₹<?=$oitem['price']?></strong>
+								</td>
+							</tr>
+							<?php
+								$ototal = $total+$delivery;
+							}
+								
+							?>
+							
+
+							</tbody>
+							</table>
+							<hr>
+
+							<input type="hidden" name="redirect_url" value="http://foods.dailydukaan.com/ccavResponseHandler.php"/>
+
+							<input type="hidden" name="cancel_url" value="http://foods.dailydukaan.com/ccavResponseHandler.php"/>
+							<div class="row" id="options_2">
+								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+									<label>
+									<input type="radio" value=""
+									<?php if($dinein == 0)
+									 echo "checked";
+									 else
+									 	echo "disabled";
+									 ?> name="option_2" class="icheck">Delivery
+									</label>
+								</div>
+								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
+									<label><input type="radio" value="" name="option_2" <?php if($dinein == 1)
+									 echo "checked";
+									 else
+									 	echo "disabled";
+									 ?> class="icheck">Dine In</label>
+								</div>
+							</div><!-- Edn options 2 -->
+							<hr>
+							<input type="hidden" name="merchant_id" value="132894"/>
+							<input type="hidden" name="currency" value="INR"/>
+							
+							<table class="table table_summary">
+							<tbody>
+							<tr>
+								<td>
+									 Subtotal <span class="pull-right">₹<?=$total?></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									 Delivery fee <span class="pull-right">₹10</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="total">
+									 TOTAL <span class="pull-right">₹<?=$ototal?></span>
+								</td>
+							</tr>
+							</tbody>
+							</table>
+							<hr>
+							<!-- <a class="btn_full" href="#">Confirm your order</a> -->
+							<input type="submit" name="submit" value="Confirm your order" class="btn_full">
+							<a class="btn_full" href="myorders.php"><i class="arrow_triangle-left"></i>Cancel Order</a>
+						</div><!-- End cart_box -->
+		                </div><!-- End theiaStickySidebar -->
+					</div><!-- End col-md-3 -->
+		            <input type="hidden" name="amount" value="<?=$ototal?>"/>
+				</div><!-- End row -->
+			</form>
+		</div><!-- End container -->
 
 
 
@@ -250,3 +339,6 @@ if(!isset($_GET['order_id'])){
 
 </body>
 </html>
+<?php
+}
+?>

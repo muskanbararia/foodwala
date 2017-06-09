@@ -6,7 +6,9 @@ class Order
 {
 	public $mail;
 
-	public function __construct(){
+
+	public function __construct()
+	{
 		require 'php-mailer/PHPMailerAutoload.php';
 		$this->mail = new PHPMailer;
 	}
@@ -41,31 +43,37 @@ class Order
 		    return substr($string, $ini, $len);
 	}
 
-	public function getOrderDetails($order_id, $first_name, $last_name, $mobile, $email, $date, $time, $note, $dinein, $status, $itemdetailed, $people ,$address, $city, $pincode, $rest_id, $last_id)
+	public function getOrderDetails($order_id)
 	{
 		$results = array();
-
-		$prop = array();
-		$prop['id'] = $last_id;
-		$prop['order_id'] = $order_id;
-		$prop['first_name'] = $first_name;
-		$prop['last_name'] = $last_name;
-		$prop['mobile'] = $mobile;
-		$prop['email'] = $email;
-		$prop['date'] = $date;
-		$prop['time'] = $time;
-		$prop['note'] = $note;
-		$prop['dinein'] = $dinein;
-		$prop['status'] = $status;
-		$items = json_decode($itemdetailed);
-		$prop['people'] = $people;
-		$prop['address'] = $address;
-		$prop['city'] = $city;
-		$prop['pincode'] = $pincode;
-		$prop['rest_id'] = $rest_id;
-
 		include "database/db_conection.php";
-		$rest_id = intval(strip_tags($rest_id));
+		$prop = array();
+		$sql = "SELECT * FROM orders WHERE order_id='$order_id'";
+		$result = $dbcon->query($sql);
+		while($row = $result->fetch_assoc())
+		{
+			$prop['id'] = $row['id'];
+			$prop['order_id'] = $row['order_id'];
+			$prop['first_name'] = $row['first_name'];
+			$prop['last_name'] = $row['last_name'];
+			$prop['mobile'] = $row['mobile'];
+			$prop['email'] = $row['email'];
+			$prop['date'] = $row['date'];
+			$prop['time'] = $row['time'];
+			$prop['note'] = $row['note'];
+			$prop['dinein'] = $row['dinein'];
+			$prop['status'] = $row['status'];
+			$itemdetailed = $row['items'];
+			$prop['people'] = $row['people'];
+			$prop['address'] = $row['address'];
+			$prop['city'] = $row['city'];
+			$prop['pincode'] = $row['pincode'];
+			$prop['rest_id'] = $row['rest_id'];
+		}
+		$items = json_decode($itemdetailed);
+
+		
+		$rest_id = intval(strip_tags($prop['rest_id']));
 		$sql = "SELECT * FROM  restaurant  WHERE id = $rest_id";
 		$result = $dbcon->query($sql);
 		while($row = $result->fetch_assoc()){
@@ -117,14 +125,14 @@ class Order
 		return $results;
 	}
 
-	public function sendClientMail($prop, $oitems, $total, $delivery, $last_id, $adminemail, $adminaddress)
+	public function sendClientMail($prop, $oitems, $total, $delivery, $adminemail, $adminaddress)
 	{
+		$last_id = $prop['id'];
 		$coid = $prop['order_id'];
 		$csub = "Your order with OrderID: #$coid has been placed successfully. Thanks for your order.";
 		$cmail = $prop['email'];
 		$ototal = $total+$delivery;
 
-		$logo  = "http://dailydukaan.com";
 		$name = $prop['first_name']." ".$prop['last_name'];
 		$odate = $prop['date'];
 		$ototal = $total+$delivery;
@@ -134,7 +142,7 @@ class Order
 		$restloc = $prop['restloc'];
 		$restphn = $prop['restphn'];
 
-		include 'partials/clientemail.php';
+		require 'partials/clientemail.php';
 		$cbody = cbody($imgsrc, $cname, $coid, $odate, $restname, $restloc, $restphn, $oitems, $ototal, $adminaddress , $adminemail);
 
 		
@@ -235,6 +243,13 @@ class Order
             $this->mail->Body = "$adminmessage";
             
             $this->mail->send();
+		}
+
+		public function changeStatus($id)
+		{
+			include "database/db_conection.php";
+			$sql = "UPDATE orders SET status=1 WHERE id=$id";
+			$dbcon->query($sql);
 		}
 
 		public function clearCart($user_email)

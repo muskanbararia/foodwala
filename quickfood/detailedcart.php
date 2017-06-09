@@ -104,7 +104,7 @@
               $subtotal = 0;
               while($row = $result->fetch_assoc()){
                 $subtotal += $row['quan'] * $row['price'];
-                $total = (int)$subtotal + 10;
+                $total = (int)$subtotal + $delivery;
               }
               ?>
               Subtotal <span class="pull-right">Rs.<?=$subtotal?></span>

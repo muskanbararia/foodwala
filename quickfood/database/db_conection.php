@@ -10,16 +10,18 @@
 	 	$username = "root";
 		$password = "";	
 		$dbname = "foodwala";
+		$documentroot = $_SERVER['DOCUMENT_ROOT'].'/fd/quickfood';
 	}
 	else{
 		$servername = "localhost";
 	 	$username = "dailyduk_foods";
 		$password = "foods@daily123";
-		$dbname = "dailyduk_foody";	
+		$dbname = "dailyduk_foody";
+		// $documentroot = $_SERVER['DOCUMENT_ROOT'];	
 	}
  	
-	$delivery = 10;
-	$adminemail = 'adityapadhi1996@gmail.com';
+	$delivery = 0;
+	$adminemail = 'info@dailydukaan.com';
 	$adminaddress = 'Bhubaneswar, Odisha';
 	$record_limit = 5;
 	$phnnum='+91 7381 11 0897';
