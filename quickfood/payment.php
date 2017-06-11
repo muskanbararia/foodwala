@@ -65,7 +65,7 @@ if(!empty($order_id))
 		$items = json_decode($row['items']);
 	}
     $fullname = $rrows['first_name'].' '.$rrows['last_name'];
-	if($rrows['status']!=0)
+	if($rrows['status']==2)
 	{
 		header('Location:myorders.php?order_id='.$order_id);
 	}
@@ -102,7 +102,7 @@ if(!empty($order_id))
             <div id="sub_content">
              <h1>Place your order</h1>
              <div class="bs-wizard">
-              <div class="col-xs-4 bs-wizard-step">
+              <div class="col-xs-4 bs-wizard-step complete">
                 <div class="text-center bs-wizard-stepnum"><strong>1.</strong> Your details</div>
                 <div class="progress"><div class="progress-bar"></div></div>
                 <a href="#0" class="bs-wizard-dot"></a>
@@ -292,7 +292,7 @@ if(!empty($order_id))
 							<hr>
 							<!-- <a class="btn_full" href="#">Confirm your order</a> -->
 							<input type="submit" name="submit" value="Confirm your order" class="btn_full">
-							<a class="btn_full" href="myorders.php"><i class="arrow_triangle-left"></i>Cancel Order</a>
+							<a class="btn_full" href="javascript:void(0)" onclick="event.preventDefault(); cancelOrder('<?=$order_id?>')"><i class="arrow_triangle-left"></i>Cancel Order</a>
 						</div><!-- End cart_box -->
 		                </div><!-- End theiaStickySidebar -->
 					</div><!-- End col-md-3 -->
@@ -334,6 +334,18 @@ if(!empty($order_id))
           jQuery('#sidebar').theiaStickySidebar({
             additionalMarginTop: 80
           });
+          $(document).ready(function(){
+          		$.post('initiatepayment.php', {order_id : "<?=$order_id?>"});
+          });
+
+          function cancelOrder(){
+	          	$.post('cancelorder.php', {order_id: '<?=$order_id?>'}, function(data){
+	          		if(data==1){
+	          			window.open('myorders.php?orderid=<?=$order_id?>', '_self');
+	          		}
+	          	});
+	          	
+	        }
          
         </script>
 

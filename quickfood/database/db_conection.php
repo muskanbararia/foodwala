@@ -26,6 +26,7 @@
 	$record_limit = 5;
 	$phnnum='+91 7381 11 0897';
 	$timings = 'All days 9.00am - 7.30pm';
+	$actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	
 

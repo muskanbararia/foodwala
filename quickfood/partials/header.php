@@ -7,7 +7,7 @@
                     <img src="img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
             </div>
-            <nav class="col--md-8 col-sm-8 col-xs-8" style="padding-top: 15px;">
+            <nav class="col-md-8 col-sm-8 col-xs-8" style="padding-top: 15px;">
                 <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                 <div class="main-menu">
                     <div id="header_menu">
@@ -16,20 +16,20 @@
                     <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                      <ul>
                         <li>
-                            <a href="index.php" class="show-submenu">Home</a>  
+                            <a href="index.php" class="show-submenu"><i class="pull-left icon-home-outline"></i> HOME</a>  
                         </li>
                         <li >
-                            <a href="list_page.php" class="show-submenu">Restaurants</a>
+                            <a href="list_page.php" class="show-submenu"><i class="pull-left icon-food-1"></i> RESTUARANTS</a>
                         
                         </li>
-                        <li><a href="about.php">About us</a></li>
-                        <li><a href="faq.php">Faq</a></li>
+                        <li><a href="about.php"><i class="pull-left icon-megaphone-2"></i> ABOUT US</a></li>
+                        <li><a href="faq.php"><i class="pull-left icon-question"></i> FAQ</a></li>
                         
                         
                          <?php if (!isset($_SESSION['user'])): ?> 
                        
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Signup</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
+                        <li><a href="#0" data-toggle="modal" data-target="#register"><i class="pull-left icon-question"></i> SIGNUP</a></li>
+                        <li><a href="#0" data-toggle="modal" data-target="#login_2"><i class="pull-left  icon-login"></i> LOGIN</a></li>
                         <?php else: ?>
                             <?php 
                             include("database/db_conection.php");          
@@ -42,8 +42,8 @@
                                 $user_name=$row[1];
                             }
                             ?>
-                             <li><a href="profile.php">Hello, <?php echo $user_name; ?></a></li>
-                             <li><a href="logout.php">Logout</a></li>
+                             <li><a href="myorders.php"><i class="pull-left icon-basket-3"></i> MY ORDERS</a></li>
+                             <li><a href="logout.php"><i class="pull-left  icon-logout"></i> LOGOUT</a></li>
                              <?php endif; ?>
                         
                         

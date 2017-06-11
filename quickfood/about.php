@@ -38,7 +38,7 @@
             <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
                <div class="feature">
                   <i class="icon_building"></i>
-                  <h3><span>+ 1000</span> Restaurants</h3>
+                  <h3><span>+ 10</span> Restaurants</h3>
                   <p>
                     Our team gathers information from every restaurant on a regular basis to ensure our data is fresh. Our vast community of food lovers share their reviews and photos, so you have all that you need to make an informed choice.
                 </p>
@@ -47,7 +47,7 @@
             <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
               <div class="feature">
                   <i class="icon_documents_alt"></i>
-                  <h3><span>+1000</span> Food Menu</h3>
+                  <h3><span>+10</span> Food Menu</h3>
                   <p>With dedicated engagement and management tools, we're enabling restaurants to spend more time focusing on food itself, which translates directly to better dining experiences.
                   </p>
               </div>

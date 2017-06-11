@@ -12,7 +12,7 @@ function get_string_between($string, $start, $end){
     return substr($string, $ini, $len);
 } 
 if(!isset($_SESSION['user'])){
-	header('LOCATION:index.php');
+	header('LOCATION:index.php?next='.$actual_link);
 }else{
 	$useremail = $_SESSION['user'];
 }
@@ -93,8 +93,7 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 	                <a href="#0" class="bs-wizard-dot"></a>
 	              </div>
 	              
-	              <div class="col-xs-4 bs-wizard-step complete <?php echo ($status == 1)? 'active':'';
-	              													 echo  ($status == 2)? '':''; ?>">
+	              <div class="col-xs-4 bs-wizard-step <?php echo ($status == 0)? 'disabled':'complete'; echo ($status == 1)? 'complete active':''; echo  ($status == 2)? 'complete':''; ?>">
 	                <div class="text-center bs-wizard-stepnum"><strong>2.</strong> Payment<?php echo ($status == 1)? ' : Pending':'' ?></div>
 	                
 	                <div class="progress"><div class="progress-bar"></div></div>
@@ -358,10 +357,13 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 								<a class="btn_full" href="payment.php?order_id=<?=$order_id?>">Reinitiate payment</a>
 							<?php } else if($status==1){ ?>
 								<a class="btn_full" href="payment.php?order_id=<?=$order_id?>">Proceed to payment</a>
-								<a class="btn_full" href="myorders.php"><i class="arrow_triangle-left"></i>Cancel Order</a>
+								<a class="btn_full" href="javascript:void(0)" onclick="event.preventDefault();cancelOrder()"><i class="arrow_triangle-left"></i>Cancel Order</a>
 				            <?php
 				               }
-				               else if($status==2) echo "  src='img/icon_close.ico' /> Order Status : Successfull";
+				               else if($status==2){?>
+				               		<a class="btn_full" href="javascript:void(0)">Thank You</a>
+				            <?php
+				               }
 							?>
 							
 							
@@ -408,6 +410,13 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 	          jQuery('#sidebar').theiaStickySidebar({
 	            additionalMarginTop: 80
 	          });
+	          function cancelOrder(){
+	          	$.post('cancelorder.php', {order_id: '<?=$orderid?>'}, function(data){
+	          		if(data==1){
+	          			window.open('myorders.php?orderid=<?=$orderid?>', '_self');
+	          		}
+	          	});
+	          }
 	         
 	        </script>
 	</body>
@@ -417,29 +426,11 @@ if(isset($_GET['orderid']) && !empty(($_GET['orderid'])))
 
 }
 else{
-?>
-<table>
-<?php
-	$sql = "SELECT * FROM orders WHERE user_email='".$useremail."'";
-	$results = $dbcon->query($sql);
-
-	while($row = $results->fetch_assoc())
-	{
-		?>
-
-			<tr>
-				<td>#</td>
-				<td>Order Id</td>
-				<td><?=$row['order_id'] ?></td>
-				<td><a href="payment.php?order_id=<?=$row['order_id'] ?>">See Order</a></td>
-			</tr>
-
-		<?php
-	}
+header('Location:orderhistory.php');
+	
 }
 ?>
 
-</table>
 
 
 
