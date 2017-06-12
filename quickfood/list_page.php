@@ -113,25 +113,26 @@
               </div>
               <!-- End strip_list-->
               <?php } ?>
+               <div class="">
+                  <?php
+                    $_PHP_SELF = $_SERVER["PHP_SELF"];
+                    if( $page > 0 ) {
+                          $last = $page - 1;
+                          echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last $record_limit Records</a>";
+                          if( $next!=0 ){
+                            echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+                          }
+                          else{
+                            echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+                          }
+                       }else if( $page == 0 ) {
+                          echo "<a class='btn btn-info load_more_bt_2' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+                       }
+                    ?>
+                  </div>
                       
             </div><!-- End col-md-9-->
-            <div class="text-center">
-            <?php
-              $_PHP_SELF = $_SERVER["PHP_SELF"];
-              if( $page > 0 ) {
-                    $last = $page - 1;
-                    echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last $record_limit Records</a>";
-                    if( $next!=0 ){
-                      echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
-                    }
-                    else{
-                      echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
-                    }
-                 }else if( $page == 0 ) {
-                    echo "<a class='btn btn-info' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
-                 }
-              ?>
-            </div>
+           
           </div><!-- End row -->
         </div><!-- End container -->
         <!-- End Content  -->

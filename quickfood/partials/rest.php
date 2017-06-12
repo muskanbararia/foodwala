@@ -20,7 +20,7 @@
                       $phone=$row[4];
                       $category=$row[5];
             ?>
-                <a href="list_page.php" class="strip_list">
+                <a href="detail.php?name=<?=$id?>" class="strip_list">
                 <div class="ribbon_1">
                     Popular
                 </div>
@@ -49,7 +49,6 @@
             </div>
             <div class="col-md-6">
             <?php
-                include "database/db_conection.php";
                   $query = "SELECT * FROM restaurant LIMIT 3,6" ;
                   $run   = $dbcon->query($query);
                   while ($row = $run->fetch_array()) //while look to fetch the result and store in a array $row.  
@@ -61,7 +60,7 @@
                       $phone=$row[4];
                       $category=$row[5];
             ?>
-                <a href="list_page.php" class="strip_list">
+                <a href="detail.php?name=<?=$id?>" class="strip_list">
                 <div class="ribbon_1">Popular</div>
                     <div class="desc">
                         <div class="thumb_strip">

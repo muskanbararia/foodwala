@@ -1,5 +1,5 @@
 <?php 
-error_reporting(0);
+error_reporting(0); 
 session_start();
 include "database/db_conection.php";
 if(!isset($_SESSION['user'])){
@@ -7,7 +7,39 @@ if(!isset($_SESSION['user'])){
 }else{
 	$useremail = $_SESSION['user'];
 }
-$sql = "SELECT * FROM orders WHERE user_email='".$useremail."'";
+
+
+/* Get total number of records  for pagination*/
+ $sql = "SELECT count(id) FROM orders WHERE user_email='".$useremail."'";
+ $result = $dbcon->query( $sql );
+ 
+ if(! $result ) {
+    die('Could not get data: ' . $dbcon->error());
+ }
+ $row = $result->fetch_array(MYSQLI_NUM);
+ $totalrecords = $row[0];
+ 
+ if( isset($_GET{'page'} ) ) 
+ {
+    $page = $_GET{'page'};
+    $offset = $record_limit * $page ;
+ }
+ else 
+ {
+    $page = 0;
+    $offset = 0;
+ }
+ 
+ $left_records = $totalrecords - ($page * $record_limit);
+ if($left_records<=$record_limit)
+ {
+  $next = 0;
+ }else{
+  $next = $page+1;
+ }
+// End pagination logic
+
+$sql = "SELECT * FROM orders WHERE user_email='".$useremail."'  LIMIT $offset, $record_limit";
 $results = $dbcon->query($sql);
 ?>
 
@@ -77,8 +109,25 @@ $results = $dbcon->query($sql);
 					</div><!-- End row-->
 				</div><!-- End strip_list-->
 				<?php } ?>
+				<div class="text-center">
+					<?php
+	              		$_PHP_SELF = $_SERVER["PHP_SELF"];
+	              		if( $page > 0 ) {
+		                    $last = $page - 1;
+		                    echo "<a class='btn btn-info pull-left' href = \"$_PHP_SELF?page=$last\">Last $record_limit Records</a>";
+		                    if( $next!=0 ){
+		                      echo "<a class='btn btn-info pull-right' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+		                    }
+		                    else{
+		                      echo "<a class='btn btn-info pull-right' disabled href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+		                    }
+		                 }else if( $page == 0 ) {
+		                    echo "<a class='btn btn-info load_more_bt_2' href = \"$_PHP_SELF?page=$next\">Next $record_limit Records</a>";
+		                 }
+	              ?>
 
-				<a href="#0" class="load_more_bt_2">Load more...</a>  
+				</div>
+				
 				</div>
 
 
